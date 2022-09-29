@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-29 11:17:07
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 15:37:02
+ * @LastEditTime: 2022-09-29 15:47:38
  * @FilePath: \webpack-shopify\build\init.js
  */
 const shell = require("shelljs");
@@ -19,4 +19,4 @@ console.log(`${name}店铺${branch}分支绑定中...`)
 
 // `git subtree add --prefix=themes/${name} ${name} ${branch} --squash`
 
-exec(`npm run clear && git subtree add --prefix=themes/${name}/${branch} ${name} ${branch} --squash`)
+exec(`npm run clear && git subtree add --prefix=themes/${name.toUpperCase()}/${branch} ${name} ${branch} --squash`)
