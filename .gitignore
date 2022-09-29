@@ -1,7 +1,6 @@
 config.yml
 node_modules/
 theme/
-themes/
 theme-zip/
 report.html
 theme-ready.tmp
