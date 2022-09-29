@@ -1,8 +1,9 @@
 /*
  * @Date: 2022-09-29 11:17:07
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 15:48:56
+ * @LastEditTime: 2022-09-29 15:56:03
  * @FilePath: \webpack-shopify\build\init.js
+ * @description: 初始化绑定子树
  */
 const shell = require("shelljs");
 const exec = shell.exec;
@@ -19,4 +20,4 @@ console.log(`${name}店铺${branch}分支绑定中...`)
 
 // `git subtree add --prefix=themes/${name} ${name} ${branch} --squash`
 
-exec(`npm run clear && git subtree add --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch} --squash`)
+exec(`git subtree add --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch} --squash`)
