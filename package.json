@@ -10,6 +10,7 @@
     "prod:deploy": "webpack --mode=production && theme deploy --env=production --dir=theme --allow-live",
     "push": "node build/push.js",
     "init": "node build/init.js",
+    "pull": "node build/pull.js",
     "deploy": "node build/deploy.js",
     "watch": "node build/devWatch.js",
     "clear": "node build/clearDist.js",
