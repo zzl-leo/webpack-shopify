@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-29 11:28:42
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 16:19:16
+ * @LastEditTime: 2022-09-29 16:36:46
  * @FilePath: \webpack-shopify\build\push.js
  * @description: 修改模板上传至模板git
  */
@@ -19,6 +19,13 @@ if(!config[name]) {
 console.log(`${name}店铺模板同步至shopify模板git中...`)
 
 // exec(`theme deploy --dir=theme --env=${name}`)
+
+// git subtree push --prefix=my/folder subtree_origin master
+
+// https://github.com/zzl-leo/-shopify-manger-CA.git
+
+// https://github.com/zzl-leo/webpack-shopify.git
+// git remote set-url https://zzl-leo:zzl4338782dove@github.com/zzl-leo/-shopify-manger-CA.git
 
 // `git subtree push --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch}`
 exec(`git subtree push --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch}`)
