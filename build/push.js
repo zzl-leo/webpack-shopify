@@ -1,8 +1,8 @@
 /*
  * @Date: 2022-09-29 11:28:42
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 16:36:46
- * @FilePath: \webpack-shopify\build\push.js
+ * @LastEditTime: 2022-09-29 18:25:51
+ * @FilePath: \test2\build\push.js
  * @description: 修改模板上传至模板git
  */
 const shell = require("shelljs");
