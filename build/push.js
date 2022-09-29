@@ -1,8 +1,9 @@
 /*
  * @Date: 2022-09-29 11:28:42
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 11:30:18
- * @FilePath: \shopify-starter-theme-master\build\push.js
+ * @LastEditTime: 2022-09-29 16:17:09
+ * @FilePath: \webpack-shopify\build\push.js
+ * @description: 修改模板上传至模板git
  */
 const shell = require("shelljs");
 const exec = shell.exec;
@@ -16,4 +17,7 @@ if(!config[name]) {
 }
 console.log(`${name}店铺模板同步至shopify模板中...`)
 
-exec(`theme deploy --dir=theme --env=${name}`)
+// exec(`theme deploy --dir=theme --env=${name}`)
+
+// `git subtree push --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch}`
+exec(`git subtree push --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch}`)

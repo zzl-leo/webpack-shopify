@@ -1,8 +1,8 @@
 /*
  * @Date: 2022-09-29 11:17:07
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 16:05:44
- * @FilePath: \webpack-shopify\build\get.js
+ * @LastEditTime: 2022-09-29 16:09:24
+ * @FilePath: \webpack-shopify\build\pull.js
  * @description: 拉取指定店铺模板
  */
 const shell = require("shelljs");
@@ -17,7 +17,5 @@ if(!config[name]) {
     shell.exit(1);
 }
 console.log(`${name}店铺${branch}拉取中...`)
-
-// `git subtree pull --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch} --squash`
 
 exec(`git subtree pull --prefix=themes/${name}/${branch} ${name.toUpperCase()} ${branch} --squash`)
