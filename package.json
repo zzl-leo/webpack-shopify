@@ -9,11 +9,12 @@
     "prod:build": "webpack --env=analyze --mode=production",
     "prod:deploy": "webpack --mode=production && theme deploy --env=production --dir=theme --allow-live",
     "push": "node build/push.js",
-    "get": "node build/get.js",
+    "get": "node build/init.js",
     "deploy": "node build/deploy.js",
     "watch": "node build/devWatch.js",
     "clear": "node build/clearDist.js",
-    "zip": "node build/build-zip.js"
+    "zip": "node build/build-zip.js",
+    "te": "node build/teee.js"
   },
   "author": "zzl-leo",
   "license": "ISC",

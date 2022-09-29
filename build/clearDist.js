@@ -1,17 +1,13 @@
 /*
  * @Date: 2022-09-28 14:59:36
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 15:01:58
+ * @LastEditTime: 2022-09-29 15:24:51
  * @FilePath: \webpack-shopify\build\clearDist.js
  * @description: 清空themes文件夹使用
  */
 const fs = require('fs')
 const path = require('path');
 const shell = require("shelljs");
-
-let name = process.argv[2] || 'ca';
-name = name.toUpperCase()
-
 
 function emptyDir(path) {
     const files = fs.readdirSync(path);
@@ -22,7 +18,7 @@ function emptyDir(path) {
             emptyDir(filePath);
         } else {
             fs.unlinkSync(filePath);
-            console.log(`theme：删除themes/${name}/${file}文件成功`);
+            console.log(`theme：删除themes/${file}文件成功`);
         }
     })
 }
@@ -48,4 +44,4 @@ function clearDir(path) {
     rmEmptyDir(path)
 }
 
-clearDir(path.resolve(__dirname, `../themes/${name}`))
+clearDir(path.resolve(__dirname, `../themes`))

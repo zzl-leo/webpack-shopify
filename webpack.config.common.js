@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-27 18:09:46
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 14:12:31
+ * @LastEditTime: 2022-09-29 15:29:23
  * @FilePath: \webpack-shopify\webpack.config.common.js
  * @description: 打包公共设置
  */
@@ -39,7 +39,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[chunkhash:5].bundle.js',
-        path: path.resolve(__dirname, `themes/${shopifyStore.toUpperCase()}/assets`),
+        path: path.resolve(__dirname, `themes/${shopifyStore}/assets`),
     },
     optimization: {
         splitChunks: {
@@ -150,22 +150,22 @@ module.exports = {
         new CopyPlugin({ // 复制公共新增theme liquid
             patterns: [{
                     from: path.resolve(__dirname, 'src/liquid/common/snippets/'),
-                    to: path.resolve(__dirname, `themes/${shopifyStore.toUpperCase()}/snippets/`),
+                    to: path.resolve(__dirname, `themes/${shopifyStore}/snippets/`),
                     noErrorOnMissing: true // 处理空文件夹报错
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/common/sections/'),
-                    to: path.resolve(__dirname, `theme/${shopifyStore.toUpperCase()}/sections/`),
+                    to: path.resolve(__dirname, `themes/${shopifyStore}/sections/`),
                     noErrorOnMissing: true
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/common/layout/'),
-                    to: path.resolve(__dirname, `theme/${shopifyStore.toUpperCase()}/layout/`),
+                    to: path.resolve(__dirname, `themes/${shopifyStore}/layout/`),
                     noErrorOnMissing: true
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/common/assets/'),
-                    to: path.resolve(__dirname, `theme/${shopifyStore.toUpperCase()}/assets/`),
+                    to: path.resolve(__dirname, `themes/${shopifyStore}/assets/`),
                     noErrorOnMissing: true
                 }
             ]
