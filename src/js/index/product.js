@@ -88,6 +88,7 @@ function onOptionChange(event) {
 }
 
 function onFormSubmit(event) {
+  console.log(event)
   event.preventDefault();
 
   addToCartBtn.classList.add('loading');
