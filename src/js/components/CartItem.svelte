@@ -29,7 +29,7 @@
 
     </div>
     <div class="qty-wrapper">
-      <button class="qty-increment" role="button" on:click={() => updateQty(product.key, product.quantity - 1)}>
+      <button class="qty-increment" on:click={() => updateQty(product.key, product.quantity - 1)}>
       {#if product.quantity === 1}
         <i class="material-icons-outlined qty-icon qty-icon-delete">delete</i>
       {:else}
@@ -40,7 +40,7 @@
       <div class="qty-count">
         {product.quantity}
       </div>
-      <button class="qty-increment" role="button" on:click={() => updateQty(product.key, product.quantity + 1)}>
+      <button class="qty-increment" on:click={() => updateQty(product.key, product.quantity + 1)}>
         <i class="material-icons-outlined qty-icon">add</i>
       </button>
     </div>
