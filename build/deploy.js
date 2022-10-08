@@ -2,7 +2,7 @@
 /*
  * @Date: 2022-09-29 10:23:32
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-30 14:47:50
+ * @LastEditTime: 2022-10-08 10:01:56
  * @FilePath: \test2\build\deploy.js
  * @description: 构建并发布到指定模板命令（theme清空-theme get-构建-theme 同步到店铺模板）
  */
@@ -19,4 +19,4 @@ if(!config[name]) {
 console.log(`${name}店铺模板开始构建并publish...`)
 
 // exec(`npm run get ${name} && cross-env process.env.SHOPIFY_STORE=${name} webpack --config webpack.config.${name}.js --mode=production && npm run push ${name}`)
-exec(`cross-env process.env.SHOPIFY_STORE=${name} webpack --config webpack.config.${name}.js --mode=production && npm run push ${name}`)
+exec(`cross-env process.env.SHOPIFY_STORE=${name} webpack --config webpack.config.${name}.js --mode=production`) //  && npm run push ${name}
