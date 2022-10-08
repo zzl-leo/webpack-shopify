@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
   import { trapFocus, removeTrapFocus } from '@shopify/theme-a11y';
-  import { updateItem } from '@shopify/theme-cart';
+  import { updateItem, getState } from '@shopify/theme-cart';
   import { formatMoney } from '@shopify/theme-currency';
   import CartItem from '../components/CartItem.svelte';
 
@@ -37,6 +37,10 @@
   }
 
   function handleUpdateQty(e) {
+    getState().then(state => {
+      console.log(`Cart State: ${state}`);
+    })
+
     loading = true;
     updateItem(e.detail.key, { quantity: e.detail.qty }).then((res) => {
       cartData = res;
