@@ -39,6 +39,7 @@
   function handleUpdateQty(e) {
     getState().then(state => {
       console.log(`Cart State: ${state}---`);
+      console.log(state);
     })
 
     loading = true;
