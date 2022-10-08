@@ -1,12 +1,13 @@
 /*
  * @Date: 2022-09-27 18:09:46
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 15:29:23
- * @FilePath: \webpack-shopify\webpack.config.common.js
+ * @LastEditTime: 2022-10-08 10:08:06
+ * @FilePath: \test2\webpack.config.common.js
  * @description: 打包公共设置
  */
 const isProduction = process.env.NODE_ENV === 'production';
 const shopifyStore = process.env.SHOPIFY_STORE;
+const shopifyTheme = process.env.SHOPIFY_THEME || 'master';
 
 const path = require('path');
 const read = require('read-yaml');
@@ -39,7 +40,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[chunkhash:5].bundle.js',
-        path: path.resolve(__dirname, `themes/${shopifyStore}/assets`),
+        path: path.resolve(__dirname, `themes/${shopifyStore}/${shopifyTheme}/assets`),
     },
     optimization: {
         splitChunks: {
