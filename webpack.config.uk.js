@@ -1,8 +1,8 @@
 /*
  * @Date: 2022-09-27 18:24:11
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-29 15:28:11
- * @FilePath: \webpack-shopify\webpack.config.uk.js
+ * @LastEditTime: 2022-10-10 10:41:46
+ * @FilePath: \test2\webpack.config.uk.js
  * @description: UK配置
  */
 
@@ -23,23 +23,23 @@ module.exports = merge(common, {
     plugins: [
         new CopyPlugin({
             patterns: [{
-                    from: path.resolve(__dirname, 'src/liquid/uk/snippets/'),
-                    to: path.resolve(__dirname, 'themes/uk/snippets/'),
+                    from: path.resolve(__dirname, `src/liquid/uk/snippets/`),
+                    to: path.resolve(__dirname, `themes/uk/${shopifyTheme}/snippets/`),
                     noErrorOnMissing: true // 处理空文件夹报错
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/uk/sections/'),
-                    to: path.resolve(__dirname, 'themes/uk/sections/'),
+                    to: path.resolve(__dirname, `themes/uk/${shopifyTheme}/sections/`),
                     noErrorOnMissing: true
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/uk/layout/'),
-                    to: path.resolve(__dirname, 'themes/uk/layout/'),
+                    to: path.resolve(__dirname, `themes/uk/${shopifyTheme}/layout/`),
                     noErrorOnMissing: true
                 },
                 {
                     from: path.resolve(__dirname, 'src/liquid/uk/assets/'),
-                    to: path.resolve(__dirname, 'themes/uk/assets/'),
+                    to: path.resolve(__dirname, `themes/uk/${shopifyTheme}/assets/`),
                     noErrorOnMissing: true
                 }
             ]
