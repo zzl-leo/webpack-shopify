@@ -1,0 +1,48 @@
+<style>
+.product-description ol, .product-description li {list-style: disc;}
+.product-description ul {padding: var(--gap);}
+</style>
+{% render 'shogun-products', content: product %}
+
+{{product.metafields.shogun.above}}
+{% section 'product-for-sale-template' %}
+
+ <script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+
+{{product.metafields.shogun.below}}
+
+<div id='Areviewsapp' class='page-full'>{% include 'aliexpress_reviews' %}</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var areviewstooltip = document.querySelector('.areviews_header_rating');
+    var areviewstooltiptext = document.querySelector('.areviews_top_rating');
+    
+    var changeTabFn = function(event) {
+      event.stopPropagation();
+    	var tabList = document.querySelectorAll('.shogun-tab');
+      tabList.forEach(function(item, i, arr) {
+        if (i === arr.length -1) {
+          item.classList.add('shogun-tab-active')
+        } else {
+          item.classList.remove('shogun-tab-active')
+        }
+      })
+      var contentList = document.querySelectorAll('.shogun-tab-content');
+      contentList[contentList.length - 1].classList.add('shogun-tab-active');
+      $('.shogun-tab-content').last().siblings().removeClass('shogun-tab-active')
+    }
+    
+    areviewstooltip && areviewstooltip.addEventListener('mousedown', changeTabFn, false);
+    areviewstooltiptext && areviewstooltiptext.addEventListener('mousedown', changeTabFn, false)
+  }
+</script>

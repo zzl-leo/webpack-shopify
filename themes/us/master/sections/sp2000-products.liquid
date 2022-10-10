@@ -1,0 +1,53 @@
+<style>
+    .sp2000-products-container {
+        width: 100%;
+        padding: 4.6875vw 2.864583vw 0 2.864583vw;
+    }
+
+    .sp2000-products-img {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 750px) {
+        .sp2000-products-container {
+            padding: 8vw 3.33333vw 0 3.33333vw;
+        }
+    }
+     
+</style>
+
+<div class="sp2000-products-container">
+    <img
+        class="sp2000-products-img object-cover object-center pc-block"
+        src="{{ section.settings.p_img | img_url: '1920x' }}"
+        loading="lazy"
+        alt="{{ section.settings.p_img.alt | escape }}"
+    > 
+
+    <img
+        class="sp2000-products-img object-cover object-center mobile-block"
+        src="{{ section.settings.m_p_img | img_url: '883x' }}"
+        loading="lazy"
+        alt="{{ section.settings.m_p_img.alt | escape }}"
+    > 
+</div>
+{% schema %}
+{
+  "name": "sp2000 products",
+  "tag": "section",
+  "class": "sp2000-products",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "p_img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "m_p_img",
+        "label": "Mobile Image"
+      }
+  ],
+  "blocks": []
+}
+{% endschema %}

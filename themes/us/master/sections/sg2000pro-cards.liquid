@@ -1,0 +1,33 @@
+{% render 'newProduct-cards', blocks: section.blocks %}
+{% schema %}
+{
+  "name": "sg2000pro cards",
+  "tag": "section",
+  "class": "newproduct-cards sg2000pro-cards",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "card Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_img",
+          "label": "Product image"
+        },
+        {
+            "type": "text",
+            "id": "p_title",
+            "label": "Card title"
+        },
+        {
+            "type": "textarea",
+            "id": "p_des",
+            "label": "Product des"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

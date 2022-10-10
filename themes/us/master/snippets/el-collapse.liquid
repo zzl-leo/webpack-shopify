@@ -1,0 +1,59 @@
+{%- for block in blocks -%}
+<div class="collapse-item">
+	<div class="collapse-item-title font-bold">{{ block.settings.notice_title | escape }}</div>
+	<div class="collapse-item-content">{{ block.settings.notice_content | escape }}</div>
+</div>
+{%- endfor -%}
+
+<script>
+    function removeClass(ele, oldClass) {
+        var classNames = ele.className.trim();
+        classNames = classNames.replace(/\s+/g, ' ');
+        var classNameArr = classNames.split(' ');
+        for (var j = 0; j < classNameArr.length; j++) {
+            if (oldClass === classNameArr[j]) {
+                classNameArr.splice(j, 1)
+            }
+        }
+        return ele.className = classNameArr.join(' ');
+    }
+
+    function addClass(ele, newClass) {
+        if(!ele) {
+            return
+        }
+        let classNames = ele.className.trim();
+        classNames = classNames.replace(/\s+/g, ' ');
+        let classNameArr = classNames.split(' ');
+        const flag = classNameArr.every(name => {
+            return name !== newClass
+        })
+        flag && classNameArr.push(newClass)
+        return ele.className = classNameArr.join(' ');
+    }
+
+    function hasClass(ele, className) {
+        let classNames = ele.className.trim()
+        return classNames.indexOf(className) > -1
+    }
+
+
+    let collapse_title_eles = document.querySelectorAll('.collapse-item-title')
+    collapse_title_eles.forEach(ele => {
+        ele.addEventListener('click', () => {
+            const parentNode = ele.parentNode
+            if(hasClass(ele, 'is-open')) {
+                removeClass(ele, 'is-open')
+                removeClass(parentNode, 'is-open')
+
+                addClass(parentNode, 'is-close')
+                addClass(ele, 'is-clsoe')
+                return
+            }
+            removeClass(ele, 'is-close')
+            removeClass(parentNode, 'is-close')
+            addClass(parentNode, 'is-open')
+            addClass(ele, 'is-open')
+        })
+    })
+</script>
