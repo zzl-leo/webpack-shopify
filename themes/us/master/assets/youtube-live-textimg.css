@@ -1,0 +1,157 @@
+.youtube-live-textimg {
+	position: relative;
+}
+
+.youtube-live-textimg-container {
+	width: 100%;
+    margin-top: -2px;
+	position: relative;
+}
+
+.youtube-live-textimg-banner {
+	width: 100%;
+    display: block;
+}
+
+.youtube-live-textimg .h1-title {
+	margin: 151px auto 32px;
+    font-size: 90px;
+    line-height: 90px;
+	color: #081628;
+}
+
+.youtube-live-textimg .p-des {
+    color: #081628;
+    font-size: 33px;
+    line-height: 33px;
+}
+
+@media screen and (max-width: 1680px) {
+	.youtube-live-textimg .h1-title {
+		margin: 132px auto 28px;
+        font-size: 78px;
+        line-height: 78px;
+	}
+    .youtube-live-textimg .p-des {
+        font-size: 29px;
+        line-height: 29px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+	.youtube-live-textimg .h1-title {
+		margin: 113px auto 24px;
+        font-size: 67px;
+        line-height: 67px;
+	}
+    .youtube-live-textimg .p-des {
+        font-size: 25px;
+        line-height: 25px;
+    }
+}
+
+@media screen and (max-width: 1360px) {
+	.youtube-live-textimg .h1-title {
+		margin: 106px auto 23px;
+        font-size: 63px;
+	}
+    .youtube-live-textimg .p-des {
+        font-size: 24px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+	.youtube-live-textimg .h1-title {
+		margin: 100px auto 21px;
+        font-size: 60px;
+	}
+    .youtube-live-textimg .p-des {
+        font-size: 22px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+	.youtube-live-textimg .h1-title {
+		margin: 81px auto 17px;
+        font-size: 48px;
+	}
+    .youtube-live-textimg .p-des {
+        font-size: 18px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .youtube-live-textimg-container {
+        height: 604px;
+    }
+    
+    .youtube-live-textimg-banner {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .youtube-live-textimg .h1-title {
+        margin: 58px auto 8px;
+        font-size: 44px;
+        line-height: 44px;
+    }
+    
+    .youtube-live-textimg .p-des {
+        font-size: 28px;
+        line-height: 28px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+	.youtube-live-textimg-container {
+        height: 333px;
+    }
+
+    .youtube-live-textimg .h1-title {
+        margin: 32px auto 4px;
+        font-size: 24px;
+        line-height: 24px;
+    }
+    
+    .youtube-live-textimg .p-des {
+        font-size: 15px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+	.youtube-live-textimg-container {
+        height: 302px;
+    }
+
+    .youtube-live-textimg .h1-title {
+        margin: 29px auto 4px;
+        font-size: 22px;
+        line-height: 22px;
+    }
+    
+    .youtube-live-textimg .p-des {
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+	.youtube-live-textimg-container {
+        height: 258px;
+    }
+
+    .youtube-live-textimg .h1-title {
+        margin: 25px auto 3px;
+        font-size: 19px;
+        line-height: 19px;
+    }
+    
+    .youtube-live-textimg .p-des {
+        font-size: 12px;
+        line-height: 12px;
+    }
+}

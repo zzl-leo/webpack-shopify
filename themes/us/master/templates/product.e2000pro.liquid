@@ -1,0 +1,13 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% section 'product-sections-e2000pro-template' %}
+
+<div id='Areviewsapp' class='page-full'>{%  render 'aliexpress_reviews' , product: product %}</div>
+<script>
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+{{product.metafields.shogun.below}}

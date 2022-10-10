@@ -1,0 +1,49 @@
+<style>
+.where-to-buy {margin-bottom: var(--gap);}
+.where-to-buy a {color: var(--normal-color);}
+</style>
+{% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+{% form 'product', product, id: form_id, class: 'product-single__form' %}
+  {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+    {% for option in product.options_with_values %}
+      {% if settings.variant_type == 'button' %}
+        {% include 'variant-button', section_id: section_id, option_drop: option %}
+      {% else %}
+        {% include 'variant-dropdown', section_id: section_id %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+
+  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js">
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option {% if variant == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  {% if settings.quantity_enable %}
+    <div class="product__quantity product__quantity--{{ settings.variant_type }} js-qty">
+      <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label>
+      <input type="number" hidden="hidden" id="Quantity-{{ section_id }}" name="quantity" value="1" min="1" class="js-qty__fallback">
+    </div>
+  {% endif %}
+
+  {% if product.metafields.my_fields.purchase_link and product.metafields.my_fields.purchase_link_text %}
+  <button type="button" class="shortage where-to-buy">
+    <a href="{{ product.metafields.my_fields.purchase_link }}">{{ product.metafields.my_fields.purchase_link_text }}</a>
+  </button>
+  {% endif %}
+
+  <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+    {{ product.variants | json }}
+  </div>
+{% endform %}

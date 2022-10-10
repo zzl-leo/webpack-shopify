@@ -1,0 +1,14 @@
+<div id="old-new-modal" class="modal-container">
+	<div class="modal-dialog modal-dms">
+		<div class="modal-header">
+            {% if title != blank %}
+			<h1>{{ title }}</h1>
+            {% endif %}
+			<button type="button" class="close" data-close="modal">&times;</button>
+		</div>
+		<div class="modal-content"></div>
+		<div class="modal-foot text-center">
+			<button class="btn-modal btn-default" data-close="modal">{{ btn_text }}</button>
+		</div>
+	</div>
+</div>
