@@ -139,21 +139,21 @@
   </body>
 
   <script>
-  console.log(555555555)
-    
-  var paymentImage = document.getElementsByTagName("img");
-  for (i = 0; i < paymentImage.length; i++) {
-    if (paymentImage[i].alt == "Affirm") {
-      var paymentId = paymentImage[i].parentElement.parentElement.parentElement.getAttribute('data-select-gateway');
-      var targetNode = document.getElementById('payment-gateway-subfields-'+paymentId);
-      targetNode.innerHTML = "<div id='affirm-inline-checkout'></div>"
+    console.log(555555555)
+      
+    var paymentImage = document.getElementsByTagName("img");
+    for (i = 0; i < paymentImage.length; i++) {
+      if (paymentImage[i].alt == "Affirm") {
+        var paymentId = paymentImage[i].parentElement.parentElement.parentElement.getAttribute('data-select-gateway');
+        var targetNode = document.getElementById('payment-gateway-subfields-'+paymentId);
+        targetNode.innerHTML = "<div id='affirm-inline-checkout'></div>"
+      }
     }
-  }
-  affirm.ui.ready(function() {
-    affirm.checkout.inline({
-      merchant: { inline_container: "affirm-inline-checkout" },
-      data: { total: {{ checkout.total_price }} }
+    affirm.ui.ready(function() {
+      affirm.checkout.inline({
+        merchant: { inline_container: "affirm-inline-checkout" },
+        data: { total: {{ checkout.total_price }} }
+      })
     })
-  })
   </script>
 </html>
