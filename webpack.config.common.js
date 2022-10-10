@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-27 18:09:46
  * @LastEditors: Leo
- * @LastEditTime: 2022-10-08 10:08:06
+ * @LastEditTime: 2022-10-10 11:00:15
  * @FilePath: \test2\webpack.config.common.js
  * @description: 打包公共设置
  */
@@ -27,7 +27,8 @@ const themeID = config[shopifyStore].theme_id;
 // 遍历js打包入口，默认为js/index下所有js文件
 const initEntry = () => {
     const entries = {}
-    glob.sync('./src/js/index/*.js').forEach(path => {
+    // glob.sync('./src/js/index/*.js').forEach(path => {
+    glob.sync('./src/js/assets/*.js').forEach(path => {
         const entry = path.replace(/^.*[\\\/]/, '').replace('.js', '');
         entries[entry] = path
     })
