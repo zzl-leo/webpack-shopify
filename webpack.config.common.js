@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-27 18:09:46
  * @LastEditors: Leo
- * @LastEditTime: 2022-10-10 11:42:52
+ * @LastEditTime: 2022-10-10 11:44:06
  * @FilePath: \test2\webpack.config.common.js
  * @description: 打包公共设置
  */
@@ -42,7 +42,7 @@ module.exports = {
         filename: '[name].bundle.js',
         chunkFilename: '[chunkhash:5].bundle.js',
         // path: path.resolve(__dirname, `themes/${shopifyStore}/${shopifyTheme}/assets`),
-        path: path.resolve(__dirname, `themes/dist`),
+        path: path.resolve(__dirname, `dist`),
     },
     optimization: {
         splitChunks: {
