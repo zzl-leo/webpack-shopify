@@ -1,0 +1,27 @@
+{% render 'newProduct-info', title: section.settings.title, info: section.settings.info  %}
+{% schema %}
+{
+  "name": "newproduct info",
+  "tag": "section",
+  "class": "spaced-section--full-width newproduct-info",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Full width"
+    },
+	  {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "info",
+      "label": "Info"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

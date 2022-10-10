@@ -1,0 +1,28 @@
+<div class="page-content">
+
+	<div class="grid">
+    <div class="grid__item media-page">
+      
+      {% section 'page-media' %}
+      {% section 'media-quotes' %}
+      {% section 'media-cta' %}
+      {% section 'media-buttons' %}
+      {% section 'text-columns' %}
+
+      <div class="rte rte--nomargin">
+        {{ page.content }}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+#shopify-section-page-media {margin-bottom: -8px;}
+.page-content {padding: 0;}
+.shopify-section:nth-child(n+2):not(#shopify-section-footer) {max-width: 1600px; margin: 0 auto; background: #fff;}
+.media-page {background: #ddd;}
+.site-footer {background-color: #eee;}
+.grid--flush-bottom {margin-bottom: 0;}
+</style>
