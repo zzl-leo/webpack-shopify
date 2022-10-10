@@ -1,0 +1,93 @@
+<style>
+  .newproduct-cards-container {
+    padding: 4.166667vw 0.9375vw 5.72916vw 0.9375vw ;
+  }
+
+  .sg2000pro-cards .newproduct-cards-container {
+    padding-bottom: 0;
+    padding-top: 3.5vw;
+  }
+
+  .newproduct-cards-item {
+      width: 31.822917vw;
+  }
+
+  .newproduct-cards-img {
+      display: block;
+      width: 31.822917vw;
+      height: 28.489583vw;
+  }
+
+  .newproduct-cards-title {
+      font-size: 1.666667vw;
+      height: 1.666667vw;
+      line-height: 1.666667vw;
+      color: #000;
+      margin: 3.125vw 0 1.770833vw;
+  }
+
+  .newproduct-cards-des {
+      font-size: 1.041667vw;
+      color: #000000;
+      line-height: 1.25vw;
+  }
+
+  @media screen and (max-width: 750px) {
+      .newproduct-cards-container {
+          padding: 6.66667vw 2.66667vw 6vw 2.66667vw ;
+      }
+
+      .newproduct-cards-list {
+          flex-direction: column;
+      }
+      
+      .newproduct-cards-item {
+          width: 100%;
+          flex-direction: column-reverse;
+          margin-bottom: 6.66667vw;
+      }
+      .newproduct-cards-item:last-child {
+          margin-bottom: 0;
+      }
+      
+      .newproduct-cards-img {
+          width: 100%;
+          height: 70.93333vw;
+          border-radius: 5px;
+      }
+      
+      .newproduct-cards-title {
+          font-size: 5.86667vw;
+          height: 5.86667vw;
+          line-height: 5.86667vw;
+          color: #333;
+          margin: 0 0 1.33333vw 0;
+      }
+      
+      .newproduct-cards-des {
+          font-size: 3.73333vw;
+          color: #333;
+          line-height: 4.53333vw;
+          margin-bottom: 4vw;
+          text-align: left!important;
+      }
+  }
+</style>
+<div class="newproduct-cards-container">
+  <div class="newproduct-cards-list flex justify-between">
+      {% for block in blocks %}
+          <div class="newproduct-cards-item flex flex-col tems-center">
+            <img
+                class="object-cover object-center newproduct-cards-img"
+                src="{{ block.settings.product_img | img_url: '611x' }}"
+                loading="lazy"
+                alt="{{ block.settings.product_img.alt | escape }}"
+            >
+            <div>
+                <div class="newproduct-cards-title font-bold text-center">{{ block.settings.p_title |escape }}</div>
+                <div class="newproduct-cards-des text-center">{{ block.settings.p_des | escape }}</div>
+            </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>

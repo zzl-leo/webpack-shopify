@@ -1,0 +1,67 @@
+.newproduct-outdoor {
+    padding: 0 1.354167vw;
+}
+
+.newproduct-outdoor-container-item {
+    margin-bottom: 1.770833vw;
+}
+
+.newproduct-outdoor-item-img {
+    width: 47.864583vw;
+}
+
+.newproduct-outdoor-textimg {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.newproduct-outdoor-textimg-title {
+    text-align: left;
+    font-size: 1.979167vw;
+    margin-bottom: 2.8125vw;
+}
+
+.newproduct-outdoor-container-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.newproduct-outdoor-container-item:nth-child(even) .newproduct-outdoor-item-img {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .newproduct-outdoor {
+        padding: 0;
+    }
+
+    .newproduct-outdoor-container-item {
+        flex-direction: column;
+    }
+
+    .newproduct-outdoor-item-img {
+        width: 100%;
+    }
+
+    .newproduct-outdoor-textimg-conatiner {
+        padding: 0 2.66667vw;
+    }
+
+    .newproduct-outdoor-textimg {
+        align-items: flex-start;
+        margin-bottom: 8.53333vw;
+    }
+
+    .newproduct-outdoor-textimg-title {
+        font-size: 4.53333vw;
+        margin: 2.4vw 0;
+    }
+
+    .newproduct-outdoor-container-item:nth-child(even) {
+        flex-direction: column-reverse;
+    }
+    
+    .newproduct-outdoor-container-item:nth-child(even) .newproduct-outdoor-textimg {
+        margin-bottom: 5.06667vw;
+    }
+}

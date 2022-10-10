@@ -1,0 +1,55 @@
+<div class="mediaCTATitle">
+  <p>{{ section.settings.titleOne }}</p>
+</div>
+
+<div class="ctaWrapper">
+  {% for block in section.blocks %}
+  <div class="cta">
+    <img src="{{ block.settings.image | img_url: '800x' }}" />
+    <div class="ctaText">{{ block.settings.ctaText }}</div>
+    <a href="{{ block.settings.ctaLink }}">{{ block.settings.ctaBtnText }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "CTA",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "titleOne",
+        "label": "Title",
+        "default": "Media Reviews"
+	  }
+	],
+    "blocks": [
+      {
+        "type": "cta",
+        "name": "CTA",
+        "settings": [
+		{
+          "type": "image_picker",
+		  "id": "image",
+		  "label": "Image"
+        },
+        {
+          "type": "richtext",
+		  "id": "ctaText",
+		  "label": "Text"
+        },
+        {
+          "type": "text",
+		  "id": "ctaBtnText",
+		  "label": "Button Text"
+        },
+        {
+          "type": "url",
+		  "id": "ctaLink",
+		  "label": "Button Link"
+        }
+        ]
+      }
+	]
+  }
+{% endschema %}

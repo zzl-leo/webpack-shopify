@@ -1,0 +1,39 @@
+{% render 'newProduct-comparison', section_title: section.settings.section_title, blocks: section.blocks %}
+{% schema %}
+{
+  "name": "newproduct comparison",
+  "tag": "section",
+  "class": "newproduct-comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison",
+      "name": "Comparison Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_img",
+          "label": "Product image"
+        },
+        {
+            "type": "text",
+            "id": "p_name",
+            "label": "Product name"
+        },
+        {
+            "type": "text",
+            "id": "p_time",
+            "label": "Product params"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,291 @@
+{
+  "sections": {
+    "youtube_live_textimg": {
+      "type": "youtube-live-textimg",
+      "settings": {
+        "full_width": true,
+        "title": "",
+        "subtitle": "",
+        "banner_img": "shopify:\/\/shop_images\/1920x1080kvbanner-US.jpg",
+        "m_banner_img": "shopify:\/\/shop_images\/banner-US.jpg",
+        "link": "shopify:\/\/products\/solar-generator-2000-pro"
+      }
+    },
+    "youtube_live_video": {
+      "type": "youtube-live-video",
+      "settings": {
+        "full_width": true,
+        "youtube_video_id": "1ny6Aqx9e8Y"
+      }
+    },
+    "youtube_live_discover": {
+      "type": "youtube-live-discover",
+      "disabled": true,
+      "blocks": {
+        "ac66b203-b694-417e-97ec-269aa836ba9e": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "block_title": ""
+          }
+        },
+        "27e16cf0-e0f3-498e-852b-80bd76ddaa82": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "block_title": ""
+          }
+        },
+        "c7397c54-49d4-4ea3-9a1b-8999246feb50": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "block_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "ac66b203-b694-417e-97ec-269aa836ba9e",
+        "27e16cf0-e0f3-498e-852b-80bd76ddaa82",
+        "c7397c54-49d4-4ea3-9a1b-8999246feb50"
+      ],
+      "settings": {
+        "full_width": true,
+        "button_text": "",
+        "link": "https:\/\/www.jackery.com\/products\/solar-generator-2000-pro",
+        "banner_img": "shopify:\/\/shop_images\/US_Chris_pc.jpg",
+        "m_banner_img": "shopify:\/\/shop_images\/US_Chris.jpg"
+      }
+    },
+    "youtube_live_annoucement": {
+      "type": "youtube-live-annoucement",
+      "blocks": {
+        "6ce398bf-4dcb-4dba-8bdc-6b349aed2b5a": {
+          "type": "slider",
+          "settings": {
+            "user_item_1": "James - jamenorxxxx@gmail.com",
+            "user_item_2": "Roger Bussey - rbussexxxx@gmail.com",
+            "user_item_3": "Barry Reiss - barryreisxxxx@hotmail.com"
+          }
+        },
+        "bb98808d-9b59-4886-816c-20ab1197f080": {
+          "type": "slider",
+          "settings": {
+            "user_item_1": "Gary - garywaxxxx@comcast.net",
+            "user_item_2": "Theresa - tmxxxx@astound.net",
+            "user_item_3": "Lyle Powers - lepoxxxx@hotmail.com"
+          }
+        }
+      },
+      "block_order": [
+        "6ce398bf-4dcb-4dba-8bdc-6b349aed2b5a",
+        "bb98808d-9b59-4886-816c-20ab1197f080"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "JACKERY DAY SURVEY WINNERS",
+        "subtitle": "Jackery’s Solar Generator Pro 2000 Prize Survey Winners Announced! Congratulations to our 6 winners!",
+        "banner_img": "shopify:\/\/shop_images\/pc_48624aab-8847-41b7-b898-11c2a070df4e.png",
+        "m_banner_img": "shopify:\/\/shop_images\/jkd-prize-m.jpg",
+        "congtratulations_title": "CONGTRATULATIONS TO",
+        "tips": "Claim Your Prize - Follow Email Instructions Sent to You",
+        "autoplay": 5000
+      }
+    },
+    "youtube_live_event": {
+      "type": "youtube-live-event",
+      "blocks": {
+        "eab7afe8-a953-4898-9b90-130d2d0e3ff8": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/pc_04c96b33-c8f0-4c1c-8851-aabd5f8c1981.jpg",
+            "m_img_1": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_3392ca29-0b45-49db-ac76-05e9af3f25f0.jpg",
+            "slider_title": "JACKERY WANTS YOU TO TAKE ITS NEW SOLAR GENERATOR 2000 PRO POWER STATION CAMPING",
+            "slider_subtitle": "The 2000 Pro could be good for folks traveling by RV or camper van -- or anyone planning to stay put in one spot for awhile. ——CNET"
+          }
+        },
+        "75dec58b-774e-4ec5-9f8c-31b116ddc67b": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/pc_04c96b33-c8f0-4c1c-8851-aabd5f8c1981.jpg",
+            "m_img_1": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_3392ca29-0b45-49db-ac76-05e9af3f25f0.jpg",
+            "slider_title": "JACKERY’S SOLAR GENERATOR CAN HARNESS MOUNTAINS OF POWER",
+            "slider_subtitle": "Jackery’s Solar Generator 2000 Pro kit is here to bend nature’s will to your desire to take your modern tech lifestyle off the grid. —— The Verge"
+          }
+        },
+        "a45a38f8-7cd3-4e33-8f37-32950dc9fb58": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/pc_04c96b33-c8f0-4c1c-8851-aabd5f8c1981.jpg",
+            "m_img_1": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_3392ca29-0b45-49db-ac76-05e9af3f25f0.jpg",
+            "slider_title": "JACKERY EXPLORER 2000 PRO REVIEW",
+            "slider_subtitle": "...the Jackery Explorer Pro 2000 could be beneficial to many folks who live in areas that are at risk of infrastructure failure. This product can power many appliances for more extended periods than less capable portable solar power generation systems. —— ZDNet"
+          }
+        },
+        "92e8bda1-4b11-4b17-983a-627e6cff2ed1": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/pc_04c96b33-c8f0-4c1c-8851-aabd5f8c1981.jpg",
+            "m_img_1": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_3392ca29-0b45-49db-ac76-05e9af3f25f0.jpg",
+            "slider_title": "THIS BRAND-NEW SOLAR GENERATOR CAN POWER UP TO 7 DEVICES AT ONCE",
+            "slider_subtitle": "Unlike other solar chargers, which can take up to 14 hours to fully charge in some instances, Jackery's most powerful generator yet fully charges in just 2.5 hours of sunlight. ——GEAR PATROL"
+          }
+        }
+      },
+      "block_order": [
+        "eab7afe8-a953-4898-9b90-130d2d0e3ff8",
+        "75dec58b-774e-4ec5-9f8c-31b116ddc67b",
+        "a45a38f8-7cd3-4e33-8f37-32950dc9fb58",
+        "92e8bda1-4b11-4b17-983a-627e6cff2ed1"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "MEDIA QUOTES",
+        "social_time": "2022\/05\/16 08:00:00",
+        "social_1": "shopify:\/\/shop_images\/1848X400_pc.jpg",
+        "m_social_1": "shopify:\/\/shop_images\/750X203_2753eb80-175d-4844-8ea8-3520f8ac506c.jpg",
+        "social_2": "shopify:\/\/shop_images\/IF1848X400_pc_07b10917-2312-4519-9e6c-455a77a1f4ae.jpg",
+        "m_social_2": "shopify:\/\/shop_images\/IF750X203.jpg",
+        "social_3": "shopify:\/\/shop_images\/1848X400.jpg",
+        "m_social_3": "shopify:\/\/shop_images\/750X203_c8c08759-50f0-49ab-a081-19c186e2e0e2.jpg"
+      }
+    },
+    "youtube_live_products": {
+      "type": "youtube-live-products",
+      "blocks": {
+        "f2a1c05c-4ab0-4665-ba30-f81fe4855397": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/jkd-product-ex2000.png",
+            "m_img_1": "shopify:\/\/shop_images\/E2000_PRO.png",
+            "slider_title": "Explorer 2000 Pro",
+            "slider_subtitle": "Find out how advanced the innovative all new Explorer 2000 Pro is.",
+            "button_text": "DISCOVER MORE",
+            "product_link": "https:\/\/www.jackery.com\/products\/explorer-2000-pro-portable-power-station"
+          }
+        },
+        "43f1b779-5664-4f67-bc26-46c245758803": {
+          "type": "slider",
+          "settings": {
+            "img_1": "shopify:\/\/shop_images\/pc.png",
+            "m_img_1": "shopify:\/\/shop_images\/d0b6261faa12c84005f7534943162f2f.png",
+            "slider_title": "SolarSaga 200",
+            "slider_subtitle": "Discover more how powerful the upgraded Jackery Solar Panel is.",
+            "button_text": "DISCOVER MORE",
+            "product_link": "https:\/\/www.jackery.com\/products\/solarsaga-200w-solar-panel"
+          }
+        }
+      },
+      "block_order": [
+        "f2a1c05c-4ab0-4665-ba30-f81fe4855397",
+        "43f1b779-5664-4f67-bc26-46c245758803"
+      ],
+      "settings": {
+        "full_width": true
+      }
+    },
+    "main": {
+      "type": "page-jackery-day-2022",
+      "settings": {
+        "main_title": "JACKERY DAY 2022",
+        "seconds_title": "SOMETHING AMAZING IS COMING SOON",
+        "datetime": "MAY 12TH 8 P.M. PDT",
+        "time": "2022\/05\/12 20:00:00",
+        "live_end_time": "2022\/05\/12 20:21:38",
+        "calendar_title": "Jackery Day 2022 - New Product Launch Event",
+        "calendar_start_time": "20220512",
+        "calendar_end_time": "20220513",
+        "calendar_details": "On this year's Jackery Day, on May 12th 8 P.M. PDT, Jackery is launching something incredibly powerful, enhancing your outdoor solar experience to a whole new level. Save the date and don't miss out!",
+        "calendar_address": "Jackery Official Website",
+        "calendar_tips": "MARK YOUR CALENDAR",
+        "countdown_title": "NEW PRODUCT LAUNCH",
+        "countdown_details": "<p>On this year's Jackery Day, we are launching something incredibly powerful, <br\/>enhancing your outdoor solar experience to a whole new level.<\/p>",
+        "answer_title": "JOIN US NOW, WIN GIGANTIC PRIZES",
+        "answer_sub_title": "<p>Fill out Jackery Day's Survey, and have the chance to win our MEGA-valued product of the year.<br\/>Enter now for the prize of a lifetime. <br\/>The 6 winners will be announced on May 16th. <br\/>Do not miss out.<\/p>",
+        "answer_button": "The survey is no longer available.",
+        "question_enter_username": "Please enter your name",
+        "question_enter_email": "Please enter a valid email",
+        "question_policy": "<p>I have read and agreed to the <a href=\"https:\/\/www.jackery.com\/policies\/terms-of-service\" target=\"_blank\">Terms<\/a>and<a href=\"https:\/\/www.jackery.com\/policies\/privacy-policy\" target=\"_blank\">Privacy Policy<\/a>.<\/p>",
+        "question_policy_1": "Answer all survey questions and provide an email to participate. One email can be used once only.",
+        "question_policy_2": "Prize winners are selected randomly.",
+        "question_policy_3": "The competition time is held from May 4 - 12 and will announce winners on May 16 on the official website with an email sent to the winners, via hello@jackery.com.",
+        "question_policy_4": "<p>The competition on this page is open to U.S. residents only. However you can enter the same competition through Jackery <a href=\"https:\/\/ca.jackery.com\/pages\/jackery-day  \" target=\"_blank\" title=\"https:\/\/ca.jackery.com\/pages\/jackery-day  \">Canada<\/a>, <a href=\"https:\/\/de.jackery.com\/pages\/jackery-day  \" target=\"_blank\" title=\"https:\/\/de.jackery.com\/pages\/jackery-day  \">Germany<\/a>, <a href=\"https:\/\/uk.jackery.com\/pages\/jackery-day  \" target=\"_blank\" title=\"https:\/\/uk.jackery.com\/pages\/jackery-day  \">U.K.<\/a> and <a href=\"https:\/\/www.jackery.jp\/pages\/jackery-day\" target=\"_blank\" title=\"https:\/\/www.jackery.jp\/pages\/jackery-day\">Japan<\/a> if you are residents from these countries.<\/p>",
+        "question_policy_5": "All final decisions lie solely with Jackery.",
+        "answer_ready": "Let's Start",
+        "q1_title": "When was Jackery founded?",
+        "q1_a": "2012",
+        "q1_b": "2015",
+        "q1_c": "2019",
+        "q1_d": "2020",
+        "q1_tips": "Jackery was founded in 2012 by a group of adventurous engineers, who believe in making electricity portable, clean, outdoors-oriented, and truly accessible.",
+        "q2_title": "What is Jackery's bundle containing a power station and solar panels called?",
+        "q2_a": "Solar Station",
+        "q2_b": "Solar Generator",
+        "q2_c": "Solar Power Station",
+        "q2_d": "Jackery Generator",
+        "q2_tips": "To further our goal of making electricity greener and more efficient, in 2020 Jackery expanded its product line fully integrating portability with solar power - the Solar Generator series, combines power stations with solar panels.",
+        "q3_title": "In what scenarios can solar generators be used?",
+        "q3_a": "Camping",
+        "q3_b": "For RV's",
+        "q3_c": "Emergency situations",
+        "q3_d": "All of the above",
+        "q3_tips": "A solar generator is a reliable and clean power source for campers, RVs, or as an emergency backup source when your power goes out.",
+        "q4_title": "What is the material of Jackery's battery made from?",
+        "q4_a": "Iron-ion Battery",
+        "q4_b": "Lithium-ion Battery",
+        "q4_c": "Sodium-ion Battery",
+        "q4_d": "Silver-oxide Battery",
+        "q4_tips": "The Jackery power station is equipped with a lithium-ion battery pack. No fuel or gasoline is required - with no dangerous fumes produced, additionally resulting in minimum noise.",
+        "q5_title": "What is the name of the Jackery Power Station with the largest capacity?",
+        "q5_a": "Explorer 1000",
+        "q5_b": "Explorer 1500",
+        "q5_c": "Explorer 2000",
+        "q5_d": "Explorer 2500",
+        "q5_tips": "The Explorer 2000 features 2060 Wh capacity and 2200W AC inverter - designed to meet 90% of power requirements when running the majority of appliances. These include hair dryers, microwave ovens, refrigerators, coffee makers, air conditioners and more.",
+        "q6_title": "Where would you most like to see improvements made to for Jackery's solar generators?",
+        "q6_a": "Charging Speed",
+        "q6_b": "Weight",
+        "q6_c": "Durability",
+        "q6_d": "Capacity",
+        "q6_tips": "Please select one - all customer feedback is valuable.",
+        "q7_title": "How much coal is used to generate one kilowatt-hour of electricity?",
+        "q7_tips": "The average amount of coal used to generate just a single kilowatt-hour (kWh) of electricity by the U.S. electric power sector in 2020 was 1 pound. So for every single kilowatt-hour (kWh) of electricity used, 1 pound of coal was used.",
+        "q8_title": "Assuming the SG1500 is used 4 times per month for 3 charging cycles (Note: one cycle = one charge and one discharge), in terms of equivalent carbon emissions how many trees will be saved in a year?",
+        "q8_survey": "The Solar Generator collects solar energy, and converts energy into direct current electricity. The SG1500 reduces CO2 emissions by 250 pounds – an equivalent of planting approximately four trees per year.",
+        "q8_tips": "Calculation: According to U.S. Energy Information Administration, one KWh of electricity emits 0.85 pounds of CO2. According to the Arbor Day Foundation, in one year a mature tree absorbs more than 48 pounds of carbon dioxide from the atmosphere.",
+        "Completing_title": "Thank You For Completing the Jackery Day Survey!",
+        "Completing_tips": "What's next? Visit Jackery's Official Website for Jackery Day Live on May 12 and our magnificent new product launch. We'll then announce the competition survey winners on May 16.",
+        "q99_share": "Share",
+        "q99_try": "Try Again",
+        "q99_next": "Next",
+        "features_title": "FEATURES TO BE REVEALED",
+        "features_sub_title": "<p>Before the launch date, we'll have a teaser to reveal two special features - with the latest state-of-the-art Solar Technology and more. <br\/>Stay put, and get ready for the incredible to happen.<\/p>",
+        "selling_1_title": "Unrivaled Solar Charging Efficiency",
+        "selling_1_content": "Housing one of the most efficient solar technologies worldwide, delivering outstanding transmittance. Providing you with an efficient and powerful solar charging experience.",
+        "selling_1_image_url": "shopify:\/\/shop_images\/jkd-selling-1.png",
+        "selling_1_time": "Out on 5\/6",
+        "selling_1_unlock_time": "2022\/05\/06 19:50:00",
+        "selling_2_title": "Making Safety Even Safer",
+        "selling_2_content": "The all new technology will allow charging to become even safer and more secure - taking safe charging to the very next level. 2 chips and 4 temperature core detectors guarantee safe charging for all.",
+        "selling_2_image_url": "shopify:\/\/shop_images\/jkd-selling-2.jpg",
+        "selling_2_time": "Out on 5\/9",
+        "selling_2_unlock_time": "2022\/05\/09 08:50:00",
+        "desktop_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0970\/9262\/files\/Jackery_EN_2min_final_1_1.mp4?v=1651334735",
+        "category_title": "VIEW OUR OUTSTANDING SOLAR PRODUCT LINE",
+        "category_button": "DISCOVER MORE",
+        "category_url": "https:\/\/www.jackery.com\/",
+        "answer_end_time": "2022\/05\/13 00:00:00",
+        "winning_public_time": "2022\/05\/16 08:00:00"
+      }
+    }
+  },
+  "order": [
+    "youtube_live_textimg",
+    "youtube_live_video",
+    "youtube_live_discover",
+    "youtube_live_annoucement",
+    "youtube_live_event",
+    "youtube_live_products",
+    "main"
+  ]
+}

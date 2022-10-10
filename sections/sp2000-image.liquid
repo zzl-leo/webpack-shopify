@@ -1,0 +1,44 @@
+{% render 'newProduct-image', main_img: section.settings.main_img, section_title: section.settings.section_title, section_subtitle: section.settings.section_subtitle, blocks: section.blocks %}
+{% schema %}
+{
+  "name": "sp2000 image",
+  "tag": "section",
+  "class": "newproduct-image",
+  "settings": [
+    {
+		"type": "text",
+		"id": "section_title",
+		"label": "Section title"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle",
+		"label": "Section sub title"
+    },
+    {
+		"type": "image_picker",
+		"id": "main_img",
+		"label": "Product banner imgage"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image Item",
+      "limit": 12,
+      "settings": [
+        {
+			"type": "image_picker",
+			"id": "product_img",
+			"label": "Product imgage"
+        },
+        {
+            "type": "text",
+            "id": "img_info",
+            "label": "Product info"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

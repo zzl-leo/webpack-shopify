@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="{{ 'swiper.min.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'youtube-live-products.css' | asset_url }}">
+
+<div class="{% unless section.settings.full_width %}layer{% endunless %} _jackery_day" style="display: none;">
+  <div class="swiper-container youtube_live_products_swiper-container">
+    <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="swiper-slide">
+            <div class="swiper-slide-container main-container flex flex-col tems-center">
+              <div class="text-content flex flex-col justify-center">
+                <h1 class="h1-title text-center">{{block.settings.slider_title | newline_to_br}}</h1>
+                <div class="p-des text-center">{{block.settings.slider_subtitle | newline_to_br}}</div>
+              </div>
+
+							{%- if block.settings.img_1 != blank -%}
+								<img
+									class="object-cover object-center tems-center right_img pc-block"
+									src="{{ block.settings.img_1 | img_url: '1214x' }}"
+									loading="lazy"
+									alt="{{ block.settings.img_1.alt | escape }}"
+								>
+							{%- endif -%}
+
+              {%- if block.settings.m_img_1 != blank -%}
+								<img
+									class="object-cover object-center tems-center right_img mobile-block"
+									src="{{ block.settings.m_img_1 | img_url: '700x' }}"
+									loading="lazy"
+									alt="{{ block.settings.m_img_1.alt | escape }}"
+								>
+							{%- endif -%}
+
+              {%- if block.settings.product_link != blank -%}
+                <a class="p-button font-bold" href="{{block.settings.product_link}}">{{ block.settings.button_text | escape }}</a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+    </div>
+	
+    <!-- Add Arrows -->
+    <div class="swiper-button-next swiper-button-black"></div>
+    <div class="swiper-button-prev swiper-button-black"></div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<script>
+function newProductPublic() {
+  var youtube_live_products_swiper = new Swiper('.youtube_live_products_swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev'
+  })
+}
+</script>
+
+{% schema %}
+{
+  "name": "youtube live products",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width youtube-live-products",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Full width"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider Item",
+      "limit": 4,
+      "settings": [
+        {
+					"type": "image_picker",
+					"id": "img_1",
+					"label": "Slider Image"
+        },
+        {
+					"type": "image_picker",
+					"id": "m_img_1",
+					"label": "Mobile Slider Image"
+        },
+        {
+          "type": "text",
+          "id": "slider_title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "slider_subtitle",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "button text"
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

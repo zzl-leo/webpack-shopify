@@ -1,0 +1,51 @@
+<div class="mediaQuotesTitle">
+  <p>{{ section.settings.titleOne }}</p>
+  <p>{{ section.settings.titleTwo }}</p>
+</div>
+
+<div class="quoteWrapper">
+  {% for block in section.blocks %}
+  <div class="quote">
+    <img src="{{ block.settings.image | img_url: '1000x' }}" />
+    <div class="quoteText">{{ block.settings.quoteText }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Quotes",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "titleOne",
+        "label": "Title One",
+        "default": "Media Coverage"
+	  },
+	  {
+        "type": "text",
+        "id": "titleTwo",
+        "label": "Title Two",
+        "default": "Media Quotes"
+	  }
+	],
+    "blocks": [
+      {
+        "type": "quotes",
+        "name": "Quote",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "quoteText",
+            "label": "Image"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}
