@@ -1,0 +1,39 @@
+<div class="newproduct-charging">
+  {% render 'newProduct-imgtext', section_title: section.settings.section_title, section_subtitle1: section.settings.section_subtitle_1, section_subtitle2: section.settings.section_subtitle_2, m_main_img: section.settings.m_main_img, main_img: section.settings.main_img %}
+</div>
+{% schema %}
+{
+  "name": "newproduct green",
+  "tag": "section",
+  "class": "newproduct-safety",
+  "settings": [
+    {
+		"type": "text",
+		"id": "section_title",
+		"label": "Section title"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle",
+		"label": "Section sub title"
+    },
+    {
+		"type": "image_picker",
+		"id": "main_img",
+		"label": "Product banner imgage"
+    },
+    {
+		"type": "image_picker",
+		"id": "m_main_img",
+		"label": "Mobile Product banner image"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_banner",
+      "default": true,
+      "label": "Show mobile banner"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

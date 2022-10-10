@@ -1,0 +1,43 @@
+<style>
+  .newproduct-info .info-title {
+    margin: 5.625vw 0 3.958333vw 0;
+    color: #000;
+    font-size: 3.020833vw;
+  }
+  .newproduct-info .info-content {
+    font-size: 1.5625vw;
+    line-height: 2.8vw;
+    color: #000000;
+    padding-bottom: 7.291667vw;
+  }
+  .newproduct-info .info-content span {
+    font-size: 2.65625vw;
+    color: #000000;
+  }
+
+  @media screen and (max-width: 750px) {
+    .newproduct-info .info-title {
+      margin: 5.06667vw 0 2.4vw 0;
+      font-size: 5.86667vw;
+      line-height: 1;
+      color: #333333;
+    }
+    .newproduct-info .info-content {
+      font-size: 3.73333vw;
+      line-height: 4.53333vw;
+      padding-bottom: 4.5vw;
+      color: #333333;
+    }
+
+    .newproduct-info .info-content span {
+      font-size: 5.86667vw;
+      color: #333333;
+    }
+  }
+</style>
+<div class="newproduct-info">
+  <div class="newproduct-info-container main-container">
+    <div class="info-title font-bold text-center">{{ block.settings.info_title | escape }}</div>
+    <div class="info-content text-center">{{ block.settings.info_des | escape }}</div>
+  </div>
+</div>

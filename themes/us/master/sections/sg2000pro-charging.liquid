@@ -1,0 +1,55 @@
+<style>
+    .sg2000pro-charging {
+        margin-top: 0;
+    }
+
+    @media screen and (max-width: 750px) {
+        .sg2000pro-charging {
+            margin-top: 0;
+        }
+    }
+</style>
+<div class="sg2000pro-safety sg2000pro-charging">
+  {% render 'newProduct-imgtext', section_title: section.settings.section_title, section_subtitle1: section.settings.section_subtitle_1, section_subtitle2: section.settings.section_subtitle_2, m_main_img: section.settings.m_main_img, main_img: section.settings.main_img %}
+</div>
+{% schema %}
+{
+  "name": "sg2000pro charging",
+  "tag": "section",
+  "class": "newproduct-safety",
+  "settings": [
+    {
+		"type": "text",
+		"id": "section_title",
+		"label": "Section title"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle_1",
+		"label": "Section sub title1"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle_2",
+		"label": "Section sub title2"
+    },
+    {
+		"type": "image_picker",
+		"id": "main_img",
+		"label": "Product banner imgage"
+    },
+    {
+		"type": "image_picker",
+		"id": "m_main_img",
+		"label": "Product mobile banner imgage"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_banner",
+      "default": true,
+      "label": "Show mobile banner"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

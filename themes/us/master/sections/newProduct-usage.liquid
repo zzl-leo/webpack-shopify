@@ -1,0 +1,131 @@
+<style>
+  .newproduct-usage {
+      background: #FBFBFD;
+      padding-top: 2.239583vw;
+  }
+  .newproduct-usage-item {
+      margin-right: 1.7vw;
+      margin-bottom: 1.7vw;
+      display: block;
+      width: 12.03125vw;
+  }
+
+  .newproduct-usage-items-list {
+      flex-wrap: wrap;
+  }
+  .newproduct-usage-items-list .newproduct-usage-item:last-child {
+      margin-right: 0;
+  }
+
+  .newproduct-usage-items-title {
+      color: #FF5B00;
+      font-size: 1.979167vw;
+      line-height: 1;
+      text-align: left;
+      height: 1.979167vw;
+      margin-bottom: 1.354167vw;
+  }
+
+  .newproduct-usage-items {
+      margin-bottom: 3.125vw;
+  }
+
+  @media screen and (max-width: 750px) {
+      .newproduct-usage {
+          padding-top: 2.66667vw;
+      }
+      .newproduct-usage-item {
+          margin-right: 1.73333vw;
+          margin-bottom: 1.73333vw;
+          width: 22.4vw;
+          height: 28.53333vw;
+      }
+      
+      .newproduct-usage-items-title {
+          font-size: 4.53333vw;
+          height: 4.53333vw;
+          margin-bottom: 3.2vw;
+          text-align: center;
+      }
+      
+      .newproduct-usage-items {
+          margin-bottom: 6.66667vw;
+      }
+  }
+</style>
+<div class="{% unless section.settings.full_width %}layer{% endunless %}">
+  <div class="newproduct-usage-container main-container">
+    <div class="newproduct-usage-items">
+        <div class="newproduct-usage-items-title font-bold">Outdoorsy</div>
+        <div class="newproduct-usage-items-list flex">
+            {%- for block in section.blocks -%}
+                {% assign usage_title = block.settings.usage_type | downcase  %}
+                {%- if usage_title == 'outdoorsy' -%}
+                    <img 
+                        class="newproduct-usage-item object-cover object-center" 
+                        src="{{ block.settings.usage | img_url: '231x' }}"
+                        loading="lazy"
+                        alt="{{ section.settings.usage.alt | escape }}"
+                    >
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+    </div>
+
+
+    <div class="newproduct-usage-items">
+        <div class="newproduct-usage-items-title font-bold">Home Backup</div>
+        <div class="newproduct-usage-items-list flex">
+            {%- for block in section.blocks -%}
+                {% assign usage_title = block.settings.usage_type | downcase  %}
+                {%- if usage_title == 'home backup' -%}
+                    <img 
+                        class="newproduct-usage-item object-cover object-center" 
+                        src="{{ block.settings.usage | img_url: '231x' }}"
+                        loading="lazy"
+                        alt="{{ section.settings.usage.alt | escape }}"
+                    >
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "newproduct usage",
+  "tag": "section",
+  "class": "spaced-section--full-width newproduct-usage",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "usage",
+      "name": "Usage Item",
+      "limit": 12,
+      "settings": [
+        {
+			"type": "image_picker",
+			"id": "usage",
+			"label": "Usage"
+        },
+        {
+          "type": "select",
+          "id": "usage_type",
+          "label": "Usage Type",
+          "options": [
+            {
+              "value": "Outdoorsy",
+              "label": "Outdoorsy"
+            },
+            {
+              "value": "Home Backup",
+              "label": "Home Backup"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

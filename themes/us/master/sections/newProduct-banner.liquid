@@ -1,0 +1,55 @@
+{% render 'newProduct-banner', banner_img: section.settings.banner_img, title: section.settings.title, subtitle: section.settings.subtitle, blocks: section.blocks %}
+{% schema %}
+{
+  "name": "newproduct banner",
+  "tag": "section",
+  "class": "spaced-section--full-width newproduct-banner",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Full width"
+    },
+	  {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subTitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_img",
+      "label": "Background Img"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "parameter",
+      "name": "Parameter Item",
+      "limit": 3,
+      "settings": [
+        {
+			"type": "text",
+			"id": "params_num",
+			"label": "Params num"
+        },
+        {
+			"type": "text",
+			"id": "params_unit",
+			"label": "Params unit"
+        },
+        {
+          "type": "text",
+          "id": "params_des",
+          "label": "Params des"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
