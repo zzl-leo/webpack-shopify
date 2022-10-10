@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="{{ 'youtube-live-textimg.css' | asset_url }}">
+<div class="{% unless section.settings.full_width %}layer{% endunless %} _jackery_day" style="display: none;">
+  
+  {%- if section.settings.link != blank -%}
+  <a href="{{ section.settings.link }}">
+  {%- endif -%}
+
+  <div class="youtube-live-textimg-container">
+    {%- if section.settings.banner_img != blank -%}
+      <img
+        class="youtube-live-textimg-banner object-cover object-center pc-block"
+        src="{{ section.settings.banner_img | img_url: '1920x' }}"
+        loading="lazy" alt="{{ section.settings.banner_img.alt | escape }}">
+    {%- endif -%}
+    {%- if section.settings.m_banner_img != blank -%}
+      <img
+        class="youtube-live-textimg-banner object-cover object-center mobile-block"
+        src="{{ section.settings.m_banner_img | img_url: '750x' }}"
+        loading="lazy" alt="{{ section.settings.m_banner_img.alt | escape }}">
+    {%- endif -%}
+    <div class="absolute top-0 left-0 right-0 youtube-live-textimg-text">
+      <h1 class="main-container h1-title text-center font-bold">{{ section.settings.title }}</h1>
+      <div class="main-container text-center p-des">{{ section.settings.subtitle | newline_to_br}}</div>
+    </div>
+  </div>
+
+  {%- if section.settings.link != blank -%}
+  </a>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "youtube live textimg",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width youtube-live-textimg",
+  "settings": [
+    {"type": "checkbox", "id": "full_width", "default": true, "label": "Full width"},
+	  {"type": "text", "id": "title", "label": "Section Title"},
+    {"type": "textarea", "id": "subtitle", "label": "Section subTitle"},
+    {"type": "image_picker", "id": "banner_img", "label": "Background Img"},
+    {"type": "image_picker", "id": "m_banner_img", "label": "Mobile Background Img"},
+    {"type": "url", "id": "link", "label": "Link"}
+  ],
+  "blocks": []
+}
+{% endschema %}

@@ -1,0 +1,172 @@
+<link rel="stylesheet" href="{{ 'youtube-live-annoucement.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'swiper.min.css' | asset_url }}">
+
+<div class="{% unless section.settings.full_width %}layer{% endunless %} _jackery_day" style="display: none;">
+  <div class="youtube-live-annoucement-container">
+    {%- if section.settings.banner_img != blank -%}
+      <img
+        class="youtube-live-annoucement-banner object-cover object-center pc-block"
+        src="{{ section.settings.banner_img | img_url: '1920x' }}"
+        loading="lazy"
+        alt="{{ section.settings.banner_img.alt | escape }}"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.m_banner_img != blank -%}
+      <img
+        class="youtube-live-annoucement-banner object-cover object-center mobile-block"
+        src="{{ section.settings.m_banner_img | img_url: '750x' }}"
+        loading="lazy"
+        alt="{{ section.settings.m_banner_img.alt | escape }}"
+      >
+    {%- endif -%}
+
+    <div class="absolute top-0 left-0 right-0 youtube-live-annoucement-text">
+      <h1 class="main-container h1-title text-center font-bold">{{ section.settings.title }}</h1>
+      <div class="main-container text-center p-des">{{ section.settings.subtitle | newline_to_br}}</div>
+    </div>
+
+    <div class="congtratulations absolute main-container text-center left-0 right-0">
+      <div class="congtratulations_title">{{ section.settings.congtratulations_title | escape }}</div>
+      {% comment %} <div class="congtratulations_item">Marie White@jackery.com</div>
+      <div class="congtratulations_item">Marie White@jackery.com</div>
+      <div class="congtratulations_item">Marie White@jackery.com</div> {% endcomment %}
+
+      {% if section.blocks.size < 2 %}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.user_item_1 != blank -%}
+            <div class="congtratulations_item">{{ block.settings.user_item_1 | escape }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.user_item_2 != blank -%}
+            <div class="congtratulations_item">{{ block.settings.user_item_2 | escape }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.user_item_3 != blank -%}
+            <div class="congtratulations_item">{{ block.settings.user_item_3 | escape }}</div>
+          {%- endif -%}
+        {%- endfor -%}
+      {% else %}
+
+        <div class="swiper-container youtube-live-annoucement-swiper-container">
+          <div class="swiper-wrapper">
+              {%- for block in section.blocks limit:2 -%}
+                <div class="swiper-slide">
+
+                  {%- if block.settings.user_item_1 != blank -%}
+                    <div class="swiper-slide-container congtratulations_item">{{ block.settings.user_item_1 | escape }}</div>
+                  {%- endif -%}
+
+                  {%- if block.settings.user_item_2 != blank -%}
+                    <div class="swiper-slide-container congtratulations_item">{{ block.settings.user_item_2 | escape }}</div>
+                  {%- endif -%}
+
+                  {%- if block.settings.user_item_3 != blank -%}
+                    <div class="swiper-slide-container congtratulations_item">{{ block.settings.user_item_3 | escape }}</div>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+          </div>
+        
+          <!-- Add Arrows -->
+          <div class="swiper-button-next swiper-button-black"></div>
+          <div class="swiper-button-prev swiper-button-black"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="tips absolute main-container text-center left-0 right-0">{{ section.settings.tips | escape }}</div>
+  </div>
+</div>
+
+<script>
+function newAnnoucement() {
+  var youtube_live_annoucement = new Swiper('.youtube-live-annoucement-swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    autoplay: "{{section.settings.autoplay}}",
+    spaceBetween: 30,
+    loop: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev'
+  })
+}
+</script>
+{% schema %}
+{
+  "name": "youtube live annoucement",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width youtube-live-annoucement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Full width"
+    },
+	  {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subTitle"
+    },
+    {
+		"type": "image_picker",
+		"id": "banner_img",
+		"label": "Background Img"
+    },
+    {
+		"type": "image_picker",
+		"id": "m_banner_img",
+		"label": "Mobile Background Img"
+    },
+    {
+      "type": "text",
+      "id": "congtratulations_title",
+      "label": "Congtratulations Title"
+    },
+    {
+      "type": "text",
+      "id": "tips",
+      "label": "Tips"
+    },
+    {
+      "type": "range",
+      "id": "autoplay",
+      "label": "autoplay duration",
+      "default": 2000,
+      "min": 2000,
+      "max": 9000,
+      "step": 1000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider Item",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "user_item_1",
+          "label": "User 1"
+        },
+        {
+          "type": "text",
+          "id": "user_item_2",
+          "label": "User 2"
+        },
+        {
+          "type": "text",
+          "id": "user_item_3",
+          "label": "User 3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

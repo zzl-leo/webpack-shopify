@@ -1,0 +1,82 @@
+<style>
+  .newproduct-warranty-container {
+    padding: 7.5vw 8.59375vw 8.59375vw 10.416667vw ;
+  }
+
+  .newproduct-warranty-item {
+      width: 32.1875vw;
+  }
+
+  .newproduct-warranty-img {
+      display: block;
+      width: 7.8125vw;
+      height: 7.291667vw;
+  }
+
+  .newproduct-warranty-title {
+      font-size: 1.614583vw;
+      height: 1.614583vw;
+      line-height: 1.614583vw;
+      color: #2E2C2B;
+      margin: 1.666667vw 0 1.09375vw;
+  }
+
+  .newproduct-warranty-des {
+      font-size: 1.302083vw;
+      color: #3F3F3F;
+      line-height: 1.614583vw;
+  }
+
+  @media screen and (max-width: 750px) {
+      .newproduct-warranty-container {
+          padding: 16.4vw 3.73333vw 0 3.73333vw ;
+      }
+
+      .newproduct-warranty-list {
+          flex-direction: column;
+      }
+      
+      .newproduct-warranty-item {
+          width: 100%;
+          flex-direction: column;
+          margin-bottom: 7.2vw;
+      }
+      
+      .newproduct-warranty-img {
+          width: 32vw;
+          height: 25.86667vw;
+      }
+      
+      .newproduct-warranty-title {
+          font-size: 5.86667vw;
+          height: 5.86667vw;
+          line-height: 5.86667vw;
+          color: #333;
+          margin: 2.93333vw 0 1.06667vw 0;
+      }
+      
+      .newproduct-warranty-des {
+          font-size: 3.73333vw;
+          color: #333;
+          line-height: 4.53333vw;
+      }
+  }
+</style>
+<div class="newproduct-warranty-container">
+  <div class="newproduct-warranty-list flex justify-between">
+      {% for block in blocks %}
+          <div class="newproduct-warranty-item flex flex-col tems-center">
+            <img
+                class="object-cover object-center newproduct-warranty-img"
+                src="{{ block.settings.icon_img | img_url: '150x' }}"
+                loading="lazy"
+                alt="{{ block.settings.icon_img.alt | escape }}"
+            >
+            <div>
+                <div class="newproduct-warranty-title font-bold text-center">{{ block.settings.title |escape }}</div>
+                <div class="newproduct-warranty-des text-center">{{ block.settings.sub | escape }}</div>
+            </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>

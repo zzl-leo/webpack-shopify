@@ -1,0 +1,90 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% section 'product-template' %}
+
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+
+
+
+{{product.metafields.shogun.below}}
+
+
+					
+<!-- RYVIU APP :: WIDGET -->
+<div class="lt-block-reviews"> 
+	<ryviu-widget  
+        handle="{{product.handle}}"
+        product_id="{{product.id}}"
+	    title_product="{{product.title}}"
+	    total_meta="{{ product.metafields.ryviu.r_count }}"
+		image_product="{{ product.featured_image.src | img_url: '180x' }}"></ryviu-widget>
+</div>
+<!-- / RYVIU APP --> 
+{%comment %}
+<div id='Areviewsapp' class='page-full'>{%  render 'aliexpress_reviews' , product: product %}</div>
+{%endcomment %}
+
+<script type="text/javascript">
+  window.onload = function() {
+    function isMobile(){
+      let info = navigator.userAgent;
+      let agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
+      for(let i = 0; i < agents.length; i++){
+          if(info.indexOf(agents[i]) >= 0) return true;
+      }
+      return false;
+    }
+
+    function insertAfter(newElement,targetElement){
+      if(targetElement) {
+      	var parent = targetElement.parentNode;
+         if(parent.lastChild == targetElement){
+            parent.appendChild(newElement);
+         }
+         else{
+             parent.insertBefore(newElement,targetElement.nextSibling);
+         }	
+      }
+    }
+
+    
+    
+    var areviewstooltip = document.querySelector('.areviews_header_rating')
+    var areviewstooltiptext = document.querySelector('.areviews_top_rating')
+    
+    var changeTabFn = function(event) {
+      event.stopPropagation()
+//       console.info('aaa')
+    	var tabList = document.querySelectorAll('.shogun-tab')
+        tabList.forEach(function(item, i, arr) {
+          if (i === arr.length -1) {
+          	item.classList.add('shogun-tab-active')
+          } else {
+          	item.classList.remove('shogun-tab-active')
+          }
+        })
+        var contentList = document.querySelectorAll('.shogun-tab-content')
+        contentList[contentList.length - 1].classList.add('shogun-tab-active')
+        $('.shogun-tab-content').last().siblings().removeClass('shogun-tab-active')
+    }
+    
+    areviewstooltip && areviewstooltip.addEventListener('mousedown', changeTabFn, false )
+    areviewstooltiptext && areviewstooltiptext.addEventListener('mousedown', changeTabFn, false )
+
+  }
+</script>
+<style>
+  .th_ajax_error_cls {display: none;}
+  .buy_now_button_app.market_icon {width: 143px; height: 37px; margin-bottom: 30px; opacity: 1 !important;}
+  .th_pb_section {margin-top: 26px;}
+</style>

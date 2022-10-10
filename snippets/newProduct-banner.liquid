@@ -1,0 +1,159 @@
+<style>
+    .newproduct-banner {
+        position: relative;
+    }
+
+    .newproduct-banner-container {
+        width: 100%;
+        margin-top: -2px;
+        position: relative;
+    }
+
+    .newproduct-banner-banner {
+        width: 100%;
+        display: block;
+    }
+
+    .newproduct-banner-text {
+        bottom: 0;
+    }
+
+    .newproduct-banner .h1-title {
+        font-size: 5.3125vw;
+        line-height: 5.3125vw;
+        margin-bottom: 0.9375vw;
+        color: #fff;
+    }
+
+    .newproduct-banner .p-des {
+        color: #fff;
+        font-size: 2.395833vw;
+        line-height: 2.395833vw;
+        margin-bottom: 4.270833vw;
+    }
+
+    .newproduct-banner .params-content {
+        color: #fff;
+        padding-bottom: 3.229167vw;
+    }
+
+    .newproduct-banner .params-top {
+        margin-bottom: 0;
+    }
+
+    .newproduct-banner .params-num {
+        font-size: 3.020833vw;
+        line-height: 1;
+        padding-right: 0.260417vw;
+    }
+
+    .newproduct-banner .params-bottom {
+        font-size: 0.9375vw;
+        color: #A2A2A2;
+        line-height: 1;
+        vertical-align: middle;
+    }
+
+    .newproduct-banner .params-unit {
+        font-size: 1.09375vw;
+        line-height: 1.09375vw;
+
+    }
+
+    .newproduct-banner .params-item {
+        position: relative;
+        padding: 0 2.291667vw;
+    }
+
+    .newproduct-banner .params-item::after {
+        content: '';
+        position: absolute;
+        width: 0.104167vw;
+        height: 3.75vw;
+        background-color: #fff;
+        right: -0.052083vw;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .newproduct-banner .params-item:last-child::after {
+        display: none;
+    }
+    .newproduct-banner .params-item:last-child {
+        padding-right: 0;
+    }
+    .newproduct-banner .params-item:first-child {
+        padding-left: 0;
+    }
+
+    @media screen and (max-width: 750px) {
+        .newproduct-banner-container {
+            margin-top: -0.13333vw;
+        }
+
+        .newproduct-banner-banner {
+            height: 100vw;
+        }
+        .newproduct-banner .h1-title {
+            font-size: 9.33333vw;
+            line-height: 9.33333vw;
+            margin-bottom: 2.4vw;
+        }
+        
+        .newproduct-banner .p-des {
+            font-size: 4.53333vw;
+            line-height: 4.53333vw;
+            margin-bottom: 4.270833vw;
+        }
+        
+        .newproduct-banner .params-content {
+            padding-bottom: 7.86667vw;
+        }
+        
+        .newproduct-banner .params-num {
+            font-size: 6.66667vw;
+            line-height: 6.66667vw;
+            padding-right: 0.13333vw;
+        }
+        
+        .newproduct-banner .params-unit {
+            font-size: 3.2vw;
+            line-height: 3.2vw;
+        }
+        
+        .newproduct-banner .params-item {
+            padding: 0 4.66667vw;
+        }
+        
+        .newproduct-banner .params-item::after {
+            width: 0.26667vw;
+            height: 8.26667vw;
+            right: -0.13333vw;
+        }
+    }
+</style>
+<div class="newproduct-banner-container">
+  {%- if section.settings.banner_img != blank -%}
+    <img
+      class="newproduct-banner-banner object-cover object-center"
+      src="{{ section.settings.banner_img | img_url: '1920x' }}"
+      loading="lazy"
+      alt="{{ section.settings.banner_img.alt | escape }}"
+    >
+  {%- endif -%}
+  <div class="absolute left-0 right-0 newproduct-banner-text">
+    <h1 class="main-container h1-title text-center font-bold">{{ section.settings.title }}</h1>
+    <div class="main-container text-center p-des">{{ section.settings.subtitle | newline_to_br}}</div>
+    <div class="params-content flex justify-center">
+      {%- for block in blocks -%}
+      <div class="params-item">
+          <div class="params-top">
+              <span class="params-num font-bold">{{ block.settings.params_num | escape }}</span>
+              <span class="params-unit">{{ block.settings.params_unit | escape }}</span>
+          </div>
+          <div class="params-bottom">{{ block.settings.params_des | escape }}</div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

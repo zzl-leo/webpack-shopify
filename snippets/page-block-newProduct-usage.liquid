@@ -1,0 +1,117 @@
+<style>
+  .newproduct-usage {
+      background: #FBFBFD;
+      padding-top: 0;
+  }
+  .newproduct-usage-item {
+      margin-right: 1.7vw;
+      margin-bottom: 1.7vw;
+      display: block;
+      width: 12.03125vw;
+  }
+
+  .newproduct-usage-items-list {
+      flex-wrap: wrap;
+  }
+  .newproduct-usage-items-list .newproduct-usage-item:last-child {
+      margin-right: 0;
+  }
+
+  .newproduct-usage-items-title {
+      color: #FF5B00;
+      font-size: 1.979167vw;
+      line-height: 1;
+      text-align: left;
+      height: 1.979167vw;
+      margin-bottom: 1.354167vw;
+  }
+
+  .newproduct-usage-items {
+      margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 750px) {
+      .newproduct-usage {
+          padding-top: 2.66667vw;
+      }
+      .newproduct-usage-item {
+          margin-right: 1.73333vw;
+          margin-bottom: 1.73333vw;
+          width: 22.4vw;
+          height: 28.53333vw;
+      }
+      
+      .newproduct-usage-items-title {
+          font-size: 4.53333vw;
+          height: 4.53333vw;
+          margin-bottom: 3.2vw;
+          text-align: center;
+      }
+      
+      .newproduct-usage-items {
+          padding-bottom: 6.66667vw;
+      }
+  }
+</style>
+<div class="newproduct-usage">
+  <div class="newproduct-usage-container main-container">
+    <div class="newproduct-usage-items">
+        <div class="newproduct-usage-items-title font-bold">{{ block.settings.usage_title | escape }}</div>
+        <div class="newproduct-usage-items-list flex">
+            {%- if block.settings.usage_img1 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img1 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img1.alt | escape }}"
+                >
+            {%- endif -%}
+
+            {%- if block.settings.usage_img2 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img2 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img2.alt | escape }}"
+                >
+            {%- endif -%}
+
+            {%- if block.settings.usage_img3 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img3 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img3.alt | escape }}"
+                >
+            {%- endif -%}
+
+            {%- if block.settings.usage_img4 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img4 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img4.alt | escape }}"
+                >
+            {%- endif -%}
+
+            {%- if block.settings.usage_img5 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img5 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img5.alt | escape }}"
+                >
+            {%- endif -%}
+
+            {%- if block.settings.usage_img6 != blank -%}
+                <img 
+                    class="newproduct-usage-item object-cover object-center" 
+                    src="{{ block.settings.usage_img6 | img_url: '231x' }}"
+                    loading="lazy"
+                    alt="{{ block.settings.usage_img6.alt | escape }}"
+                >
+            {%- endif -%}
+        </div>
+    </div>
+  </div>
+</div>

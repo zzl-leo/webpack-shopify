@@ -1,0 +1,106 @@
+<div 
+    class="product-sticky-cart" 
+    productId="{{product.id}}"
+    autoWarranty="{{properties_warranty}}"
+    qtyflag="{{settings.quantity_enable}}"
+>
+    <div class="sticky-cart-wrap layer-container flex tems-center justify-between relative">
+        <div class="sticky-cart-wrap_left flex tems-center">
+            {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+            {%- assign img_url = featured_image | img_url -%}
+            <img 
+                class="sticky-cart-productImg" 
+                id="sticky-cart-productImg"
+                src="{{ img_url }}"
+                alt="{{ featured_image | alt }}"
+            >
+
+            <div class="sticky-m-p">
+                <div class="sticky-cart-productInfo">
+                    <div class="stickyCart_title flex pc-block">{{ product.title }}</div>
+                    <div class="stickyCart_price font-bold">{{ current_variant.price | money }}</div>
+                </div>
+
+                <div class="stickyCart_variants_block flex">
+                    {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+                        <div class="stickyCart_variants_select flex tems-center relative">
+                            <div class="stickyCart_variants_current">Explorer 2000 Pro + 6xSolarSaga 200</div>
+                            <svg fill="currentColor" viewBox="64 64 896 896"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg>
+                            <div class="variants_option_block absolute">
+                                {% for option in product.options_with_values %}
+                                    {%- assign swatch_file_extension = 'png' -%}
+                                    {%- assign is_color = false -%}
+                                    {%- assign color_swatch_drop = option_drop -%}
+                                    {%- assign color_option_index = 0 -%}
+
+                                    {% if settings.product_color_swatches %}
+                                    {% for option in product.options_with_values %}
+                                        {% if option == color_swatch_drop %}
+                                        {%- assign color_option_index = forloop.index0 -%}
+                                        {%- assign downcased_option = color_swatch_drop.name | downcase -%}
+                                        {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                                            {% assign is_color = true %}
+                                        {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    {% for value in option.values %}
+                                        {%- assign variant_label_state = true -%}
+                                        {% if product.options.size == 1 %}
+                                            {% unless product.variants[forloop.index0].available %}
+                                            {% unless is_color %}
+                                                {%- assign variant_label_state = false -%}
+                                            {% endunless %}
+                                            {% endunless %}
+                                        {% endif %}
+                    
+                                        <input type="radio"
+                                            {% if option.selected_value == value %} checked="checked"{% endif %}
+                                            {% unless variant_label_state %} disabled="disabled"{% endunless %}
+                                            value="{{ value | escape }}" data-index="option{{ option_index }}" name="{{ option.name }}"
+                                            class="cart_variant__input footer_variant__input-{{ product.id }}{% unless variant_label_state %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch-{{ product.id }}{% endif %}"
+                                            {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+                                            {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+                                            id="footer_ProductSelect-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+                                        >
+                                        {% if is_color %}
+                                            {%- assign color_image = value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                                            {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+
+                                            <label
+                                                for="footer_ProductSelect-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+                                                class="variant__color-swatch{% unless variant_label_state %} disabled{% endunless %}"
+                                                style="background-image: url({{ product.variants[forloop.index0].image | product_img_url: 'x50' | split: '?' | first }}); background-color: {{ color_swatch_fallback }};"
+                                                data-image="{{ product.variants[forloop.index0].image | product_img_url: 'master' | split: '?' | first }}"
+                                            >
+                                            {{ value | escape }}
+                                            </label>
+                                        {% else %}
+                                            <label 
+                                                for="footer_ProductSelect-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"{% unless variant_label_state %} class="disabled"{% endunless %}>
+                                                {{ value | escape }}
+                                            </label>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endunless %}
+                </div>
+            </div>
+
+            {% assign qty_id = sectionId | append: section_id %}
+            {%- capture form_id -%}AddToCartForm-{{ sectionId }}-{{ section_id }}{%- endcapture -%}
+            {% if settings.quantity_enable %}
+                <div class="sticky-qty">
+                    {%- render 'quantity-input', form_id: form_id, id: qty_id, qty: 1, min: 1 -%}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="sticky-cart-wrap_right flex tems-center">
+            <button id="sticky_addToCart" class="btn add-to-cart">ADD TO CART</button>
+        </div>
+    </div>
+</div>
