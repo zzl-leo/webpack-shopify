@@ -1,11 +1,12 @@
 /*
  * @Date: 2022-10-10 11:00:37
  * @LastEditors: Leo
- * @LastEditTime: 2022-10-10 16:14:11
+ * @LastEditTime: 2022-10-10 16:22:47
  * @FilePath: \test2\src\js\assets\cdp.js
  */
-import jackerySensors from '../utils/ja.js'
+import sensors from '../utils/ja.js'
 
+window.jackerySensors = sensors
 window.jackerySensors.init({
     server_url: 'https://cdpdata.myjackery.com/sa',
     send_type: 'beacon',
