@@ -1,0 +1,49 @@
+<style>
+    .sg2000pro-safety {
+        margin-top: 1.666667vw;
+    }
+
+    @media screen and (max-width: 750px) {
+        .sg2000pro-safety {
+            margin-top: 2vw;
+        }
+    }
+</style>
+<div class="sg2000pro-safety">
+  {% render 'newProduct-imgtext', section_title: section.settings.section_title, section_subtitle1: section.settings.section_subtitle_1, section_subtitle2: section.settings.section_subtitle_2, m_main_img: section.settings.m_main_img, main_img: section.settings.main_img %}
+</div>
+{% schema %}
+{
+  "name": "sp2000 last",
+  "tag": "section",
+  "class": "newproduct-safety",
+  "settings": [
+    {
+		"type": "text",
+		"id": "section_title",
+		"label": "Section title"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle_1",
+		"label": "Section sub title1"
+    },
+    {
+		"type": "textarea",
+		"id": "section_subtitle_2",
+		"label": "Section sub title2"
+    },
+    {
+		"type": "image_picker",
+		"id": "main_img",
+		"label": "Product banner imgage"
+    },
+    {
+		"type": "image_picker",
+		"id": "m_main_img",
+		"label": "Mobile Product banner image"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+{% render 'shogun-products', content: product %}
+
+{{product.metafields.shogun.above}}
+{% section 'product-for-sale-template' %}
+
+ <script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+
+
+{{product.metafields.shogun.below}}
+
+
+   <div id='Areviewsapp' class='page-full'>{% include 'aliexpress_reviews' %}</div>
+
+
+<script type="text/javascript">
+  function checkImg(){
+    console.log('checkImg',$(".buy_now_button_app.market_icon").length)
+    if(!$(".buy_now_button_app.market_icon").length){
+    	setTimeout(checkImg,300)
+    }else{
+      var b = $(".buy_now_button_app.market_icon").clone()
+    	$('.th_pb_add_to_cart_disabled').before(b)
+        b.css({position: 'relative',
+    left: '50%',
+    transform: 'translateX(-50%)'})
+        b.find('.butClick').attr('href','https://www.amazon.com/gp/product/B08LD9PLQ2/ref=as_li_tl?ie=UTF8&tag=jackery0e-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B08LD9PLQ2&linkId=a3afc84f2a707ca6bb93e80aa1416b84')
+        $('.th_pb_add_to_cart_disabled').hide()
+    }
+  }
+  function checkButton(){
+    console.log('.th_pb_add_to_cart_disabled',$('.th_pb_add_to_cart_disabled').length)
+    if(!$('.th_pb_add_to_cart_disabled').length){
+      setTimeout(checkButton,300)
+    }else{
+      checkImg()
+    }
+  }
+  window.onload = function() {
+    var areviewstooltip = document.querySelector('.areviews_header_rating')
+    var areviewstooltiptext = document.querySelector('.areviews_top_rating')
+    
+    var changeTabFn = function(event) {
+      event.stopPropagation()
+//       alert('aaa')
+    	var tabList = document.querySelectorAll('.shogun-tab')
+        tabList.forEach(function(item, i, arr) {
+          if (i === arr.length -1) {
+          	item.classList.add('shogun-tab-active')
+          } else {
+          	item.classList.remove('shogun-tab-active')
+          }
+        })
+        var contentList = document.querySelectorAll('.shogun-tab-content')
+        contentList[contentList.length - 1].classList.add('shogun-tab-active')
+        $('.shogun-tab-content').last().siblings().removeClass('shogun-tab-active')
+    }
+    
+    areviewstooltip && areviewstooltip.addEventListener('mousedown', changeTabFn, false )
+    areviewstooltiptext && areviewstooltiptext.addEventListener('mousedown', changeTabFn, false )
+	checkButton()
+  }
+</script>
+<style>
+  .th_ajax_error{
+    display:none;
+  }
+</style>
