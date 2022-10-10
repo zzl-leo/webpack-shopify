@@ -1,0 +1,46 @@
+{% if section.settings.title != blank %}
+<div class="mediaCTATitle">
+  <p>{{ section.settings.title }}</p>
+</div>
+
+<div class="buttonWrapper">
+  <a href="{{ section.settings.btnOneLink }}">{{ section.settings.btnOneText }}</a>
+  <a href="{{ section.settings.btnTwoLink }}">{{ section.settings.btnTwoText }}</a>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Media Buttons",
+    "settings": [
+	 {
+		"type": "text",
+		"id": "title",
+		"label": "Title",
+		"default": "About Jackery"
+	 },
+	 {
+		"type": "url",
+		"id": "btnOneLink",
+		"label": "Button One Link"
+	 },
+	 {
+		"type": "text",
+		"id": "btnOneText",
+		"label": "Button One Text",
+		"default": "Our Story"
+	 },
+	 {
+		"type": "url",
+		"id": "btnTwoLink",
+		"label": "Button Two Link"
+	 },
+	 {
+		"type": "text",
+		"id": "btnTwoText",
+		"label": "Button Two Text",
+		"default": "News"
+	 }
+   ]
+  }
+{% endschema %}

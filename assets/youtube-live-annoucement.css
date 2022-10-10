@@ -1,0 +1,119 @@
+.youtube-live-annoucement {
+    position: relative;
+}
+
+.youtube-live-annoucement-container {
+    width: 100vw;
+    position: relative;
+}
+
+.youtube-live-annoucement-banner {
+    width: 100%;
+}
+
+.youtube-live-annoucement .h1-title {
+    margin: 5.5208vw auto 1.6666vw;
+    font-size: 3.85416666vw;
+    color: #4C4C4C;
+    line-height: 3.85416666vw;
+}
+
+.youtube-live-annoucement .p-des {
+    font-size: 1.458333vw;
+    line-height: 2.1875vw;
+    color: #4C4C4C;
+}
+
+.youtube-live-annoucement .congtratulations {
+    top: 34.895833vw;
+}
+
+.youtube-live-annoucement .congtratulations_title {
+    font-size: 3.020833vw;
+    line-height: 3.020833vw;
+    margin-bottom: 1.5vw;
+    font-weight: bold;
+    color: #4C4C4C;
+}
+
+.youtube-live-annoucement .congtratulations_item {
+    font-size: 2.291667vw;
+    color: #4C4C4C;
+    font-weight: bold;
+    line-height: 3.020833vw;
+}
+
+.youtube-live-annoucement .tips {
+    bottom: 5.4vw;
+    font-size: 1.875vw;
+    line-height: 1.875vw;
+}
+
+.youtube-live-annoucement-swiper-container {
+    width: 48vw;
+    padding-bottom: 1.041667vw;
+}
+
+.youtube-live-annoucement-swiper-container>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: -0.520833vw!important;
+}
+.youtube-live-annoucement-swiper-container .swiper-pagination-bullet-active {
+    background: #666;
+}
+
+
+@media screen and (max-width: 750px) {
+    .youtube-live-annoucement .h1-title {
+        margin: 6.53333vw auto 3.06667vw;
+        font-size: 5.86667vw;
+        line-height: 6.93333vw;
+        color: #333;
+    }
+
+    .youtube-live-annoucement .p-des {
+        font-size: 3.73333vw;
+        line-height: 4.53333vw;
+        color: #666;
+    }
+
+    .youtube-live-annoucement .congtratulations {
+        top: 58.8vw;
+    }
+
+    .youtube-live-annoucement .congtratulations_title {
+        font-size: 4.8vw;
+        line-height: 4.8vw;
+        margin-bottom: 0;
+        color: #333;
+    }
+
+    .youtube-live-annoucement .congtratulations_item {
+        font-size: 3.73333vw;
+        color: #333;
+        font-weight: normal;
+        line-height: 4.53333vw;
+    }
+
+    .youtube-live-annoucement .tips {
+        bottom: 6vw;
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+
+    .youtube-live-annoucement-swiper-container {
+        padding-bottom: 2.2vw;
+    }
+    
+    .youtube-live-annoucement-swiper-container>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: -1vw!important;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .youtube-live-annoucement-swiper-container {width: 70vw;}
+    .youtube-live-annoucement-swiper-container .swiper-button-prev,
+    .youtube-live-annoucement-swiper-container .swiper-container-rtl .swiper-button-next {left: 0;}
+
+    .youtube-live-annoucement-swiper-container .swiper-button-next,
+    .youtube-live-annoucement-swiper-container .swiper-container-rtl .swiper-button-prev {right: 0;}
+}

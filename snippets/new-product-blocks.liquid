@@ -1,0 +1,116 @@
+<div class="page-blocks new-product-maincontent">
+    <div class="new-product-full-width">
+        <!-- HC - Blocks for full width - 19 Mar '19 -->
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'new-product-banner' %}
+                {% include 'page-block-newProduct-banner' %}
+
+                {% when 'new-product-info' %}
+                {% include 'page-block-newProduct-info' %}
+
+                {% when 'new-product-usage' %}
+                {% include 'page-block-newProduct-usage' %}
+
+                {% when 'new-product-image' %}
+                {% include 'page-block-newProduct-image' %}
+
+                {% when 'image-row' %}
+                {% include 'page-block-image-row' %}
+
+                {% when 'rich-text'%}
+                {% include 'page-block-rich-text' %}
+
+                {% when 'text-and-image' %}
+                {% include 'page-block-text-and-image' %}
+
+                {% when 'text-columns' %}
+                {% include 'page-block-text-columns' %}
+
+                {% when 'testimonials' %}
+                {% include 'page-block-testimonials' %}
+
+                {% when 'map' %}
+                {% include 'page-block-map' %}
+
+                {% when 'featured-collection' %}
+                {% include 'page-block-featured-collection' %}
+
+                {% when 'fading-images' %}
+                {% include 'page-block-fading-images' %}
+        
+                {% when 'background-image-text' %}
+                {% include 'page-block-background-image-text' %}
+
+            {% endcase %}
+        {% endfor %}
+        
+        {% comment %} <div class ="index-section">
+            <div class="grid grid__uniform">
+            {% for block in section.blocks %}
+            <!-- HC - Blocks that don't need to be full width - 19 Mar '19 -->
+            {% unless forloop.first %}
+                <!-- HC - Width classes - 19 Mar '19 -->
+                <div class="grid__item small--one-whole {% if block.settings.width %} {{ block.settings.width }} {% else %} medium-up--one-whole {% endif %}" {{ block.shopify_attributes }}>
+                    {% case block.type %}
+
+                    {% when 'contact-form' %}
+                        {% include 'page-block-contact-form' %}
+
+                    {% when 'custom-html' %}
+                        {% include 'page-block-custom-html' %}
+
+                    {% when 'hero-video' %}
+                        {% include 'page-block-hero-video' %}
+
+                    {% when 'image-hero' %}
+                        {% include 'page-block-image-hero' %}
+
+                    {% when 'image-row' %}
+                        {% include 'page-block-image-row' %}
+
+                    {% when 'rich-text'%}
+                        {% include 'page-block-rich-text' %}
+
+                    {% when 'text-and-image' %}
+                        {% include 'page-block-text-and-image' %}
+
+                    {% when 'text-columns' %}
+                        {% include 'page-block-text-columns' %}
+
+                    {% when 'testimonials' %}
+                        {% include 'page-block-testimonials' %}
+
+                    {% when 'map' %}
+                        {% include 'page-block-map' %}
+
+                    {% when 'featured-collection' %}
+                        {% include 'page-block-featured-collection' %}
+                    
+                    {% when 'background-image-text' %}
+                        {% include 'page-block-background-image-text' %}
+
+                    {% when 'fading-images' %}
+                        {% include 'page-block-fading-images' %}
+
+                    {% endcase %}
+                </div>
+            {% endunless %}
+            {% endfor %}
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+
+<script>
+    const new_full_e = document.querySelector('.new-product-full-width')
+    const m_num = (document.documentElement.clientWidth - new_full_e.scrollWidth) / 2
+    new_full_e.style.marginRight = `-${m_num}px`
+    new_full_e.style.marginLeft = `-${m_num}px`
+
+    if(document.documentElement.clientWidth > 750) {
+        new_full_e.style.marginRight = `-${m_num}px`
+        new_full_e.style.marginLeft = `-${m_num}px`
+        new_full_e.style.width = `calc(100% + ${2 * m_num}px)`
+    }
+</script>

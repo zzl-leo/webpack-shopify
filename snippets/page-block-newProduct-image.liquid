@@ -1,0 +1,131 @@
+<style>
+  .newproduct-image .newproduct-image-banner {
+      position: relative;
+      margin-bottom: 1.666667vw;
+  }
+
+  .newproduct-image-banner-img {
+      display: block;
+      width: 100%;
+  }
+
+  .newproduct-banner-title {
+      color: #fff;
+      font-size: 3.020833vw;
+      height: 3.020833vw;
+      line-height: 3.020833vw;
+      margin: 2.5vw 0 2.083333vw 0;
+  }
+
+  .newproduct-banner-subtitle {
+      color: #fff;
+      font-size: 1.041667vw;
+      line-height: 1.458333vw;
+  }
+
+  .newproduct-image-banner {
+      margin-bottom: 1.666667vw;
+  }
+
+  .newproduct-image-item {
+      margin-right: 1.666667vw;
+      flex: 1;
+  }
+
+  .newproduct-image-item:last-child {
+      margin-right: 0;
+  }
+
+  .newproduct-image-item-img {
+      display: block;
+      width: 100%;
+  }
+
+  .newproduct-image-item-text {
+      color: #fff;
+      font-size: 2.395833vw;
+      height: 2.395833vw;
+      line-height: 2.395833vw;
+      bottom: 2.083333vw;
+      right: 3.645833vw;
+  }
+
+  @media screen and (max-width: 750px) {
+        .newproduct-image .newproduct-image-banner {
+            margin-bottom: 2.13333vw;
+        }
+      .newproduct-banner-title {
+          font-size: 5.86667vw;
+          height: 5.86667vw;
+          line-height: 5.86667vw;
+          margin: 2.13333vw 0 1.33333vw 0;
+      }
+      
+      .newproduct-banner-subtitle {
+          font-size: 3.73333vw;
+          line-height: 4.53333vw;
+      }
+
+      .newproduct-image-banner-img {
+          height: 100vw;
+      }
+      
+      .newproduct-image-banner {
+          margin-bottom: 2.13333vw;
+      }
+
+      .newproduct-image-items {
+          flex-direction: column;
+      }
+      
+      .newproduct-image-item {
+          margin-right: 0;
+          height: 101.6vw;
+          margin-bottom: 2.13333vw;
+      }
+
+      .newproduct-image-item:last-child {
+          margin-bottom: 0;
+      }
+
+      .newproduct-image-item-text {
+          font-size: 6.13333vw;
+          height: 6.13333vw;
+          line-height: 6.13333vw;
+          bottom: 5.33333vw;
+          right: 9.33333vw;
+      }
+  }
+</style>
+<div class="newproduct-image">
+  <div class="newproduct-image-container">
+    <div class="newproduct-image-banner">
+      <img
+        class="object-cover object-center relative newproduct-image-banner-img"
+        src="{{ block.settings.main_image | img_url: '1920x' }}"
+        loading="lazy"
+        alt="{{ block.settings.main_image.alt | escape }}"
+      >
+
+      <div class="absolute top-0 left-0 right-0 newproduct-image-text text-center">
+        <div class="newproduct-banner-title font-bold">{{ block.settings.section_title | escape }}</div>
+        <div class="newproduct-banner-subtitle main-container">{{ block.settings.section_subtitle | escape }}</div>
+      </div>
+    </div>
+
+    <div class="newproduct-image-items flex justify-between">
+      {%- for block in blocks -%}
+        <div class="newproduct-image-item relative">
+          <img
+            class="newproduct-image-item-img object-cover object-center"
+            src="{{ block.settings.product_img | img_url: '948x' }}"
+            loading="lazy"
+            alt="{{ block.settings.product_img.alt | escape }}"
+          >
+
+          <div class="absolute newproduct-image-item-text text-right font-bold">{{ block.settings.img_info | escape }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
