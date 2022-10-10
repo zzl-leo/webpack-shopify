@@ -139,8 +139,6 @@
   </body>
 
   <script>
-    console.log(555555555)
-      
     var paymentImage = document.getElementsByTagName("img");
     for (i = 0; i < paymentImage.length; i++) {
       if (paymentImage[i].alt == "Affirm") {
@@ -154,6 +152,13 @@
         merchant: { inline_container: "affirm-inline-checkout" },
         data: { total: {{ checkout.total_price }} }
       })
+    })
+
+
+    const c_email_dom = document.querySelector("#checkout_email")
+    c_email_dom.addEventListener("change", (e) => {
+      console.log(1111)
+      console.log(e)
     })
   </script>
 </html>
