@@ -1,0 +1,79 @@
+<style>
+    .newproduct-safety {
+        max-width: 100vw;
+        overflow-x: hidden;
+        color: #fff;
+        line-height: 0;
+    }
+
+    .newproduct-charging {
+        margin-top: 1.7708vw;
+    }
+
+    .newproduct-safety-img {
+        width: 100%;
+        display: block;
+    }
+
+    .newproduct-safety-title {
+        font-size: 3.020833vw;
+        height: 3.020833vw;
+        line-height: 3.020833vw;
+        margin: 4.53125vw 0 1.71875vw 0;
+    }
+
+    .newproduct-safety-subtitle {
+        font-size: 1.041667vw;
+        line-height: 1.5625vw;
+        margin-bottom: 1.302083vw;
+    }
+
+    @media screen and (max-width: 750px) {
+        .newproduct-safety-img {
+            height: 85.3333vw;
+        }
+
+        .newproduct-charging {
+            margin-top: 4.53333vw;
+        }
+
+        .newproduct-safety-title {
+            font-size: 5.86667vw;
+            height: 5.86667vw;
+            line-height: 5.86667vw;
+            margin: 3.33333vw 0 2vw 0;
+        }
+
+        .newproduct-safety-subtitle {
+            font-size: 3.73333vw;
+            line-height: 4.53333vw;
+            margin-bottom: 3.33333vw;
+        }
+    }
+</style>
+<div class="newproduct-safety-container">
+  <div class="newproduct-safety relative">
+
+    <img
+        class="object-cover object-center relative newproduct-safety-img pc-block"
+        src="{{main_img | img_url:'1920x'}}"
+        alt="{{ main_img.alt | escape }}"
+    >
+
+    <img
+        class="object-cover object-center relative newproduct-safety-img mobile-block"
+        src="{{m_main_img | img_url:'750x'}}"
+        alt="{{ m_main_img.alt | escape }}"
+    >
+
+
+    <div class="absolute top-0 left-0 right-0 newproduct-safety-text text-center">
+      <div class="newproduct-safety-title font-bold">{{ section_title | escape }}</div>
+      <div class="newproduct-safety-subtitle main-container">{{ section_subtitle1 | escape }}</div>
+
+      {% if section_subtitle2 != blank %}
+        <div class="newproduct-safety-subtitle main-container">{{ section_subtitle2 | escape }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>

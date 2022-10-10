@@ -1,0 +1,1328 @@
+<script src="{{'swiper.min.js' | asset_url}}"></script>
+<style>
+.float-layer, .youtube-live-textimg, .youtube-live-video, .youtube-live-discover, .youtube-live-annoucement, .youtube-live-event, .youtube-live-products {display: none;}
+.jkd2022 {
+	--h1: 68px; --h3: 62px; --h6: 28px; --page-font: 60px; --answer-title: 34px; --answer-title-line-height: 1.2; --answer-item: 24px;
+	--section-bg: #1d1d1d; --gradient: linear-gradient(180deg, #C1D459 0%, #167761 100%);
+	background-color: var(--section-bg); user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
+}
+.jkd2022 h2, .jkd2022 .sub_title {color: var(--normal-color); transform: translateY(40px); opacity: 0; transition: all 0.5s;}
+.jkd2022 h1, .jkd2022 h2 {font-size: var(--h1); line-height: var(--h1);}
+.jkd2022 .sub_title {font-size: var(--h6); color: var(--weak-color2); line-height: 42px;}
+
+.jkd2022 .layer.start h2, .jkd2022 .layer.start .sub_title {transform: translateY(0); opacity: 1;}
+.jkd2022 .layer.start .sub_title {transition-delay: 0.3s;}
+
+
+.jkd2022 .j-button {
+  width: max-content; height: 70px; line-height: 70px; font-size: 36px; color: var(--normal-color); padding: 0 40px; margin: 0 auto;
+  background: var(--brand-color); border-radius: 35px; transform: translateY(40px); opacity: 0; transition: all 0.5s;
+}
+.jkd2022 button, .jkd2022 .j-button {font-family: "Anton-Regular";}
+@media screen and (max-width: 1380px) {
+  .jkd2022 {
+    --h1: 52px;
+  }
+}
+@media screen and (max-width: 1180px) {
+	.jkd2022 {
+    --h6: 24px;
+	}
+}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd2022 {
+		--answer-title: 24px; --answer-item: 18px;
+	}
+}
+@media screen and (max-width: 810px) {
+  .jkd2022 h1, .jkd2022 h2 {padding: 0 3%;}
+}
+@media screen and (max-width: 540px) {
+	.jkd2022 {
+		--h1: 24px; --h3: 18px; --h6: 14px; --page-font: 28px; --answer-title: 14px; --answer-title-line-height: 1; --answer-item: 12px;
+	}
+	.jkd2022 .sub_title {line-height: 24px;}
+	.jkd2022 .j-button {
+		height: 30px; line-height: 30px; font-size: 16px; padding: 0 20px; margin: 0 auto;
+	}
+}
+
+
+.jkd-banner {height: calc(100vh - var(--nav) - 34px); background: url('https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-banner.jpg?v=1650878927') no-repeat center; background-size: cover; margin-top: 0; position: relative;}
+.jkd-banner .layer-container {padding-left: 20%; padding-bottom: 14%;}
+.jkd-banner h1, .jkd-banner .sub_title, .jkd-banner button {opacity: 0; animation: contentIn-0-1 0.5s forwards linear;}
+
+.jkd-banner h1 {color: var(--brand-color);}
+.jkd-banner .sub_title {color: var(--brand-color); animation-delay: 0.2s;}
+.jkd-banner button {
+	height: 42px; line-height: 1; font-size: var(--banner-sub-title); color: var(--normal-color); padding: 0 20px; margin-top: 8vh;
+	border-radius: 21px; border: 2px solid var(--normal-color); animation-delay: 0.3s;
+}
+.jkd-banner::before {
+	content: ""; width: 100%; height: 100%; background: #000; opacity: 1; pointer-events: none;
+	position: absolute; top: 0; left: 0; z-index: 9;
+	animation: fadeIn-1-0 1s forwards linear;
+}
+@keyframes fadeIn-1-0 {
+  0%, 35% {opacity: 1;} 100% {opacity: 0;}
+}
+@keyframes contentIn-0-1 {
+  0%, 35% {opacity: 0; transform: translateY(20px);} 100% {opacity: 1; transform: translateY(0);}
+}
+@media screen and (max-width: 540px) {
+	.jkd-banner {background-image: url('https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-banner-m.jpg?v=1650878927');}
+	.jkd-banner .layer-container {height: 100%; padding: 20% 0 0; position: relative;}
+	.jkd-banner .sub_title {line-height: 1; margin-top: var(--gap-mini);}
+	.jkd-banner button {width: max-content; height: 24px; margin: 0 auto; position: absolute; left: 0; right: 0; bottom: 5vh;}
+}
+
+
+.jkd-preheat {
+	--ph: 990px; --cw: 100px; --ch: 85px; --colon-w: 70px;
+	height: var(--ph); background: var(--section-bg) url('https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-bg-3.png?v=1651422285') no-repeat center; background-size: cover; margin-top: 0;
+}
+.jkd-preheat .countdown {
+	font-size: var(--h1); line-height: var(--h1); font-weight: bold; color: var(--normal-color); display: inline-block;
+	transform: translateY(-42px);
+}
+.jkd-preheat .countdown i, .jkd-preheat .countdown span {width: var(--cw); float: left;}
+.jkd-preheat .countdown span {height: var(--ch); line-height: var(--ch); background: rgba(255,255,255,0.1); border-radius: 10px; position: relative;}
+.jkd-preheat .countdown span::before {
+	content: ""; width: 100%; height: 50%; background: rgba(255,255,255,0.06); border-top-left-radius: 10px; border-top-right-radius: 10px;
+	position: absolute; top: 0; left: 0;
+}
+.jkd-preheat .countdown span:not(._secs), .jkd-preheat .countdown i:not(:last-child) {margin-right: var(--colon-w);}
+.jkd-preheat .countdown span:not(._secs)::after {
+	content: ":"; width: 70px; height: 100%; line-height: 76px; text-align: center; font-size: var(--font-title);
+	position: absolute; top: 0; left: 100%;
+}
+.jkd-preheat .countdown i {height: 46px; line-height: 46px; font-size: var(--font-sub-title); color: var(--weak-color2);}
+
+.jkd-preheat .calendar {color: var(--normal-color); cursor: pointer; display: block;}
+.jkd-preheat .calendar span {display: block; margin: var(--gap) 0;}
+@media screen and (max-width: 810px) {
+  .jkd-preheat {background-image: url("https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-bg-m-2.jpg?v=1651060529");}
+}
+@media screen and (max-width: 540px) {
+	.jkd-preheat {
+		--ph: 100vh; --cw: 50px; --ch: 42px; --colon-w: 35px;
+	}
+	.jkd-preheat .countdown {transform: translateY(0); margin-top: var(--gap);}
+	.jkd-preheat .countdown span:not(._secs)::after {width: 35px; line-height: 35px;}
+	.jkd-preheat .countdown i {height: 28px; line-height: 28px; font-size: var(--font-small);}
+	.jkd-preheat .calendar {margin: 4vh 0;}
+}
+@media screen and (max-width: 360px) {
+	.jkd-preheat {
+		--colon-w: 20px;
+	}
+	.jkd-preheat .countdown span:not(._secs)::after {width: 20px; line-height: 35px;}
+}
+
+.jkd-survey {background-color: var(--regular-color); margin-top: 0;}
+.jkd-survey .ready {max-height: 100vh; opacity: 1; overflow: hidden; transition: max-height 0.5s, opacity 0.5s;}
+.jkd-survey .ready .sub_title {position: relative; z-index: 2;}
+.jkd-survey .ready figure {position: relative;}
+.jkd-survey .ready figure img {max-height: 75vh;}
+.jkd-survey .ready button {position: absolute; bottom: 10vh; left: 0; right: 0; z-index: 2;}
+.jkd-survey.start .ready button {transition-delay: 0.4s; transform: translateY(0); opacity: 1;}
+.jkd-survey .ready.destroy .sub_title, .jkd-survey .ready.destroy button {transform: translateY(100px); opacity: 0; pointer-events: none;}
+
+.jkd-survey .go {
+  width: 90%; height: 0; max-width: 1380px; background: var(--gradient); padding: 0; margin: 0 auto; overflow: hidden;
+  display: flex; display: -webkit-flex; justify-content: space-between; transform: translateY(100px); opacity: 0; pointer-events: none;
+  transition: transform 0.5s 0.6s, opacity 0.5s 0.6s;
+}
+.jkd-survey .ready.action {max-height: 0; opacity: 0; pointer-events: none;}
+.jkd-survey .ready.action ~ .go {height: auto; padding: 15px; margin-top: var(--distance-content); transform: translateY(0); opacity: 1; pointer-events: all;}
+@media screen and (min-width: 1280px) and (max-width: 1400px) {
+  .jkd-survey .ready.action ~ .go {min-height: 650px;}
+}
+@media screen and (max-width: 1180px) {
+	.jkd-survey .go {width: 95%;}
+	.jkd-survey .ready.action ~ .go {padding: 10px;}
+}
+@media screen and (max-width: 810px) {
+	.jkd-survey .go {flex-wrap: wrap;}
+  .jkd-survey .ready figure img {max-height: auto;}
+  .jkd-survey .ready button {bottom: 70px;}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey .ready figure {margin-top: var(--distance-content); padding-bottom: calc(30px + 2vh);}
+	.jkd-survey .ready button {bottom: 50px;}
+	.jkd-survey .go {width: 100%;}
+	.jkd-survey .ready.action ~ .go {padding: 5px;}
+}
+
+.jkd-survey ._left {width: calc(65% - 15px); background: url(https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-bg-0.png?v=1650878927) no-repeat; background-size: cover; position: relative;}
+.jkd-survey ._left .countdown, .jkd-survey ._left .page {position: absolute; z-index: 9; opacity: 1; transition: all 0.5s;}
+.jkd-survey ._left.not_started .countdown, .jkd-survey ._left.not_started .page {opacity: 0; visibility: hidden; pointer-events: none;}
+.jkd-survey ._left .countdown {font-size: var(--banner-sub-title); color: var(--weak-color2); right: 5%; top: 5%;}
+.jkd-survey ._left .countdown[data-second="0"] {opacity: 0;}
+@media screen and (max-width: 1180px) {
+	.jkd-survey ._left {width: calc(65% - 10px);}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey ._left .countdown {right: 3%; top: 1%;}
+}
+
+.jkd-survey ._left .page {width: 90%; font-size: var(--font-sub-title); line-height: var(--font-sub-title); color: var(--weak-color); display: flex; display: -webkit-flex; align-items: center; left: 5%; bottom: 5%;}
+.jkd-survey ._left .page.end {transform: translateY(100px); opacity: 0; pointer-events: none;}
+.jkd-survey ._left .page i {font-size: var(--page-font); color: var(--normal-color); transform: translateY(-20px);}
+.jkd-survey ._left .page em {font-size: var(--page-font); margin: 0 5px; transform: translateY(-10px);}
+.jkd-survey ._left .page small {flex: auto;}
+.jkd-survey ._left .page button {font-size: var(--banner-sub-title); color: var(--normal-color); text-align: right; position: relative;}
+.jkd-survey ._left .page button::before {
+	content: ""; width: 120%; height: 120%; border: var(--border-color-link); border-radius: 10px; filter: blur(1px); opacity: 0; transition: opacity 0.3s;
+	box-shadow: 0 0 10px rgba(255,255,255,0.3); position: absolute; left: -15%; top: -10%;
+}
+.jkd-survey ._left .page button:hover::before {opacity: 1;}
+.jkd-survey ._left .page button img {margin-left: var(--gap-mini);}
+
+.jkd-survey ._left .isCorrect {
+	width: 120px; height: 120px; pointer-events: none;
+	position: absolute; right: 8%; top: 8%; z-index: 9;
+}
+.jkd-survey ._left .isCorrect img {width: 100%; opacity: 0; transform: scale(0) rotateY(0); -webkit-transform: scale(0) rotateY(0); display: none;}
+.jkd-survey ._left .isCorrect.yes img._correct, .jkd-survey ._left .isCorrect.no img._error {display: block; animation: showSmile 2s linear forwards; -webkit-animation: showSmile 2s 0.5s linear forwards;}
+@-webkit-keyframes showSmile {
+	0 {opacity: 0; -webkit-transform: scale(0) rotateY(0);}
+	20% {opacity: 1; -webkit-transform: scale(1.2) rotateY(360deg);}
+	30%, 80% {opacity: 1; -webkit-transform: scale(1) rotateY(360deg);}
+	100% {opacity: 0; -webkit-transform: scale(0) rotateY(360deg);}
+}
+@keyframes showSmile {
+	0 {opacity: 0; transform: scale(0) rotateY(0);}
+	20% {opacity: 1; transform: scale(1.2) rotateY(360deg);}
+	30%, 80% {opacity: 1; transform: scale(1) rotateY(360deg);}
+	100% {opacity: 0; transform: scale(0) rotateY(360deg);}
+}
+@media screen and (max-width: 810px) {
+	.jkd-survey ._left {width: 100%; height: calc(100vh - calc(var(--nav) + 34px)); overflow: hidden;}
+}
+@media screen and (max-width: 540px) {
+  .jkd-survey ._left {height: 460px;}
+  .jkd-survey ._left .isCorrect {width: 80px; height: 80px;}
+	.y-checkbox span {line-height: 1;}
+}
+
+
+.jkd-survey .answer {
+	width: 100%; height: 100%; flex-direction: column; color: var(--normal-color); padding: 0 5%; pointer-events: none;
+	position: absolute; top: 100%; left: 0; bottom: 0; transition: top 0.3s;
+}
+.jkd-survey .not_started .answer {padding: 0 10%;}
+@media screen and (max-width: 540px) {
+	.jkd-survey .not_started .answer {padding: 0 5%;}
+}
+
+.jkd-survey [class*='fade'] {transform: translateY(100px); opacity: 0; pointer-events: none; transition: all 0.5s;}
+.jkd-survey .fadein-1 {transition-delay: 0.3s;}
+.jkd-survey .fadein-2 {transition-delay: 0.35s;}
+.jkd-survey .fadein-3 {transition-delay: 0.4s;}
+.jkd-survey .fadein-4 {transition-delay: 0.45s;}
+.jkd-survey .fadein-5 {transition-delay: 0.5s;}
+.jkd-survey .fadein-6 {transition-delay: 0.55s;}
+.jkd-survey .fadein-7 {transition-delay: 0.6s;}
+.jkd-survey .fadein-8 {transition-delay: 0.65s;}
+.jkd-survey .fadein-9 {transition-delay: 0.7s;}
+.jkd-survey .answer.in {top: 0; pointer-events: all;}
+.jkd-survey .answer.in [class*='fade'] {transform: translateY(0); opacity: 1; pointer-events: all;}
+
+.jkd-survey .answer ._input {width: 90%; max-width: 440px; height: 50px; background: var(--gradient); border-radius: 25px; overflow: hidden; padding: 2px; margin: 0;}
+.jkd-survey .answer ._input:first-child {margin-bottom: var(--gap);}
+.jkd-survey .answer ._input input {width: 100%; height: 100%; line-height: 46px; font-size: var(--font-sub-title); color: var(--normal-color); text-align: center; border-radius: 25px; background: var(--regular-color);}
+
+.jkd-survey .answer dl {width: 100%; text-align: left; font-size: var(--font-sub-title); line-height: var(--sub-title-line-height);}
+.jkd-survey .a-0 a {color: var(--normal-color); text-decoration: underline; position: relative; z-index: 2;}
+.jkd-survey .a-0 dt {margin: 30px 0;}
+.jkd-survey .a-0 dt a {margin: 0 5px;}
+.jkd-survey .a-0 button {
+	width: 260px; height: 70px; font-size: calc(var(--font-title) - 4px); color: var(--normal-color); background: var(--gradient);
+	border-radius: 35px; overflow: hidden; margin-top: var(--distance-content);
+}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd-survey .answer dl {font-size: var(--font-normal); line-height: 18px;}
+	.jkd-survey .a-0 dt {margin: 3% 0;}
+	.jkd-survey .a-0 button {margin-top: var(--gap);}
+	.y-checkbox {margin-bottom: 0;}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey .answer.a-0 dl {font-size: var(--font-mini);}
+	.jkd-survey .a-0 dt {margin: 10px 0;}
+	.jkd-survey .a-0 button {width: 140px; height: 32px; margin-top: var(--gap);}
+}
+.jkd-survey button {filter: grayscale(0) brightness(1); transition: all 0.5s;}
+.jkd-survey button:disabled {pointer-events: none; filter: grayscale(1) brightness(0.3);}
+
+.jkd-survey .answer:not(.a-0) {padding-top: 10%; padding-bottom: 10%;}
+.jkd-survey .answer:not(.a-0) dl {display: flex; display: -webkit-flex; flex-wrap: wrap;}
+.jkd-survey .answer:not(.a-0) dt {width: 100%; font-size: var(--answer-title); line-height: var(--answer-title-line-height); margin-bottom: var(--distance-content);}
+.jkd-survey .answer:not(.a-0) dd {font-size: var(--answer-item); flex: 50% 0; margin-bottom: var(--distance-top); cursor: pointer;}
+.jkd-survey .answer:not(.a-0) dd span {width: 40px; height: 40px; text-indent: 6px; position: relative; display: inline-flex; justify-content: center; align-items: center; transition: all 0.5s;}
+.jkd-survey .answer:not(.a-0) dd span::after {content: ""; width: 100%; height: 100%; border-radius: 50%; position: absolute; left: 0; top: 0; z-index: -1;}
+.jkd-survey .answer:not(.a-0) dd.on span::after {border: 2px solid var(--brand-color); transform: scale(0.9);}
+.jkd-survey .answer:not(.a-0) dd.correct span::after {background: var(--brand-color); filter: blur(4px);}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd-survey .answer:not(.a-0) {padding-top: 5%; padding-bottom: 5%;}
+	.jkd-survey .answer:not(.a-0) dt {margin-bottom: var(--distance-top);}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey .answer:not(.a-0) dd {margin-bottom: 0; flex: 100% 0;}
+}
+
+
+.jkd-survey .answer .range {width: 90%; height: 80px; margin: 0 auto; position: relative;}
+.jkd-survey .answer .range::after, .jkd-survey .answer .range::before, .jkd-survey .answer .range ul li.correct::after {content: ""; position: absolute;}
+.jkd-survey .answer .range::before, .jkd-survey .answer .range ul li.correct::after {width: 40px; height: 40px; background: var(--brand-color); border-radius: 50%; filter: blur(4px);}
+
+.jkd-survey .answer .range::after {width: 100%; height: 4px; background: var(--brand-color); left: 0; top: 18px; z-index: 0; opacity: 0.6;}
+.jkd-survey .answer .range::before {left: calc(var(--index) * 20% - 10% - 20px); z-index: 2; transition: left 0.5s 0.3s;}
+
+.jkd-survey .answer .range ul {width: 100%; height: 80px; position: relative; z-index: 4;}
+.jkd-survey .answer .range ul li {width: 20%; height: 100%; font-size: var(--banner-sub-title); cursor: pointer; display: flex; display: -webkit-flex; justify-content: center; align-items: flex-end; float: left; position: relative;}
+.jkd-survey .answer .range ul li.correct::after {z-index: -1;}
+@media screen and (max-width: 540px) {
+	.jkd-survey .answer .range ul li {line-height: 3;}
+}
+
+.jkd-survey .answer .tree {width: 100%; height: 124px; display: flex; display: -webkit-flex; justify-content: space-between; position: relative;}
+.jkd-survey .answer .tree li {cursor: pointer; opacity: 0.4; transition: opacity 0.3s;}
+.jkd-survey .answer .tree li.on {opacity: 1;}
+
+.jkd-survey .completely h3 {font-size: var(--font-title); line-height: var(--title-line-height); margin-bottom: var(--distance-top);}
+.jkd-survey .completely h4 {font-size: var(--answer-item); color: #BCD05B;}
+.jkd-survey .completely .share, .jkd-survey .completely .again {font-size: var(--answer-item); line-height: 1;}
+.jkd-survey .completely .share {margin-right: var(--gap-mini);}
+.jkd-survey .completely .again {color: #679A78; cursor: pointer; text-align: right; flex: 40% 0;}
+@media screen and (max-width: 810px) {
+	.jkd-survey .completely .again {flex: 40% 0;}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey .completely .share, .jkd-survey .completely .again {font-size: 14px;}
+	.jkd-survey .completely .again {flex: 25% 0;}
+}
+
+.jkd-survey .questions {text-align: left; color: var(--weak-color2); margin-top: 5%; opacity: 0; position: relative; transform: translateY(100px); transition: all 0.5s 0.5s;}
+.jkd-survey .questions.show {opacity: 1; transform: translateY(0);}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd-survey .questions {margin-top: 1%;}
+}
+@media screen and (max-width: 540px) {
+	.jkd-survey .questions {font-size: 14px;}
+}
+
+.jkd-survey .a-8 .questions svg {fill: #8f8f8f; margin-left: var(--gap-mini); transform: translateY(3px);}
+.jkd-survey .a-8 .questions i {cursor: pointer;}
+.jkd-survey .a-8 .questions input {width: 100%; opacity: 0;}
+.jkd-survey .a-8 .questions span {
+	font-size: var(--font-sub-title); display: block; border: 1px solid #979797; border-radius: 10px; margin-top: var(--gap); padding: var(--gap); opacity: 0;
+	transform: translateY(100px); transition: all 0.3s;
+}
+.jkd-survey .a-8 .questions input[type=checkbox]:checked ~ span {opacity: 1; transform: translateY(0);}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd-survey .a-8 .questions span {padding: var(--gap-mini);}
+}
+
+.jkd-survey ._right {width: 35%; position: relative; overflow: hidden;}
+.jkd-survey ._right .step, .jkd-survey ._right .basemap {width: auto; height: auto; max-height: 100%;}
+.jkd-survey ._right .step {margin: auto; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0; transition: opacity 0.5s 1s;}
+.jkd-survey ._right .map {height: 100%; display: flex; display: -webkit-flex; align-items: center; transition: all 0.5s ease-in-out;}
+.jkd-survey ._right .map::before {transition: all 0.5s;}
+.jkd-survey ._right .map .car {width: 70px; position: absolute; z-index: 9; transition: all 2s 3.5s;}
+.jkd-survey ._right.progress .map::before {
+	content: ""; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
+	position: absolute; top: 0; left: 0; z-index: 0;
+}
+@media screen and (max-width: 810px) {
+	.jkd-survey ._right {
+		width: calc(100% - 10px); height: calc(100vh - calc(var(--nav) + 34px)); background: var(--gradient); opacity: 0; pointer-events: none;
+		position: absolute; top: 100%; left: 5px; z-index: 1; transition: all 0.3s;
+	}
+	.jkd-survey ._right[data-up="up"] {pointer-events: all; opacity: 1; top: 5px;}
+	.jkd-survey ._right .map {transition-delay: 0.5s;}
+	.jkd-survey ._right .basemap {margin: auto; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1;}
+	.jkd-survey ._right.progress .map::before {z-index: 2;}
+	.jkd-survey ._right .step {z-index: 3;}
+}
+@media screen and (max-width: 540px) {
+  .jkd-survey ._right {height: 460px;}
+}
+/*
+.map[data-step="1"] {transform: scale(1.5) translate(0, -16%);}
+.map[data-step="2"] {transform: scale(1.5) translate(-2%, -16%);}
+.map[data-step="3"] {transform: scale(1.5) translate(-10%, -6%);}
+.map[data-step="4"] {transform: scale(1.5) translate(10%, -8%);}
+.map[data-step="5"] {transform: scale(1.5) translate(10%, 2%);}
+.map[data-step="6"] {transform: scale(1.5) translate(4%, 6%);}
+.map[data-step="7"] {transform: scale(1.5) translate(-2%, 16%);}
+.map[data-step="8"] {transform: scale(1.5) translate(-1%, 16.5%);}
+*/
+.map[data-step="1"], .map[data-step="2"], .map[data-step="3"], .map[data-step="4"], .map[data-step="5"], .map[data-step="6"], .map[data-step="7"], .map[data-step="8"] {
+	transform: scale(1.2);
+}
+
+.map .car {right: 5%; bottom: 4%;}
+.map[data-car="1"] .car {right: 25%; bottom: 10%;}
+.map[data-car="2"] .car {right: 34%; bottom: 25%;}
+.map[data-car="3"] .car, .map[data-car="4"] .car, .map[data-car="5"] .car {right: 34%; bottom: 38%;}
+.map[data-car="6"] .car {right: 40%; bottom: 50%;}
+.map[data-car="7"] .car {right: 40%; bottom: 72%;}
+.map[data-car="8"] .car, .map[data-car="9"] .car {right: 42%; bottom: 82%;}
+
+.jkd-survey ._right.progress .map[data-step="9"]::before {background: transparent;}
+
+
+.jkd-features {background: linear-gradient(0deg, #2E2E2E 0%, #000000 99%); margin-top: 0;}
+.jkd-features .lock-slider {
+	width: 100%; height: calc(100vh - var(--nav) - 34px); min-height: 710px; margin: 0 auto; padding: var(--distance-content) var(--gap);
+	background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;
+}
+.jkd-features .lock-slider span {margin: 0 auto; display: none;}
+.jkd-features .lock-slider span img {margin: 5vh 0 var(--gap); display: inline-block;}
+.jkd-features .lock-slider span em {line-height: 1; font-size: 36px; color: var(--weak-color2); padding: 10px 40px; border: 1px var(--weak-color2) solid; border-radius: 40px; display: inline-block;}
+.jkd-features .lock-slider.unlock span {display: inline-block;}
+
+.jkd-features .slick-prev, .jkd-features .slick-next {margin: 0;}
+.jkd-features .slick-prev::before, .jkd-features .slick-next::before {
+	--border: 2px var(--normal-color) solid;
+	content: ""; width: 36px; height: 36px; display: inline-block; border-bottom: var(--border);
+}
+.jkd-features .slick-prev::before {border-left: var(--border); transform: rotate(45deg);}
+.jkd-features .slick-next::before {border-right: var(--border); transform: rotate(-45deg);}
+.jkd-features .slick-prev {left: calc((100% - var(--center-width)) / 2 + 40px);}
+.jkd-features .slick-next {right: calc((100% - var(--center-width)) / 2 + 40px);}
+
+@media screen and (max-width: 1400px) {
+  .jkd-features .lock-slider {min-height: 680px;}
+  .jkd-features .lock-slider span img {width: 120px;}
+  .jkd-features .slick-prev {left: 10px;}
+  .jkd-features .slick-next {right: 10px;}
+}
+@media screen and (max-width: 540px) {
+	.jkd-features .lock-slider {min-height: auto; max-height: 610px;}
+  .jkd-features .lock-slider.unlock {padding-top: 10%;}
+  .jkd-features .lock-slider.unlock .sub_title {margin: 4vh 0;}
+  .jkd-features .lock-slider span img {width: 70px;}
+  .jkd-features .lock-slider span em {font-size: 14px; padding: 5px 10px;}
+	.jkd-features .slick-prev::before, .jkd-features .slick-next::before {width: 24px; height: 24px;}
+	.jkd-features .slick-prev {left: 20px;}
+	.jkd-features .slick-next {right: 20px;}
+}
+
+
+.jackery-video {margin-top: 0;}
+
+.jkd-categories {
+	height: 100vh; margin-top: 0; padding-top: 9vh;
+	background: url('https://cdn.shopify.com/s/files/1/0970/9262/files/jd-categories.jpg?v=1648032353') no-repeat center; background-size: cover;
+}
+.jkd-categories a.j-button {margin-top: var(--distance-content); display: inline-block;}
+.jkd-categories.start a {transition-delay: 0.4s; transform: translateY(0); opacity: 1;}
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+	.jkd-categories {padding-top: 50px;}
+  .jkd-categories a.j-button {margin-top: var(--distance-top);}
+}
+@media screen and (max-width: 810px) {
+  .jkd-categories {height: 800px; background-image: url('https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-categories-m.jpg?v=1651315035');}
+}
+@media screen and (max-width: 540px) {
+	.jkd-categories {max-height: 420px; padding-top: var(--distance-content);}
+  .jkd-categories a.j-button {margin-top: var(--distance-top);}
+}
+
+
+
+.jackeryShare {
+	--size: 32px; --iconSize: 18px; --color: #FF5000;
+	width: var(--size); height: var(--size); overflow: hidden;
+}
+.jackeryShare * {box-sizing: border-box;}
+.jackeryShare ul {margin: 0; padding: 0;}
+
+.jackeryShare.__embed {
+	width: 80%; margin: var(--distance-top); display: flex; display: -webkit-flex; justify-content: flex-end; align-items: center;
+	position: absolute; bottom: 10%;
+}
+.jackeryShare.__embed ul {display: flex; display: -webkit-flex; justify-content: center;}
+.jackeryShare.__embed li {width: var(--size); height: var(--size); margin: 0 var(--gap-mini); border-radius: 50%; overflow: hidden;}
+.jackeryShare.__embed li a {width: 100%; height: inherit; color: #fff; display: flex; display: -webkit-flex; justify-content: center; align-items: center; transition: all 0.3s;}
+.jackeryShare.__embed li a.icon-Facebook {background: #3b579d;}
+.jackeryShare.__embed li a.icon-twitter {background: #6caddf;}
+
+.jackeryShare .before {width: var(--size); height: var(--size); fill: var(--color); padding: calc((var(--size) - var(--iconSize)) / 2); background: #fff; cursor: pointer;}
+.jackeryShare li {list-style-type: none;}
+.jackeryShare li svg {width: var(--iconSize); height: var(--iconSize); fill: currentColor;}
+</style>
+
+<section class="layer jkd-banner flexCenter">
+  <div class="layer-container">
+    <h1>{{ section.settings.main_title }}</h1>
+    <p class="sub_title">{{ section.settings.seconds_title }}</p>
+    <button type="button">{{ section.settings.datetime }}</button>
+  </div>
+</section>
+
+<section class="layer jkd-preheat">
+  <div class="layer-container">
+    <p class="countdown">
+      <span class="_days">07</span>
+      <span class="_hours">24</span>
+      <span class="_mins">00</span>
+      <span class="_secs">00</span>
+      <br>
+      <i>DAYS</i><i>HOURS</i><i>MINS</i><i>SECS</i>
+    </p>
+    <br />
+    <a class="calendar" href="#">
+      <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-google-calendar.png?v=1650878927" alt="MARK YOUT CALENDAR" />
+      <br />
+      <span>{{ section.settings.calendar_tips }}</span>
+    </a>
+    <h2>{{ section.settings.countdown_title }}</h2>
+    {{ section.settings.countdown_details | replace: "<p>", "<p class='sub_title'>" }}
+  </div>
+</section>
+
+<section class="layer jkd-survey distance">
+  <h2>{{ section.settings.answer_title }}</h2>
+
+  <div class="ready flexCenter">
+    {{ section.settings.answer_sub_title | replace: "<p>", "<p class='sub_title'>" }}
+    <figure>
+      <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-gift.jpg?v=1650878927" alt="Jackery Day's" />
+      <button class="j-button" type="button">{{ section.settings.answer_button }}</button>
+    </figure>
+  </div>
+  
+  <div class="go">
+    <div class="_left not_started">
+      <i class="countdown">10S</i>
+      <div class="answer a-0 flexCenter in">
+        <label class="username _input fadein-1"><input type="text" placeholder="{{ section.settings.question_enter_username }}" /></label>
+        <label class="email _input fadein-2"><input type="email" placeholder="{{ section.settings.question_enter_email }}" /></label>
+        
+        <dl>
+          <dt class="fadein-3">
+            <label class="y-checkbox">
+              <input type="checkbox" />
+              {{ section.settings.question_policy | replace: "<p>", "<span class='text'>" | replace: "</p>", "</span>" }}
+            </label>
+          </dt>
+        </dl>
+        <dl>
+          <dd class="fadein-4">1. {{ section.settings.question_policy_1 }}</dd>
+          <dd class="fadein-5">2. {{ section.settings.question_policy_2 }}</dd>
+          <dd class="fadein-6">3. {{ section.settings.question_policy_3 }}</dd>
+          {{ section.settings.question_policy_4 | replace: "<p>", "<dd class='fadein-7'>4. " | replace: "</p>", "</dd>" }}
+          <dd class="fadein-8">5. {{ section.settings.question_policy_5 }}</dd>
+        </dl>
+        
+        <button type="button" disabled>{{ section.settings.answer_ready }}</button>
+      </div>
+      
+      <div class="isCorrect">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-answer-correct.png?v=1650878927" class="_correct" alt="correct" />
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-answer-error.png?v=1650878927" class="_error" alt="error" />
+      </div>
+      
+      <div class="answer a-1">
+        <dl>
+          <dt class="fadein-1">1. {{ section.settings.q1_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q1_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q1_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q1_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q1_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q1_tips }}</p>
+      </div>
+      
+      <div class="answer a-2">
+        <dl>
+          <dt class="fadein-1">2. {{ section.settings.q2_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q2_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q2_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q2_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q2_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q2_tips }}</p>
+      </div>
+      
+      <div class="answer a-3">
+        <dl>
+          <dt class="fadein-1">3. {{ section.settings.q3_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q3_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q3_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q3_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q3_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q3_tips }}</p>
+      </div>
+      
+      <div class="answer a-4">
+        <dl>
+          <dt class="fadein-1">4. {{ section.settings.q4_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q4_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q4_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q4_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q4_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q4_tips }}</p>
+      </div>
+      
+      <div class="answer a-5">
+        <dl>
+          <dt class="fadein-1">5. {{ section.settings.q5_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q5_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q5_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q5_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q5_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q5_tips }}</p>
+      </div>
+      
+      <div class="answer a-6">
+        <dl>
+          <dt class="fadein-1">6. {{ section.settings.q6_title }}</dt>
+          <dd class="fadein-2"><span>A.</span> {{ section.settings.q6_a }}</dd>
+          <dd class="fadein-3"><span>B.</span> {{ section.settings.q6_b }}</dd>
+          <dd class="fadein-4"><span>C.</span> {{ section.settings.q6_c }}</dd>
+          <dd class="fadein-5"><span>D.</span> {{ section.settings.q6_d }}</dd>
+        </dl>
+        <p class="questions">{{ section.settings.q6_tips }}</p>
+      </div>
+      
+      <div class="answer a-7">
+        <dl>
+          <dt class="fadein-1">7. {{ section.settings.q7_title }}</dt>
+        </dl>
+        <figure class="range fadein-2" style="--index: 1;">
+          <ul>
+            <li>0</li><li>0.2</li><li>0.5</li><li>0.8</li><li>1</li>
+          </ul>
+        </figure>
+        <p class="questions">{{ section.settings.q7_tips }}</p>
+      </div>
+      
+      <div class="answer a-8">
+        <dl>
+          <dt class="fadein-1">8. {{ section.settings.q8_title }}</dt>
+        </dl>
+        <ul class="tree fadein-2">
+          <li><img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-tree.png?v=1650878927" alt="Jackery Green energy 1" /></li>
+          <li><img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-tree.png?v=1650878927" alt="Jackery Green energy 2" /></li>
+          <li><img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-tree.png?v=1650878927" alt="Jackery Green energy 3" /></li>
+          <li><img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-tree.png?v=1650878927" alt="Jackery Green energy 4" /></li>
+          <li><img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-tree.png?v=1650878927" alt="Jackery Green energy 5" /></li>
+        </ul>
+        <label class="questions">
+          <input type="checkbox" name="a-8-tips" />
+          <i>
+            {{ section.settings.q8_survey }}
+            <svg viewBox="0 0 1024 1024" width="14"><path d="M512 0C230.4 0 0 227.2 0 512c0 281.6 230.4 512 512 512 284.8 0 512-227.2 512-512S796.8 0 512 0z m0 819.2c-28.8 0-51.2-22.4-51.2-51.2s22.4-51.2 51.2-51.2c28.8 0 51.2 22.4 51.2 51.2 3.2 28.8-22.4 51.2-51.2 51.2z m54.4-220.8c0 28.8-22.4 51.2-51.2 51.2-28.8 0-51.2-22.4-51.2-51.2V256c0-28.8 22.4-51.2 51.2-51.2 28.8 0 51.2 22.4 51.2 51.2v342.4z"></path></svg>
+          </i>
+          <span>{{ section.settings.q8_tips }}</span>
+        </label>
+      </div>
+      
+      <div class="answer completely">
+        <h3>{{ section.settings.Completing_title }}</h3>
+        <h4>{{ section.settings.Completing_tips }}</h4>
+        
+        <div class="jackeryShare __embed">
+          <p class="share">{{ section.settings.q99_share }}</p>
+          <ul>
+            <li>
+              <a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.jackery.com&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=Jackery%20Day%202022%20-%20New%20Product%20Launch%20Event&&url=https%3A%2F%2Fwww.jackery.com%2Fpages%2Fjackery-day&meta=twitter%3Aurl%2Chttps%3A%2F%2Fwww.jackery.com%2Fpages%2Fjackery-day%2Ctwitter%3Asite%2Chttps%3A%2F%2Fwww.jackery.com%2Fpages%2Fjackery-day%2Ctwitter%3Atitle%2CJackery%20Day%202022%20-%20New%20Product%20Launch%20Event%2Ctwitter%3Adescription%2CJackery%27s%20launching%20its%20brand%20new%20product%20on%20May%2012th%208%20P.M.%20PDT%20-%20mark%20the%20date%20in%20your%20diaries!%20Also%20we%27ll%20have%20a%20fantastic%20new%20%23JackeryDay%20survey%20-%20answer%20all%20questions%2C%20and%20have%20the%20chance%20to%20win%20Jackery%27s%20MEGA-valued%20product%20of%20the%20year.%2Ctwitter%3Aimage%2Chttps%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0970%2F9262%2Ffiles%2Fjkd-share-social-image.jpg%3Fv%3D1651140465%2Ctwitter%3Acard%2Csummary_large_image" class="icon-twitter" target="_blank">
+                <svg class="icon" viewBox="0 0 1024 1024"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="5019"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.jackery.com%2Fpages%2Fjackery-day%3Fmeta%3Dog%3Aurl%2Chttps%3A%2F%2Fwww.jackery.com%2Fpages%2Fjackery-day%2Cog%3Atitle%2CJackery%20Day%202022%20-%20New%20Product%20Launch%20Event%2Cog%3Adescription%2CJackery%27s%20launching%20its%20brand%20new%20product%20on%20May%2012th%208%20P.M.%20PDT%20-%20mark%20the%20date%20in%20your%20diaries!%20Also%20we%27ll%20have%20a%20fantastic%20new%20%23JackeryDay%20survey%20-%20answer%20all%20questions%2C%20and%20have%20the%20chance%20to%20win%20Jackery%27s%20MEGA-valued%20product%20of%20the%20year.%2Cog%3Aimage%2Chttps%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0970%2F9262%2Ffiles%2Fjkd-share-social-image.jpg%3Fv%3D1651140465%2Cog%3Atype%2Cwebsite" class="icon-Facebook" target="_blank">
+                <svg class="icon" viewBox="0 0 1024 1024"><path d="M725.333333 149.333333a21.333333 21.333333 0 0 0-21.333333-21.333333H597.333333a203.52 203.52 0 0 0-213.333333 192v115.2H277.333333a21.333333 21.333333 0 0 0-21.333333 21.333333v110.933334a21.333333 21.333333 0 0 0 21.333333 21.333333H384v285.866667a21.333333 21.333333 0 0 0 21.333333 21.333333h128a21.333333 21.333333 0 0 0 21.333334-21.333333v-285.866667h111.786666a21.333333 21.333333 0 0 0 20.906667-15.786667l30.72-110.933333a21.333333 21.333333 0 0 0-20.48-26.88H554.666667V320a42.666667 42.666667 0 0 1 42.666666-38.4h106.666667a21.333333 21.333333 0 0 0 21.333333-21.333333z" p-id="4235"></path></svg>
+              </a>
+            </li>
+          </ul>
+          <p class="again">{{ section.settings.q99_try }}</p>
+        </div>
+      </div>
+      
+      <p class="page">
+        <i>01</i><em>/</em><span>08</span>
+        <small></small>
+        <button disabled>{{ section.settings.q99_next }}<img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-next.png?v=1650878927" alt="next" /></button>
+      </p>
+    </div>
+    <div class="_right progress">
+      <div class="map">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-8.png?v=1650878927" class="step" alt="progress-8">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-7.png?v=1650878927" class="step" alt="progress-7">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-6.png?v=1650878927" class="step" alt="progress-6">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-5.png?v=1650878927" class="step" alt="progress-5">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-4.png?v=1650878927" class="step" alt="progress-4">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-3.png?v=1650878927" class="step" alt="progress-3">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-2.png?v=1650878927" class="step" alt="progress-2">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-1.png?v=1650878927" class="step" alt="progress-1">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-bg.png?v=1650878927" class="basemap" alt="progress-background">
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-survey-car.png?v=1650878927" class="car" alt="processes-car">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="layer jkd-features">
+  <div class="lock-slider unlock">
+    <h2>{{ section.settings.features_title }}</h2>
+    {{ section.settings.features_sub_title | replace: "<p>", "<p class='sub_title'>" }}
+    <span>
+      <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-lock.png?v=1650878927" alt="unlock" />
+      <br>
+      <em>{{ section.settings.selling_1_time }}</em>
+    </span>
+  </div>
+  <div class="lock-slider unlock">
+    <h2>{{ section.settings.features_title }}</h2>
+    {{ section.settings.features_sub_title | replace: "<p>", "<p class='sub_title'>" }}
+    <span>
+      <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/jkd-lock.png?v=1650878927" alt="unlock" />
+      <br>
+      <em>{{ section.settings.selling_2_time }}</em>
+    </span>
+  </div>
+</section>
+
+<section class="layer jackery-video">
+  <video loop muted autoplay x-webkit-airplay='true' playsinline webkit-playsinline='true' x5-video-player-type='h5'><source src='{{ section.settings.desktop_video }}' type='video/mp4'></video>
+</section>
+
+<section class="layer jkd-categories">
+  <div class="layer-container">
+    <h2>{{ section.settings.category_title }}</h2>
+    <a href="{{ section.settings.category_url }}" class="j-button" type="button">{{ section.settings.category_button }}</a>
+  </div>
+</section>
+
+<script>
+window.addEventListener("scroll", function() {
+  let top = window.pageYOffset, layers = document.querySelectorAll(".layer"), main = document.querySelector("main");
+
+  // response for content
+  layers.forEach(item => {
+    if (top + window.innerHeight / 2 >= main.offsetTop + item.offsetTop) {
+      !item.classList.contains("start") && item.classList.add("start")
+    } else {
+      item.classList.remove("start")
+    }
+  })
+})
+
+// model unlock
+document.addEventListener('DOMContentLoaded', function() {
+  let timer = null, second = 10, step = 0, active = true, activeTimer = null, token = null,
+    page = _$$(".jkd-survey .page i"),
+    next = _$$(".jkd-survey .page button"),
+    isCorrect = _$$(".jkd-survey .isCorrect"),
+    username = _$$(".jkd-survey .answer .username input"),
+    email = _$$(".jkd-survey .answer .email input"),
+    agreed = _$$(".jkd-survey .y-checkbox input"),
+    start = _$$(".jkd-survey .a-0 button"),
+    answer = $all(".jkd-survey .answer"),
+    countdown = _$$(".jkd-survey .countdown"),
+    mapBody = _$$(".jkd-survey ._right"),
+    map = _$$(".jkd-survey .map"),
+    again = _$$(".jkd-survey .completely .again"),
+    _correct = {1: 1, 2: 2, 3: 4, 4: 2, 5: 3, 6: null, 7: 5, 8: null},
+    _user_answer = {};
+
+  const countdowns = () => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      if (second > 0) {
+        second--;
+        countdown.innerText = second + 'S'
+      } else {
+        clearCountdowns()
+      }
+    }, 1000)
+  }
+  // destroy even, show correct answer and information 
+  const clearCountdowns = () => {
+    let _step = step - 1, arr;
+    switch(_step) {
+      case 1: case 2: case 3: case 4: case 5: case 6:
+        arr = $all(`.jkd-survey .a-${step-1} dd`);
+        break;
+      case 7: case 8:
+        arr = $all(`.jkd-survey .a-${step-1} li`);
+        break;
+      default: break;
+    }
+    // click destroy all event before
+    // question 6 if select answer, just hide the tips;
+    if (_step === 6) {
+      $all('.jkd-survey .a-6 dd.on').length > 0 && arr.forEach(ele => ele.onclick = null)
+    } else {
+      arr && arr.length && arr.forEach(ele => ele.onclick = null)
+    }
+    
+    correctAnswers(arr, _$$(`.jkd-survey .a-${step-1} .questions`));
+    
+    countdown.dataset.second = 0;
+    clearInterval(timer)
+  }
+
+  const mapStep = () => {
+    let _step = step - 1;
+    map.dataset.step = map.dataset.car = _step;
+    mapBody.dataset.up = "up";
+    setTimeout(() => { mapBody.dataset.up = "" }, 5500);
+    
+    console.log("mapStep", _step);
+    if (_step > 8) {
+      map.dataset.step = map.dataset.car = 9
+    } else {
+      _$$(`.step[alt="progress-${_step}"]`).style.opacity = 1;
+      setTimeout(() => {
+        map.dataset.step = 0;
+        active = true;
+        next.disabled = false
+      }, 2000)
+    }
+  }
+
+  // first reset all option
+  const answers = () => {
+    if (!active) { return }
+    
+    activeTimer && clearTimeout(activeTimer);
+    active = false;
+    step > 0 && _$$(".jkd-survey ._left").classList.remove("not_started");
+    mapBody.dataset.up = "";
+    
+    let key = step + '';
+    switch (step) {
+      case 1: case 2: case 3: case 4: case 5: case 6:
+        $all(`.jkd-survey .a-${step} dd`).forEach((item, index) => {
+          item.classList.remove("on");
+          item.classList.remove("correct");
+          item.onclick = () => {
+            item.classList.add("on");
+            _user_answer[key] = [index + 1, item.innerText];
+            clearCountdowns()
+          }
+        })
+        break;
+      case 7:
+        let _range = _$$(".jkd-survey .a-7 .range");
+        _range.style.cssText = `--index: 1`;
+        $all(".jkd-survey .a-7 li").forEach((item, index) => {
+          item.className = "";
+          item.onclick = () => {
+            _range.style.cssText = `--index: ${index + 1}`;
+            _user_answer[key] = [index + 1, item.innerText];
+            clearCountdowns()
+          }
+        })
+        break;
+      case 8:
+        _$$(".jkd-survey .a-8 .tree").classList.remove("hide");
+        $all(".jkd-survey .a-8 li").forEach((item, index) => {
+          item.classList.remove("on");
+          item.onclick = () => {
+            next.disabled = false;
+            item.classList.contains("on") ? item.classList.remove("on") : item.classList.add("on")
+          }
+        })
+        break;
+      default: break;
+    }
+    
+    answer.forEach(item => item.classList.remove("in"));
+    answer[step] && (activeTimer = setTimeout(() => {
+      page.innerText = `00${step}`.substr(1);
+      answer[step].classList.add("in");
+      step++;
+      if (step > 9) {
+        again.onclick = () => {
+          again.onclick = null;
+          tryAgain()
+        }
+        mapStep()
+      } else {
+        countdown.dataset.second = second = 10;
+        countdowns()
+      }
+    }, 500))
+  }
+  const correctAnswers = (arr, questions) => setTimeout(() => {
+    let _step = step - 1;
+    
+    function _showSmile(a, b, c) {
+      // console.log("_showSmile", a, b);
+      if (b === 0) {
+        c && c()
+        return
+      }
+      isCorrect.classList.add(a === b ? "yes" : "no");
+      setTimeout(() => {
+        isCorrect.classList.remove("yes", "no");
+        c && c()
+      }, 2500)
+    }
+    
+    let _answer = _user_answer[_step.toString()] || [0, 0]
+    
+    switch(_step) {
+      case 1: case 2: case 3: case 4: case 5:
+        _showSmile(_correct[_step], _answer[0], function() {
+          arr.forEach((item, index) => item.classList.remove("on"));
+          arr[_correct[_step] - 1].classList.add("correct")
+        });
+        break;
+      case 6: break;
+      case 7:
+        _showSmile(_correct[_step], _answer[0], function() {
+          arr[_correct[_step] - 1].classList.add("correct")
+        });
+        break;
+      case 8:
+        _$$(".jkd-survey .a-8 .tree").classList.add("hide");
+        let _item = $all(".jkd-survey .a-8 li.on").length || 0;
+        _user_answer["8"] = [_item, _item];
+        break;
+      default: break;
+    }
+    // questions && questions.classList.add("show");
+    // question 6 if select answer, just hide the tips;
+    if (!questions) { return }
+    if (_step === 6) {
+      if ($all('.jkd-survey .a-6 dd.on').length <= 0) {
+        questions.classList.add("show")
+      } else {
+        countdown.innerText = '10S';
+        answerCommit();
+        mapStep()
+      }
+    } else {
+      questions.classList.add("show");
+      countdown.innerText = '10S';
+      answerCommit()
+      setTimeout(() => mapStep(), shopCommon.isMobile() ? 2500 : 0)
+    }
+  }, 1000);
+
+  const answerCommit = () => {
+    console.log(_user_answer);
+    let _data = {};
+    ["1","2","3","4","5","6","7","8"].forEach(item => {
+      _data["question"+item] = _user_answer[item] ? _user_answer[item][0] : 0
+    });
+    _data.id = token;
+    $api.jkdAddAnswer(JSON.stringify(_data), null)
+  }
+
+  next.onclick = () => {
+    console.log(step, countdown.dataset.second);
+    if (step === 9 && +countdown.dataset.second > 0) {
+      next.disabled = true;
+      clearCountdowns();
+      return
+    }
+    next.disabled = true;
+    active && answers();
+    step > 8 && _$$(".jkd-survey ._left").classList.add("not_started")
+  };
+
+  const tryAgain = () => {
+    console.log("one more time");
+    $all(".jkd-survey ._right .step").forEach(item => item.style = "");
+    map.dataset.step = map.dataset.car = 0;
+    step = 1;
+    second = 10;
+    active = true;
+    _user_answer = {};
+    $all(".jkd-survey .questions").forEach(item => item.classList.remove("show"));
+    answers()
+  }
+
+  // first step, enter email and agreed policy
+  function monitor() {
+    email.value = email.value.trim();
+    start.disabled = !Boolean(username.value && shopCommon.verifyEmail(email.value) && agreed.checked)
+  }
+  username.onkeyup = email.onkeyup = agreed.onchange = monitor;
+  start.onclick = () => {
+    start.classList.add('btn--loading');
+    start.disabled = true;
+    $api.jkdCollectEmail(JSON.stringify({ "username": username.value, "email": email.value, "module_id": "1" }), function(r) {
+      token = r.token;
+      step++;
+      answers()
+    }, function(err) {
+      start.classList.remove('btn--loading');
+      start.disabled = false
+    })
+  }
+
+  // begin game
+  _$$(".jkd-survey .ready button").onclick = function() {
+    _$$(".jkd-survey.start .ready").classList.add("action");
+    var pageY = shopCommon.isMobile() ? 65 : 100;
+    shopCommon.scrollToTop(document.querySelector(".jkd-survey .ready").offsetTop - pageY)
+  }
+
+  // google calendar
+  const calendar = (element) => {
+    var text = encodeURIComponent('{{ section.settings.calendar_title }}');
+    var startDate = "{{ section.settings.calendar_start_time }}";
+    var endDate = "{{ section.settings.calendar_end_time }}";
+    var details = encodeURIComponent("{{ section.settings.calendar_details }}");
+    var address = encodeURIComponent("{{ section.settings.calendar_address }}");
+    var googleCalendarUrl = 'http://www.google.com/calendar/event?action=TEMPLATE&text=' + text + '&dates=' + startDate + '/' + endDate + '&details=' + details + '&location=' + address;
+
+    element.setAttribute("href", googleCalendarUrl);
+    element.setAttribute("target", "_blank")
+  }
+  calendar(document.querySelector(".jkd-preheat .calendar"));
+
+  // product selling point, on 5/6 and 5/9, [1651766400000, 1652025600000];
+  // countdown start, new Date("2022/05/11 23:59:59").getTime() = 1652284799000
+  let selling = {
+    "5-6": {
+      "title": "{{ section.settings.selling_1_title }}",
+      "content": "{{ section.settings.selling_1_content }}",
+      "image": "{{ section.settings.selling_1_image_url | image_url: width: 1920 }}"
+    },
+    "5-9": {
+      "title": "{{ section.settings.selling_2_title }}",
+      "content": "{{ section.settings.selling_2_content }}",
+      "image": "{{ section.settings.selling_2_image_url | image_url: width: 1920 }}"
+    }
+  },
+  _unlock_1 = new Date("{{ section.settings.selling_1_unlock_time }}").getTime(),
+  _unlock_2 = new Date("{{ section.settings.selling_2_unlock_time }}").getTime(),
+  _slider = $all(".jkd-features .lock-slider"),
+  _target_time = new Date("{{ section.settings.time }}").getTime(),
+  _live_end_time = new Date("{{ section.settings.live_end_time }}").getTime(),
+  _answer_end_time = new Date("{{ section.settings.answer_end_time }}").getTime(),
+  _winning_public_time = new Date("{{ section.settings.winning_public_time }}").getTime();
+
+  $(".jkd-features").slick({ infinite: false, autoplay: true, autoplaySpeed: 6000 });
+  
+  const unlock = (ele, key) => {
+    ele.classList.remove("unlock");
+    ele.querySelector("h2").innerText = selling[key].title;
+    ele.querySelector(".sub_title").innerText = selling[key].content;
+    ele.style.backgroundImage = "url('"+ selling[key].image +"')"
+  }
+
+  const loadReview = () => {
+    var hyvor = document.createElement("section");
+    hyvor.id = "hyvor-talk-view";
+    _$$("#MainContent").appendChild(hyvor);
+
+    window.HYVOR_TALK_WEBSITE = 3273;
+    window.HYVOR_TALK_CONFIG = { url: false, id: "{{ page.id }}" };
+
+    var hyvorjs = document.createElement('script'); hyvorjs.type = 'text/javascript';
+    hyvorjs.src = 'https://talk.hyvor.com/web-api/embed.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hyvorjs, s);
+  }
+
+  // .youtube-live-textimg, .youtube-live-video, .youtube-live-discover, .youtube-live-annoucement, .youtube-live-event, .youtube-live-products
+  const liveStart = (video) => {
+    let sections = ".youtube-live-textimg,.youtube-live-video,.youtube-live-discover,.youtube-live-event,.youtube-live-products";
+    _$$(".youtube-live-video").style.display = "inherit";
+    _$$(".youtube-live-video").querySelector("._jackery_day").style.display = "";
+
+    $api.getServerTime({ "timezone": "US/Arizona" }, function(r) {
+      let timestamp = new Date(r.datetime).getTime();
+
+      shopCommon.countTime(_live_end_time, timestamp, null, function() {
+        console.log("youtube live end");
+        sections.split(",").forEach(item => {
+          if (_$$(item)) {
+            _$$(item).style.display = "inherit";
+            _$$(item).querySelector("._jackery_day").style.display = ""
+          }
+        })
+
+        // between live start and winning public start, show answer part, but answer is disable.
+        _$$("#MainContent").insertBefore(_$$(".jkd2022"), _$$(".youtube-live-annoucement"));
+        $all(".jkd2022 .layer").forEach(function(item) {
+          !item.classList.contains("jkd-survey") && item.remove()
+        })
+
+        setTimeout(function() {
+          liveEvent();
+          newAnnoucement();
+          newProductPublic();
+
+          // load thirty review plugin
+          loadReview()
+        }, 500)
+      })
+
+      shopCommon.countTime(_answer_end_time, timestamp, null, function() {
+        console.log("answer end");
+        _$$(".jkd-survey .ready button").disabled = true;
+      })
+
+      shopCommon.countTime(_winning_public_time, timestamp, null, function() {
+        console.log("winning public start");
+        _$$(".youtube-live-annoucement").style.display = "inherit";
+        _$$(".youtube-live-annoucement").querySelector("._jackery_day").style.display = "";
+        
+        _$$(".jkd2022").remove();
+      })
+    })
+  }
+
+  $api.getServerTime({ "timezone": "US/Arizona" }, function(r) {
+    let timestamp = new Date(r.datetime).getTime(), element = document.querySelector(".jkd-preheat .countdown");
+    if (timestamp >= _unlock_1) { unlock(_slider[0], "5-6") }
+    if (timestamp >= _unlock_2) { unlock(_slider[1], "5-9") }
+
+    // countdown end, need load youtube live video
+    // Warm up half an hour in advance
+    shopCommon.countTime(_target_time - 1800000, timestamp, null, function() {
+      shopCommon.scrollToTop(0);
+      liveStart()
+      /*{% comment %} 
+      $api.shopifySection("youtube-live-video", null, function(r) {
+        _$$(".jkd2022").insertAdjacentHTML('beforebegin', r["youtube-live-video"]);
+        // youtube live start time is [_target_time, _live_end_time]
+        liveStart(r["youtube-live-video"])
+      })
+      {% endcomment %}*/
+    })
+    shopCommon.countTime(_target_time, timestamp, element, function() {
+      element.remove()
+    })
+  })
+
+
+  /* preview live warm up and youtube live end */
+  switch (shopCommon.getParam("preview")) {
+    case "warm-up":
+      shopCommon.scrollToTop(0);
+      liveStart();
+      break;
+    case "live-end":
+      ".youtube-live-textimg,.youtube-live-video,.youtube-live-discover,.youtube-live-event,.youtube-live-products".split(",").forEach(item => {
+        _$$(item).style.display = "inherit";
+        _$$(item).querySelector("._jackery_day").style.display = ""
+      })
+      _$$("#MainContent").insertBefore(_$$(".jkd2022"), _$$(".youtube-live-annoucement"));
+      $all(".jkd2022 .layer").forEach(function(item) {
+        !item.classList.contains("jkd-survey") && item.remove()
+      })
+      setTimeout(function() {
+        liveEvent();
+        newAnnoucement();
+        newProductPublic();
+        loadReview();
+        shopCommon.scrollToTop(0)
+      }, 500)
+      break;
+    case "prize-public-before":
+      ".youtube-live-textimg,.youtube-live-video,.youtube-live-discover,.youtube-live-event,.youtube-live-products".split(",").forEach(item => {
+        _$$(item).style.display = "inherit";
+        _$$(item).querySelector("._jackery_day").style.display = ""
+      })
+      _$$("#MainContent").insertBefore(_$$(".jkd2022"), _$$(".youtube-live-annoucement"));
+      $all(".jkd2022 .layer").forEach(function(item) {
+        !item.classList.contains("jkd-survey") && item.remove()
+      })
+      _$$(".jkd-survey .ready button").disabled = true;
+      setTimeout(function() {
+        liveEvent();
+        newAnnoucement();
+        newProductPublic();
+        loadReview();
+        shopCommon.scrollToTop(0)
+      }, 500)
+      break;
+    case "prize-public-after":
+      ".youtube-live-textimg,.youtube-live-video,.youtube-live-discover,.youtube-live-annoucement,.youtube-live-event,.youtube-live-products".split(",").forEach(item => {
+        _$$(item).style.display = "inherit";
+        _$$(item).querySelector("._jackery_day").style.display = ""
+      });
+      _$$('.youtube_live_event_swiper-container').remove();
+      _$$('.youtube_live_end_swiper-container').classList.remove("hide");
+      setTimeout(function() {
+        new Swiper('.youtube_live_end_swiper-container', {
+          pagination: '.youtube_live_end_swiper-container .swiper-pagination',
+          paginationClickable: true,
+          nextButton: '.youtube_live_end_swiper-container .swiper-button-next',
+          prevButton: '.youtube_live_end_swiper-container .swiper-button-prev'
+        })
+        newAnnoucement();
+        newProductPublic()
+        loadReview();
+        _$$(".jkd2022").remove();
+      }, 500)
+      break;
+    default: break;
+  }
+})
+</script>
+
+{% schema %}
+  {
+    "name": "jackery-day", "class": "jkd2022",
+    "settings": [
+      {"type": "header", "content": "basic setting"},
+      {"type": "text", "id": "main_title", "label": "main title", "default": "JACKERY DAY 2022"},
+      {"type": "text", "id": "seconds_title", "label": "seconds title", "default": "SOMETHING AMAZING IS COMING SOON"},
+      {"type": "text", "id": "datetime", "label": "active date", "default": "MAY 12TH 8 P.M. PDT"},
+
+      {"type": "header", "content": "countdown and google calendar setting"},
+      {
+        "type": "text", "id": "time", "label": "live active start time", "default": "2022/5/12 00:00:00",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/5/12 00:00:00"
+      },
+      {
+        "type": "text", "id": "live_end_time", "label": "live active end time", "default": "2022/5/12 01:30:01",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/5/12 01:30:01"
+      },
+      {"type": "text", "id": "calendar_title", "label": "google calendar title", "default": "Jackery Day 2022 - New Product Launch"},
+      {
+        "type": "text", "id": "calendar_start_time", "label": "google calendar start time", "default": "20220520",
+        "info": "rules is matter, YYYYMMDD, such as: 20220520"
+      },
+      {
+        "type": "text", "id": "calendar_end_time", "label": "google calendar end time", "default": "20220521",
+        "info": "rules is matter, YYYYMMDD, such as: 20220521, it's important, deadline one more day than the start time"
+      },
+      {"type": "text", "id": "calendar_details", "label": "google calendar details", "default": "An online event showcasing Jackery's latest product on it's official website & YouTube channel on May 12th."},
+      {"type": "text", "id": "calendar_address", "label": "google calendar address", "default": "Jackery Official Website or Jackery Youtube Channel"},
+      {"type": "text", "id": "calendar_tips", "label": "calendar tips", "default": "Mark Your Calendar"},
+      {"type": "text", "id": "countdown_title", "label": "countdown title", "default": "NEW PRODUCT LAUNCH"},
+      {"type": "richtext", "id": "countdown_details", "label": "countdown details", "default": "<p>On this year's Jackery Day, we are launching something incredibly powerful,<br>fully enhancing your outdoor solar experience to a whole new level.</p>"},
+      
+      {"type": "header", "content": "answer setting"},
+      {"type": "text", "id": "answer_title", "label": "answer title", "default": "JOIN US NOW, WIN GIGANTIC PRIZES"},
+      {"type": "richtext", "id": "answer_sub_title", "label": "answer sub title", "default": "<p>Take a minute to fill out Jackery Day's survey, and win our MEGA-valued new product of the year.<br>Enter now for the prize of a lifetime.<br>The 6 winners will be announced on May 12th.<br>Do not miss out.</p>"},
+      {"type": "text", "id": "answer_button", "label": "answer button", "default": "ENTER TO WIN"},
+      
+      {"type": "header", "content": "question setting"},
+      {"type": "text", "id": "question_enter_username", "label": "enter username", "default": "Please Enter Your Name"},
+      {"type": "text", "id": "question_enter_email", "label": "enter email", "default": "Please Enter Your Email"},
+      {"type": "richtext", "id": "question_policy", "label": "question policy", "default": "<p>I have read and agreed to the<a href='https://www.jackery.com/policies/terms-of-service' target='_blank'>Terms</a>and<a href='https://www.jackery.com/policies/privacy-policy' target='_blank'>Privacy Policy</a>.</p>"},
+      {"type": "text", "id": "question_policy_1", "label": "policy 1", "default": "Answer all survey questions and provide an email to participate. One email can be used once only."},
+      {"type": "text", "id": "question_policy_2", "label": "policy 2", "default": "Prize winners are selected randomly."},
+      {"type": "text", "id": "question_policy_3", "label": "policy 3", "default": "The competition time is held from May 4 - 11 and will announce winners on May 12 on the official website with an email sent to the winners, via hello@jackery.com."},
+      {
+        "type": "richtext", "id": "question_policy_4", "label": "policy 4",
+        "default": "<p>The competition on this page is open to U.S. residents only. However you can enter the same competition through Jackery <a href='https://ca.jackery.com/' target='_blank'>Canada</a>, <a href='https://de.jackery.com/' target='_blank'>Germany</a>, <a href='https://uk.jackery.com/' target='_blank'>UK</a> and <a href='https://www.jackery.jp/' target='_blank'>Japan</a> if you are residents from these countries.</p>"
+      },
+      {"type": "text", "id": "question_policy_5", "label": "policy 5", "default": "All final decisions lie solely with Jackery."},
+      {"type": "text", "id": "answer_ready", "label": "answer ready button", "default": "Let's Start"},
+
+      {"type": "header", "content": "question 1"},
+      {"type": "text", "id": "q1_title", "label": "question title", "default": "When was Jackery founded?"},
+      {"type": "text", "id": "q1_a", "label": "question option A", "default": "2012"},
+      {"type": "text", "id": "q1_b", "label": "question option B", "default": "2015"},
+      {"type": "text", "id": "q1_c", "label": "question option C", "default": "2019"},
+      {"type": "text", "id": "q1_d", "label": "question option D", "default": "2020"},
+      {"type": "text", "id": "q1_tips", "label": "question explain", "default": "Jackery was founded in 2012 by a group of adventurous engineers, who believe in making electricity portable, clean, outdoors-oriented, and truly accessible."},
+
+      {"type": "header", "content": "question 2"},
+      {"type": "text", "id": "q2_title", "label": "question title", "default": "What is Jackery's bundle containing a power station and solar panels called?"},
+      {"type": "text", "id": "q2_a", "label": "question option A", "default": "Solar Station"},
+      {"type": "text", "id": "q2_b", "label": "question option B", "default": "Solar Generator"},
+      {"type": "text", "id": "q2_c", "label": "question option C", "default": "Solar Power Station"},
+      {"type": "text", "id": "q2_d", "label": "question option D", "default": "Jackery Generator"},
+      {"type": "text", "id": "q2_tips", "label": "question explain", "default": "To further our goal of making electricity greener and more efficient, in 2020 Jackery expanded its product line fully integrating portability with solar power - the Solar Generator series, combines power stations with solar panels."},
+
+      {"type": "header", "content": "question 3"},
+      {"type": "text", "id": "q3_title", "label": "question title", "default": "In what scenarios can solar generators be used?"},
+      {"type": "text", "id": "q3_a", "label": "question option A", "default": "Camping"},
+      {"type": "text", "id": "q3_b", "label": "question option B", "default": "For RV's"},
+      {"type": "text", "id": "q3_c", "label": "question option C", "default": "Emergency situations"},
+      {"type": "text", "id": "q3_d", "label": "question option D", "default": "All of the above"},
+      {"type": "text", "id": "q3_tips", "label": "question explain", "default": "A solar generator is a reliable and clean power source for campers, RVs, or as an emergency backup source when your power goes out."},
+
+      {"type": "header", "content": "question 4"},
+      {"type": "text", "id": "q4_title", "label": "question title", "default": "What is the material of Jackery's battery made from?"},
+      {"type": "text", "id": "q4_a", "label": "question option A", "default": "Iron-ion Battery"},
+      {"type": "text", "id": "q4_b", "label": "question option B", "default": "Lithium-ion Battery"},
+      {"type": "text", "id": "q4_c", "label": "question option C", "default": "Sodium-ion Battery"},
+      {"type": "text", "id": "q4_d", "label": "question option D", "default": "Silver-oxide Battery"},
+      {"type": "text", "id": "q4_tips", "label": "question explain", "default": "The Jackery power station is equipped with a lithium-ion battery pack. No fuel or gasoline is required - with no dangerous fumes produced, additionally resulting in minimum noise."},
+
+      {"type": "header", "content": "question 5"},
+      {"type": "text", "id": "q5_title", "label": "question title", "default": "What is the name of the Jackery Power Station with the largest capacity?"},
+      {"type": "text", "id": "q5_a", "label": "question option A", "default": "Explorer 1000"},
+      {"type": "text", "id": "q5_b", "label": "question option B", "default": "Explorer 1500"},
+      {"type": "text", "id": "q5_c", "label": "question option C", "default": "Explorer 2000"},
+      {"type": "text", "id": "q5_d", "label": "question option D", "default": "Explorer 2500"},
+      {"type": "text", "id": "q5_tips", "label": "question explain", "default": "The Explorer 2000 features 2060 Wh capacity and 2200W AC inverter - designed to meet 90% of power requirements when running the majority of appliances. These include hair dryers, microwave ovens, refrigerators, coffee makers, air conditioners and more."},
+
+      {"type": "header", "content": "question 6"},
+      {"type": "text", "id": "q6_title", "label": "question title", "default": "Where would you most like to see improvements made to for Jackery's solar generators?"},
+      {"type": "text", "id": "q6_a", "label": "question option A", "default": "Charging Speed"},
+      {"type": "text", "id": "q6_b", "label": "question option B", "default": "Weight"},
+      {"type": "text", "id": "q6_c", "label": "question option C", "default": "Durability"},
+      {"type": "text", "id": "q6_d", "label": "question option D", "default": "Capacity"},
+      {"type": "text", "id": "q6_tips", "label": "question explain"},
+
+      {"type": "header", "content": "question 7"},
+      {"type": "text", "id": "q7_title", "label": "question title", "default": "How much coal is used to generate one kilowatt-hour of electricity?"},
+      {"type": "text", "id": "q7_tips", "label": "question explain", "default": "The average amount of coal used to generate just a single kilowatt-hour (kWh) of electricity by the U.S. electric power sector in 2020 was 1 pound. So for every single kilowatt-hour (kWh) of electricity used, 1 pound of coal was used."},
+
+      {"type": "header", "content": "question 8"},
+      {"type": "text", "id": "q8_title", "label": "question title", "default": "Assuming the SG1500 is used 4 times per month for 3 charging cycles (Note: one cycle = one charge and one discharge), in terms of equivalent carbon emissions how many trees will be saved in a year?"},
+      {"type": "text", "id": "q8_survey", "label": "question survey", "default": "The Solar Generator collects solar energy, and converts energy into direct current electricity. The SG1500 reduces CO2 emissions by 250 pounds - an equivalent of planting approximately four trees per year."},
+      {"type": "text", "id": "q8_tips", "label": "question explain", "default": "Calculation: According to U.S. Energy Information Administration, one KWh of electricity emits 0.85 pounds of CO2. According to the Arbor Day Foundation, in one year a mature tree absorbs more than 48 pounds of carbon dioxide from the atmosphere."},
+
+      {"type": "header", "content": "question Completing"},
+      {"type": "text", "id": "Completing_title", "label": "question title", "default": "Thank You For Completing the Jackery Day Survey!"},
+      {"type": "text", "id": "Completing_tips", "label": "question explain", "default": "What's next? Visit Jackery's Official Website for Jackery Day Live on May 12 and our magnificent new product launch. We'll then announce the competition survey winners on May 16."},
+
+      {"type": "header", "content": "question other setting"},
+      {"type": "text", "id": "q99_share", "label": "share text", "default": "Share"},
+      {"type": "text", "id": "q99_try", "label": "try again text", "default": "Try Again"},
+      {"type": "text", "id": "q99_next", "label": "page next text", "default": "Next"},
+
+      {"type": "header", "content": "features to be revealed"},
+      {"type": "text", "id": "features_title", "label": "features title", "default": "FEATURES TO BE REVEALED"},
+      {"type": "richtext", "id": "features_sub_title", "label": "features sub text", "default": "<p>Before the launch date, we'll have a teaser to reveal two special features - with the latest state-of-the-art Solar Technology and more.<br />Stay put, and get ready for the incredible to happen.</p>"},
+      {"type": "text", "id": "selling_1_title", "label": "selling point 1 title", "default": "Unrivaled Solar Charging Efficiency"},
+      {"type": "text", "id": "selling_1_content", "label": "selling point 1 content", "default": "Housing one of the most efficient solar technologies worldwide, delivering outstanding transmittance. Providing you with an efficient and powerful solar charging experience."},
+      {"type": "image_picker", "id": "selling_1_image_url", "label": "selling point 1 background image"},
+      {"type": "text", "id": "selling_1_time", "label": "selling point 1 unlock time text", "default": "Out on 5/6"},
+      {
+        "type": "text", "id": "selling_1_unlock_time", "label": "selling point 1 unlock time", "default": "2022/05/06 00:00:00",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/05/06 00:00:00"
+      },
+      {"type": "text", "id": "selling_2_title", "label": "selling point 1 title", "default": "Making Safety Even Safer"},
+      {"type": "text", "id": "selling_2_content", "label": "selling point 1 content", "default": "The all new technology will allow charging to become even safer and more secure - taking safe charging to the very next level. 2 chips and 4 temperature core detectors guarantee safe charging for all."},
+      {"type": "image_picker", "id": "selling_2_image_url", "label": "selling point 2 background image"},
+      {"type": "text", "id": "selling_2_time", "label": "selling point 2 unlock time text", "default": "Out on 5/9"},
+      {
+        "type": "text", "id": "selling_2_unlock_time", "label": "selling point 2 unlock time", "default": "2022/05/09 00:00:00",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/05/09 00:00:00"
+      },
+
+      {"type": "header", "content": "video setting"},
+      {"type": "url", "id": "desktop_video", "label": "desktop video"},
+      
+      {"type": "header", "content": "categories"},
+      {"type": "text", "id": "category_title", "label": "category title", "default": "VIEW OUR OUTSTANDING SOLAR PRODUCT LINE"},
+      {"type": "text", "id": "category_button", "label": "category button", "default": "DISCOVER MORE"},
+      {"type": "url", "id": "category_url", "label": "category url"},
+
+      {"type": "header", "content": "Winning announcement"},
+      {
+        "type": "text", "id": "answer_end_time", "label": "answer end time", "default": "2022/05/13 00:00:00",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/05/13 00:00:00"
+      },
+      {
+        "type": "text", "id": "winning_public_time", "label": "winning announcement time", "default": "2022/05/16 08:00:00",
+        "info": "rules is matter, YYYY/MM/DD hh:mm:ss, such as: 2022/05/16 08:00:00"
+      }
+    ]
+  }
+{% endschema %}

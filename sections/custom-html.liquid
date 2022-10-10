@@ -1,0 +1,20 @@
+<div class="custom-html-text">{{ section.settings.html_area }}</div>
+
+{% schema %}
+{
+    "name": "Custom HTML",
+    "settings": [
+        {
+           "type": "html",
+           "id": "html_area",
+           "label": "HTML codes"
+        }
+    ],
+    "presets": [
+		{
+          "category": "Custom",
+          "name": "Custom HTML"
+        }
+    ]
+}
+{% endschema %}

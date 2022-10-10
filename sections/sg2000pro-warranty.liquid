@@ -1,0 +1,33 @@
+{% render 'newProduct-warranty', blocks: section.blocks %}
+{% schema %}
+{
+  "name": "sg2000pro warranty",
+  "tag": "section",
+  "class": "newproduct-warranty",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "warranty",
+      "name": "warranty Item",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "Icon image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "sub",
+            "label": "Subtitle"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

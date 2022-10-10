@@ -1,0 +1,1070 @@
+<div id="subscribe-modal" class="subscribe-modal">
+  <div class="subscribe-box">
+    <span class="close-btn"></span>
+    <div class="first-step J-first-step">
+      <div class="gift-popup J-gift-popup">
+        <div class="left-box">
+          <div class="title J-main-title">Get A Discount</div>
+          <div class="subtitle J-sub-title">Enter your email to spin the wheel and save big on your purchase!</div>
+          <input type="email" id="subscribeEmail" class="input-full J-email" name="subscribeEmail" autocorrect="off" autocapitalize="off" placeholder="Email">
+          <div class="error-tip J-tip" data-email-tip="{{ 'subscribe.email_tip' | t }}" data-emailerror-tip="{{ 'subscribe.email_error_tip' | t }}" data-policy-tip="{{ 'subscribe.privacy_policy_tip' | t }}">请勾选隐私条款</div>
+          <input class="input-full first-name J-first-name" name="firstName" autocorrect="off" autocapitalize="off" placeholder="firstName">
+          <input class="input-full last-name J-last-name" name="lastName" autocorrect="off" autocapitalize="off" placeholder="lastName">
+          <div class="declaration">
+            <input type="checkbox" class="checkbox J-checkbox" checked />
+            <div class="declaration-text">
+              <p>{{ 'subscribe.agree_comply' | t }}</p>
+              <p>
+                <a href="https://www.jackery.com/policies/terms-of-service">{{ 'subscribe.terms_of_ues' | t }}</a> {{ 'subscribe.and' | t }} <a href="https://www.jackery.com/policies/privacy-policy">{{ 'subscribe.privacy_policy' | t }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="title">
+            <span class="J-choose-title">{{ 'subscribe.choose_gift' | t }}</span>
+          </div>
+          <div class="gift-wrap">
+            {% for i in (1..3) %}
+              <img class="J-gift" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/4_10_1.png?v=1656468500" alt="giftbox">
+            {% endfor %}
+          </div>
+          <div class="gift-wrap">
+            {% for i in (1..3) %}
+              <img class="J-gift" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/4_10_1.png?v=1656468500" alt="giftbox">
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="wheel-wrap J-wheel-popup">
+        <div class="wheel-left-box">
+          <div id="my-lucky"></div>
+        </div>
+        <div class="wheel-right-box">
+          <div class="J-form-wrap">
+            <div class="title J-main-title">Get A Discount</div>
+            <div class="subtitle J-sub-title">Enter your email to spin the wheel and save big on your purchase!</div>
+            <input type="email" id="wheelEmail" class="input-full J-email" name="wheelEmail" autocorrect="off" autocapitalize="off" placeholder="Email">
+            <div class="error-tip J-tip" data-email-tip="{{ 'subscribe.email_tip' | t }}" data-emailerror-tip="{{ 'subscribe.email_error_tip' | t }}" data-policy-tip="{{ 'subscribe.privacy_policy_tip' | t }}">请勾选隐私条款</div>
+            <input class="input-full first-name J-first-name" name="firstName" autocorrect="off" autocapitalize="off" placeholder="firstName">
+            <input class="input-full last-name J-last-name" name="lastName" autocorrect="off" autocapitalize="off" placeholder="lastName">
+            <div class="declaration">
+              <input type="checkbox" class="checkbox J-checkbox" checked />
+              <div class="declaration-text">
+                <p>{{ 'subscribe.agree_comply' | t }}</p>
+                <p>
+                  <a href="https://www.jackery.com/policies/terms-of-service">{{ 'subscribe.terms_of_ues' | t }}</a> {{ 'subscribe.and' | t }} <a href="https://www.jackery.com/pages/policy">{{ 'subscribe.privacy_policy' | t }}</a>
+                </p>
+              </div>
+            </div>
+            <div class="wheel-btn J-wheel-btn">SPIN</div>
+          </div>
+          <div class="time-wrap J-time-wrap"><span>5</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="second-step J-second-step">
+      <div class="title J-main-title">Get A Discount</div>
+      <img class="J-choose-gift" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/4_1.png?v=1657876845" alt="giftbox">
+    </div>
+    <div class="third-step J-third-step">
+      <div class="discount-wrap">
+        <div class="title J-success-main-title">Congratulations</div>
+        <div class="subtitle J-success-sub-title">The code applies to all products</div>
+        <div class="coupons-wrap">
+          <div class="discount-text J-discount-text">
+            <div class="percentage-wrap">
+              <span class="value J-discount-val">20</span><span class="unit">%</span><span class="text">OFF</span>
+            </div>
+            <div class="currency-wrap">
+              <span class="currency J-discount-currency">$</span><span class="value J-discount-val">20</span>
+            </div>
+            <div class="free-wrap">
+              <div class="free">{{ 'subscribe.free' | t }}</div>
+              <div class="free-product J-free-product">Jackery Solar Generator 1500</div>
+            </div>
+          </div>
+        </div>
+        <div class="code-wrap">{{ 'subscribe.code' | t }}: <span class="J-code-text">dasdasfasfasf</span></div>
+        <div class="time-wrap J-date-text">2022/09/23 - 2022/10/23</div>
+        <div class="code-tips">{{ 'subscribe.code_tips' | t }}</div>
+        <div class="subscribe-btn J-button-text">Apply My Discount</div>
+        <div class="copy-tips J-copy-tips">{{ 'subscribe.copy_tips' | t }}</div>
+      </div>
+      <div class="physical-wrap">
+        <div class="title J-success-main-title">Congratulations</div>
+        <div class="subtitle J-success-sub-title">The code applies to all products</div>
+        <img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/1_3a2f7cf2-48d9-42bf-97c9-c8080c6acdea.png?v=1658714063" alt="physical">
+        <div class="physical-desc J-physical-desc">TLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+        Proin sodales pulvinar sic tempor.</div>
+        <div class="subscribe-btn J-button-text">Apply My Discount</div>
+        <div class="copy-tips J-copy-tips">{{ 'subscribe.copy_tips' | t }}</div>
+        {% comment %} <div class="physical-text J-physical-text">Congratulations</div> {% endcomment %}
+        {% comment %} <div class="tip">
+          <span>{{ 'subscribe.congratulation' | t }}</span>
+          <span class="J-physical-text">Congratulations</span>
+          <span>{{ 'subscribe.product_tips' | t }}</span>
+        </div> {% endcomment %}
+      </div>
+      <div class="thanks-wrap">
+        <div class="title J-success-main-title">Congratulations</div>
+        <div class="subtitle J-success-sub-title">The code applies to all products</div>
+        <div class="thanks-bg">
+          <div class="thanks-text">
+            <span class="text J-thanks-text">Thanks</span>
+          </div>
+        </div>
+        <div class="subscribe-btn J-button-text">Apply My Discount</div>
+        <div class="copy-tips J-copy-tips">{{ 'subscribe.copy_tips' | t }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .subscribe-modal {
+    width: 100%;
+    height: 100vh;
+    background: rgba(13, 13, 13, .3);
+    position: fixed;
+    z-index: 2147483647;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0s;
+    display: none;
+  }
+  .subscribe-modal .subscribe-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 710px;
+    height: auto;
+    max-width: 710px;
+    box-shadow: rgb(0 0 0 / 37%) 10px 3px 18px -10px;
+    /* border-radius: 9px; */
+    background: #fff;
+    padding: 50px 40px;
+  }
+  .subscribe-modal .subscribe-background {
+    background-image: url('https://cdn.shopify.com/s/files/1/0550/0524/9633/files/1_d4456276-4224-4a90-97bb-d030c01ac4e2.png?v=1657190769');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  .subscribe-modal .wheel-active {
+    width: 586px !important;
+    max-width: 586px !important;
+    padding: 0 !important;
+  }
+  .subscribe-modal .wheel-active .first-step .gift-popup {
+    display: none;
+  }
+  .subscribe-modal .wheel-active .first-step .wheel-wrap {
+    display: flex;
+  }
+  /*
+  .subscribe-modal .subscribe-box .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  .subscribe-modal .subscribe-box .close-btn::before {
+    content: '\2716';
+    display: inline-block;
+    transition: all 0.4s;
+    transform: rotate(0deg);
+    color: #333333;
+  }
+  .subscribe-modal .subscribe-box .close-btn:hover::before {
+    transform: rotate(90deg);
+  }
+  */
+  .subscribe-modal .subscribe-box .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+  }
+  .subscribe-modal .subscribe-box .close-btn::before {
+    content: '';
+    width: 1px;
+    height: 20px;
+    transition: all 0.4s;
+    transform: rotate(45deg);
+    background: #333333;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+  .subscribe-modal .subscribe-box .close-btn::after {
+    content: '';
+    width: 1px;
+    height: 20px;
+    transition: all 0.4s;
+    transform: rotate(-45deg);
+    background: #333333;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+  .subscribe-modal .subscribe-box .close-btn:hover::after {
+    transform: rotate(45deg);
+  }
+  .subscribe-modal .subscribe-box .close-btn:hover::before {
+    transform: rotate(135deg);
+  }
+  .subscribe-modal .first-step .gift-popup {
+    display: flex;
+  }
+  .subscribe-modal .first-step .left-box {
+    max-width: 275px;
+    overflow: hidden;
+  }
+  .subscribe-modal .first-step .left-box .title {
+    font-size: 36px;
+    color: #222222;
+    line-height: 43px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .first-step .left-box .subtitle {  
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 23px;
+  }
+  .subscribe-modal .first-step .left-box .input-full {
+    margin-top: 25px;
+    width: 260px;
+    height: 36px;
+    padding: 7px 16px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #999999;
+  }
+  .subscribe-modal .first-step .left-box .first-name, .subscribe-modal .first-step .left-box .last-name {
+    display: none;
+    margin-top: 10px;
+  }
+  .subscribe-modal .first-step .left-box .error-tip {
+    font-size: 12px;
+    color: red;
+    margin-top: 10px;
+    /* float: left; */
+    display: none;
+  }
+  .subscribe-modal .first-step .left-box .declaration {
+    display: flex;
+    margin-top: 25px;
+  }
+  .subscribe-modal .first-step .left-box .checkbox {
+    margin-top: 0;
+  }
+  .subscribe-modal .first-step .left-box .red::after {
+    border-color: red;
+  }
+  .subscribe-modal .first-step .left-box .declaration-text {
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 24px;
+  }
+  .subscribe-modal .first-step .left-box .declaration-text p {
+    font-size: 14px;
+  }
+  .subscribe-modal .first-step .left-box .declaration-text a {
+    text-decoration: underline;
+    color: #666666;
+  }
+  .subscribe-modal .first-step .right-box {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .subscribe-modal .first-step .right-box .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .subscribe-modal .first-step .right-box .title >span {
+    padding: 3px 34px;
+    background: #DDDDDD;
+    position: relative;
+  }
+  .subscribe-modal .first-step .right-box .title .change-bgcolor {
+    background: #FF5000;
+  }
+  .subscribe-modal .first-step .right-box .title >span::before {
+    content: '';
+    border: 12px solid transparent;
+    border-left-color: #FFFFFF;
+    position: absolute;
+    left: -1px;
+    top: 0;
+  }
+  .subscribe-modal .first-step .right-box .title >span::after {
+    content: '';
+    border: 12px solid transparent;
+    border-right-color: #FFFFFF;
+    position: absolute;
+    right: -1px;
+    top: 0;
+  }
+  .subscribe-modal .first-step .right-box .gift-wrap {
+    margin-bottom: 32px;
+  }
+  .subscribe-modal .first-step .right-box .gift-wrap img {
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all 0.6s;
+  }
+  .subscribe-modal .first-step .right-box .gift-img >img:hover {
+    transform: scale(1.1);
+  }
+  .subscribe-modal .second-step {
+    text-align: center;
+  }
+  .subscribe-modal .second-step .title {
+    font-size: 36px;
+    color: #222222;
+    line-height: 43px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .second-step img {
+    margin: 50px 0 106px;
+  }
+  .subscribe-modal .second-step, .subscribe-modal .third-step {
+    display: none;
+  }
+  .subscribe-modal .third-step .title {
+    font-size: 36px;
+    color: #222222;
+    line-height: 43px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 16px;
+    margin-top: 12px;
+  }
+  .subscribe-modal .third-step .coupons-wrap {
+    width: 333px;
+    height: 118px;
+    background: url('//cdn.shopify.com/s/files/1/0550/0524/9633/files/i_1.png?v=1658473377') 0 0 no-repeat;
+    position: relative;
+    margin: 27px 0 20px;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text {
+    width: 223px;
+    height: 90px;
+    position: absolute;
+    top: 14px;
+    left: 31px;
+    text-align: center;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .percentage-wrap, .subscribe-modal .third-step .coupons-wrap .discount-text .coupons-wrap, .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap {
+    width: 100%;
+    height: 100%;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap {
+    display: none;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap .currency {
+    font-size: 30px;
+    color: #FFFFFF;
+    line-height: 90px;
+    margin-right: 5px;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap .value {
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 90px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .free-wrap {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .free-wrap .free {
+    font-size: 36px;
+    color: #FFFFFF;
+    line-height: 43px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .free-wrap .free-product {
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 15px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .value, .subscribe-modal .third-step .coupons-wrap .discount-text .unit {
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 90px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .coupons-wrap .discount-text .text {
+    font-size: 40px;
+    color: #FFFFFF;
+    line-height: 90px;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .third-step .code-wrap {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222222;
+    line-height: 24px;
+  }
+  .subscribe-modal .third-step .time-wrap {
+    font-size: 18px;
+    font-weight: 400;
+    color: #222222;
+    line-height: 24px;
+    margin-top: 10px;
+  }
+  .subscribe-modal .third-step .code-tips {
+    font-size: 18px;
+    font-weight: 400;
+    color: #222222;
+    line-height: 24px;
+    margin-top: 10px;
+  }
+  .subscribe-modal .third-step .subscribe-btn {
+    padding: 9px 53px;
+    background: #FF5000;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    cursor: pointer;
+    margin-top: 35px;
+  }
+  .subscribe-modal .third-step .copy-tips {
+    font-size: 14px;
+    color: #FF5000;
+    visibility: hidden;
+  }
+  .subscribe-modal .third-step .discount-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .subscribe-modal .third-step .physical-wrap, .subscribe-modal .third-step .thanks-wrap {
+    display: none;
+    text-align: center;
+  }
+  .subscribe-modal .third-step .physical-wrap img {
+    margin-top: 41px;
+  }
+  .subscribe-modal .third-step .physical-wrap .physical-desc {
+    font-size: 14px;
+    color: #666666;
+    line-height: 20px;
+    margin: 7px auto 0;
+    max-width: 537px;
+  }
+  .subscribe-modal .third-step .physical-wrap .subscribe-btn {
+    display: inline-block;
+  }
+  .subscribe-modal .third-step .physical-wrap .physical-text {
+    margin-top: 80px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .subscribe-modal .third-step .physical-wrap .tip {
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: #333333;
+    max-width: 536px;
+  }
+  .subscribe-modal .third-step .thanks-wrap .thanks-bg {
+    width: 333px;
+    height: 118px;
+    background: url('//cdn.shopify.com/s/files/1/0550/0524/9633/files/3_1_662fc0f4-79fe-4de2-9bd5-8da52a16c2ac.png?v=1658718313') 0 0 no-repeat;
+    position: relative;
+    margin: 27px auto 0;
+  }
+  .subscribe-modal .third-step .thanks-wrap .thanks-bg .thanks-text {
+    width: 223px;
+    height: 90px;
+    position: absolute;
+    top: 14px;
+    left: 31px;
+    text-align: center;
+  }
+  .subscribe-modal .third-step .thanks-wrap .thanks-bg .thanks-text .text {
+    font-size: 30px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 90px;
+  }
+  .subscribe-modal .third-step .thanks-wrap .subscribe-btn {
+    display: inline-block;
+    margin-top: 95px;
+  }
+
+  /* 转盘 */
+  .subscribe-modal .first-step .wheel-wrap {
+    display: none;
+  }
+  .subscribe-modal .first-step .wheel-left-box {
+    transform: translate(-200px, -74px);
+  }
+  .subscribe-modal .first-step .wheel-right-box {
+    width: 260px;
+    min-width: 260px;
+    overflow: hidden;
+    transform: translatex(-140px);
+    padding: 73px 0 43px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .title {
+    font-size: 40px;
+    color: #222222;
+    line-height: 48px;
+    word-break: break-all;
+    font-family: 'HelveticaNeueLT';
+  }
+  .subscribe-modal .first-step .wheel-right-box .subtitle {  
+    margin-top: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 23px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .input-full {
+    margin-top: 27px;
+    width: 260px;
+    height: 36px;
+    padding: 7px 13px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #999999;
+  }
+  .subscribe-modal .first-step .wheel-right-box .first-name, .subscribe-modal .first-step .wheel-right-box .last-name {
+    display: none;
+    margin-top: 10px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .error-tip {
+    font-size: 12px;
+    color: red;
+    margin-top: 10px;
+    display: none;
+  }
+  .subscribe-modal .first-step .wheel-right-box .declaration {
+    display: flex;
+    margin-top: 34px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .checkbox {
+    margin-top: 2px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .red::after {
+    border-color: red;
+  }
+  .subscribe-modal .first-step .wheel-right-box .declaration-text {
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 24px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .declaration-text a {
+    text-decoration: underline;
+    color: #666666;
+  }
+  .subscribe-modal .first-step .wheel-right-box .wheel-btn {
+    width: 260px;
+    height: 32px;
+    background: #FF5000;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 13px;
+  }
+  .subscribe-modal .first-step .wheel-right-box .time-wrap {
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .subscribe-modal .first-step .wheel-right-box .time-wrap >span {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: #FF5001;
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  /* 动画 */
+  .wobble-hor-bottom {
+    -webkit-animation: wobble-hor-bottom 0.8s both;
+            animation: wobble-hor-bottom 0.8s both;
+  }
+  @-webkit-keyframes wobble-hor-bottom {
+    0%,
+    100% {
+      -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    15% {
+      -webkit-transform: translateX(-30px) rotate(-6deg);
+              transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+      -webkit-transform: translateX(15px) rotate(6deg);
+              transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+      -webkit-transform: translateX(-15px) rotate(-3.6deg);
+              transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+      -webkit-transform: translateX(9px) rotate(2.4deg);
+              transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+      -webkit-transform: translateX(-6px) rotate(-1.2deg);
+              transform: translateX(-6px) rotate(-1.2deg);
+    }
+  }
+  @keyframes wobble-hor-bottom {
+    0%,
+    100% {
+      -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    15% {
+      -webkit-transform: translateX(-30px) rotate(-6deg);
+              transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+      -webkit-transform: translateX(15px) rotate(6deg);
+              transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+      -webkit-transform: translateX(-15px) rotate(-3.6deg);
+              transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+      -webkit-transform: translateX(9px) rotate(2.4deg);
+              transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+      -webkit-transform: translateX(-6px) rotate(-1.2deg);
+              transform: translateX(-6px) rotate(-1.2deg);
+    }
+  }
+
+  .shake-bottom {
+    -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+  @-webkit-keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  @keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  .blink-1 {
+    -webkit-animation: blink-1 0.6s both;
+            animation: blink-1 0.6s both;
+  }
+  @-webkit-keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
+  @keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
+
+  /* 移动端 */
+  @media screen and (max-width: 768px) {
+    .subscribe-modal .subscribe-box {
+      bottom: 0;
+      left: 0;
+      top: auto;
+      transform: translate(0, 0);
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 600px;
+      max-height: 100%;
+      border-radius: 15px 15px 0px 0px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .subscribe-modal .first-step {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .subscribe-modal .first-step .left-box {
+      max-width: 100%;
+    }
+    .subscribe-modal .first-step .left-box .title {
+      font-size: 35px;
+      line-height: 42px;
+      text-align: center;
+    }
+    .subscribe-modal .first-step .left-box .subtitle {  
+      margin-top: 4px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+    .subscribe-modal .first-step .left-box .input-full {
+      margin-top: 9px;
+      width: 100%;
+      height: 38px;
+      padding: 10px 22px;
+      border: 1px solid #999999;
+    }
+    .subscribe-modal .first-step .left-box .declaration {
+      margin-top: 30px;
+    }
+    .subscribe-modal .first-step .left-box .checkbox {
+      margin-top: 0;
+      margin-right: 5px;
+    }
+    .subscribe-modal .first-step .left-box .declaration-text {
+      font-size: 12px;
+      line-height: 22px;
+    }
+    .subscribe-modal .first-step .left-box .declaration-text p {
+      display: inline;
+      font-size: 12px;
+      color: #666666;
+      line-height: 19px;
+    }
+    .subscribe-modal .first-step .right-box {
+      margin-left: 0;
+      width: 100%;
+    }
+    .subscribe-modal .first-step .right-box .title {
+      font-size: 14px;
+      color: #FFFFFF;
+      line-height: 19px;
+      margin-bottom: 31px;
+      margin-top: 44px;
+    }
+    .subscribe-modal .first-step .right-box .title >span {
+      padding: 3px 49px;
+    }
+    .subscribe-modal .first-step .right-box .title >span::before {
+      border: 11px solid transparent;
+      border-left-color: #FFFFFF;
+    }
+    .subscribe-modal .first-step .right-box .title >span::after {
+      border: 11px solid transparent;
+      border-right-color: #FFFFFF;
+    }
+    .subscribe-modal .first-step .right-box .gift-wrap {
+      margin-bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .subscribe-modal .first-step .right-box .gift-wrap img {
+      margin-right: 20px;
+      width: 72px;
+      height: 83px;
+      object-fit: cover;
+    }
+    .subscribe-modal .first-step .right-box .gift-wrap img:last-of-type {
+      margin-right: 0;
+    }
+    .subscribe-modal .second-step .title {
+      font-size: 35px;
+      line-height: 42px;
+    }
+    .subscribe-modal .second-step img {
+      margin: 150px 0 100px;
+    }
+    .subscribe-modal .third-step {
+      flex-direction: column;
+      align-items: center;
+    }
+    .subscribe-modal .third-step .title {
+      font-size: 33px;
+      line-height: 40px;
+    }
+    .subscribe-modal .third-step .subtitle {
+      font-size: 15px;
+      line-height: 19px;
+      margin-top: 10px;
+    }
+    .subscribe-modal .third-step .coupons-wrap {
+      width: 233px;
+      height: 82px;
+      margin: 36px auto 25px;
+      background: url('//cdn.shopify.com/s/files/1/0550/0524/9633/files/i_2_1.png?v=1658744816') 0 0 no-repeat;
+      background-size: cover;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text {
+      width: 156px;
+      height: 62px;
+      top: 10px;
+      left: 22px;
+      line-height: 62px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap .currency {
+      font-size: 18px;
+      line-height: 62px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .currency-wrap .value {
+      font-size: 30px;
+      line-height: 62px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .value, .subscribe-modal .third-step .coupons-wrap .discount-text .unit {
+      font-size: 30px;
+      line-height: 62px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .text {
+      font-size: 30px;
+      line-height: 62px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .free-wrap .free {
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .subscribe-modal .third-step .coupons-wrap .discount-text .free-wrap .free-product {
+      font-size: 12px;
+      line-height: 12px;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .subscribe-modal .third-step .code-wrap {
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .subscribe-modal .third-step .time-wrap {
+      font-size: 14px;
+      line-height: 19px;
+      margin-top: 5px;
+    }
+    .subscribe-modal .third-step .code-tips {
+      font-size: 14px;
+      line-height: 19px;
+      margin-top: 5px;
+    }
+    .subscribe-modal .third-step .subscribe-btn {
+      padding: 9px 43px;
+      border-radius: 20px;
+      margin-top: 34px;
+    }
+    .subscribe-modal .third-step .physical-wrap .tip {
+      max-width: 100%;
+    }
+    .subscribe-modal .third-step .physical-wrap img {
+      margin-top: 20px;
+    }
+    .subscribe-modal .third-step .physical-wrap .physical-desc {
+      margin: 21px auto 0;
+      max-width: 317px;
+    }
+    .subscribe-modal .third-step .physical-wrap .subscribe-btn {
+      margin-top: 58px;
+    }
+    .subscribe-modal .third-step .thanks-wrap .thanks-bg {
+      width: 233px;
+      height: 82px;
+      background: url('//cdn.shopify.com/s/files/1/0550/0524/9633/files/i_3_1.png?v=1658801120') 0 0 no-repeat;
+      position: relative;
+      margin: 41px auto 0;
+      background-size: contain;
+    }
+    .subscribe-modal .third-step .thanks-wrap .thanks-bg .thanks-text {
+      width: 157px;
+      height: 61px;
+      position: absolute;
+      top: 11px;
+      left: 22px;
+      text-align: center;
+    }
+    .subscribe-modal .third-step .thanks-wrap .thanks-bg .thanks-text .text {
+      font-size: 20px;
+      line-height: 61px;
+    }
+    .subscribe-modal .third-step .thanks-wrap .subscribe-btn {
+      margin-top: 150px;
+    }
+    .subscribe-modal .wheel-active {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 33px 110px !important;
+    }
+    .subscribe-modal .wheel-active .first-step .wheel-wrap {
+      flex-direction: column-reverse;
+    }
+    /* 转盘 */
+    .subscribe-modal .first-step .wheel-left-box {
+      transform: none;
+    }
+    .subscribe-modal .first-step .wheel-left-box::after {
+      content: ' ';
+      width: 196px;
+      height: 18px;
+      background: #C2C2C2;
+      opacity: 0.5;
+      filter: blur(5.790400000000001px);
+      display: block;
+      border-radius: 50%;
+      transform: translate(28%, 4px);
+    }
+    .subscribe-modal .first-step .wheel-right-box {
+      width: 100%;
+      max-width: 300px;
+      transform: none;
+      padding: 43px 0 16px 13px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .title {
+      font-size: 35px;
+      line-height: 42px;
+      text-align: center;
+    }
+    .subscribe-modal .first-step .wheel-right-box .subtitle {  
+      margin-top: 2px;
+      line-height: 19px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .input-full {
+      margin-top: 9px;
+      width: 283px;
+      height: 38px;
+      padding: 10px 21px;
+      border-radius: 19px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .declaration {
+      margin-top: 17px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .checkbox {
+      margin-top: 3px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .declaration-text {
+      margin-left: 3px;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .wheel-btn {
+      display: none;
+    }
+    .subscribe-modal .first-step .wheel-right-box .time-wrap {
+      padding: 73px 0 56px;
+    }
+    .subscribe-modal .first-step .wheel-right-box .time-wrap >span {
+      background: #FFFFFF;
+      border: 1px dashed #FF5000;
+      color: #FF5000;
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+<div class="{% unless section.settings.full_width %}page-width{% endunless %} _jackery_day" style="display: none;">
+  <div class="youtube-live">
+    <div class="live-video">
+      <iframe width="560" id="live-video" height="100%" width="100%" src="https://www.youtube.com/embed/{{ section.settings.youtube_video_id }}?autoplay=1&mute=1&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<style>
+  .youtube-live {
+    max-width: 95vw;
+    margin: 0;
+    padding: 24px 0;
+    margin: 0 auto;
+    height: calc(45vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .youtube-live .live-video {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  #live-video {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  @media screen and (max-width: 912px) {
+    #live-video {
+      border: none;
+    }
+    .youtube-live {
+      width: 100%;
+      max-width: 100vw;
+      height: calc(56.26667vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+    .youtube-live .live-video {
+      width: 100%;
+      height: 56.26667vw;
+      max-height: 100vh;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "youtube live video",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width youtube-live-video",
+  "settings": [
+    {"type": "checkbox", "id": "full_width", "default": true, "label": "Full width"},
+    {
+      "type": "text", "id": "youtube_video_id", "label": "youtube video id", "default": "7egeSWihvMU",
+      "info": "such as 'https://www.youtube.com/embed/7egeSWihvMU', video id is '7egeSWihvMU'"
+    }
+  ]
+}
+{% endschema %}

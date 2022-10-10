@@ -1,0 +1,33 @@
+{% if section.settings.image != blank %}
+<div class="headerImage">
+  <img src="{{ section.settings.image | img_url: '1920x' }}" />
+  <div class="headerText">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="headerRichtext">{{ section.settings.text }}</div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Media",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "text",
+      "type": "richtext",
+      "label": "Text",
+	    "default": "<p>Test Text</p>"
+    }
+  ]
+}
+{% endschema %}

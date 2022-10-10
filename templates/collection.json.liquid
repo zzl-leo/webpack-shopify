@@ -1,0 +1,25 @@
+{% comment %}
+-------------------------------
+DEMO:
+$.get('/collections/collection-1/collection-2?view=json&page=3',function(response){
+console.log(JSON.parse(response))
+})
+-------------------------------
+{% endcomment %}
+
+
+{% layout none %}
+{% comment %} 
+{% capture category %}
+{ "collection": {{ collection | json }} }
+{% endcapture %}
+{{ category }} {% endcomment %}
+
+{% paginate collection.products by 50 %}
+
+	{% capture category %}
+	{ "collection": {{ collection | json }}, "products": {{ collection.products | json }} }
+	{% endcapture %}
+
+	{{ category }}
+{% endpaginate %}
