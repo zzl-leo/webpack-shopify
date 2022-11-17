@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-27 18:24:11
  * @LastEditors: Leo
- * @LastEditTime: 2022-10-10 10:41:46
+ * @LastEditTime: 2022-11-17 14:22:13
  * @FilePath: \test2\webpack.config.uk.js
  * @description: UK配置
  */
@@ -11,6 +11,7 @@ const {
 } = require('webpack-merge');
 const common = require('./webpack.config.common.js');
 const CopyPlugin = require('copy-webpack-plugin');
+const shopifyTheme = process.env.SHOPIFY_THEME || 'master';
 
 const path = require('path');
 
