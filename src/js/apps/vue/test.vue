@@ -1,14 +1,8 @@
 <!--
- * @Date: 2022-09-23 18:06:05
- * @LastEditors: Leo
- * @LastEditTime: 2022-11-17 14:34:38
- * @FilePath: \test2\src\js\apps\vue\test.vue
--->
-<!--
  * @Date: 2022-09-22 18:36:37
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-23 10:22:36
- * @FilePath: \shopify-starter-theme-master\src\js\apps\test.vue
+ * @LastEditTime: 2022-11-17 14:36:05
+ * @FilePath: \test2\src\js\apps\vue\test.vue
 -->
 
 <template>
