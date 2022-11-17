@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-27 18:09:46
  * @LastEditors: Leo
- * @LastEditTime: 2022-11-17 14:33:20
+ * @LastEditTime: 2022-11-17 15:01:12
  * @FilePath: \test2\webpack.config.common.js
  * @description: 打包公共设置
  */
@@ -27,8 +27,7 @@ const themeID = config[shopifyStore].theme_id;
 // 遍历js打包入口，默认为js/index下所有js文件
 const initEntry = () => {
     const entries = {}
-    // glob.sync('./src/js/index/*.js').forEach(path => {
-    glob.sync('./src/js/assets/*.js').forEach(path => {
+    glob.sync('./src/js/index/*.js').forEach(path => {
         const entry = path.replace(/^.*[\\\/]/, '').replace('.js', '');
         entries[entry] = path
     })
@@ -41,8 +40,8 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[chunkhash:5].bundle.js',
-        // path: path.resolve(__dirname, `themes/${shopifyStore}/${shopifyTheme}/assets`),
-        path: path.resolve(__dirname, `dist`),
+        path: path.resolve(__dirname, `themes/${shopifyStore}/${shopifyTheme}/assets`),
+        // path: path.resolve(__dirname, `dist`),
     },
     optimization: {
         splitChunks: {
