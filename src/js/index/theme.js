@@ -1,11 +1,8 @@
 /*
  * @Date: 2022-09-15 18:51:29
  * @LastEditors: Leo
- * @LastEditTime: 2022-09-28 18:12:56
- * @FilePath: \shopify-starter-theme-master\src\js\index\theme.js
- */
-/**
- * Scripts and styles used globally
+ * @LastEditTime: 2022-11-17 13:47:06
+ * @FilePath: \test2\src\js\index\theme.js
  */
 import '../../css/theme.css';
 import '../utility/public-path';
@@ -17,10 +14,9 @@ import openCart from '../utility/open-cart';
 import vueTest from '../apps/vue-test';
 import {testComp} from '../apps/vue-t2'
 
-// JS is enabled
 document.querySelector('html').classList.add('js');
 
-// Handle cart sidebar component
+// Handle cart-slider
 const cartLinks = document.querySelectorAll('.open-cart');
 if (cartLinks) {
   cartLinks.forEach((cartLink) => {
@@ -36,13 +32,10 @@ if (cartLinks) {
   });
 }
 
-console.log("zzl66688877777777")
-console.log(vueTest)
-
 setTimeout(() => {
   testComp({
     parentNodes: document.querySelector(".site-header"),
-    text: "zzl-vue-test"
+    text: "z-test"
   })
 
 }, 200);

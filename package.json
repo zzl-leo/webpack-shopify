@@ -14,8 +14,7 @@
     "deploy": "node build/deploy.js",
     "watch": "node build/devWatch.js",
     "clear": "node build/clearDist.js",
-    "zip": "node build/build-zip.js",
-    "te": "node build/teee.js"
+    "zip": "node build/build-zip.js"
   },
   "author": "zzl-leo",
   "license": "ISC",
