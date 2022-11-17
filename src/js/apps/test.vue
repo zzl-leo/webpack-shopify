@@ -1,18 +1,18 @@
 <!--
  * @Date: 2022-09-22 18:36:37
  * @LastEditors: Leo
- * @LastEditTime: 2022-11-17 13:46:46
+ * @LastEditTime: 2022-11-17 14:52:51
  * @FilePath: \test2\src\js\apps\test.vue
 -->
 
 <template>
     <div id="vue-test">
-        组件-test--333-我改了-5555
+        test--333-我改了-5555
         <h1>count: {{count}}</h1>
         <div @click="add">add</div>
         <div @click="jian">-</div>
 
-        <h2>props-test: {{tt}}</h2>
+        <h2>props: {{tt}}</h2>
     </div>
 </template>
 
