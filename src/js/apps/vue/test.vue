@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-09-22 18:36:37
  * @LastEditors: Leo
- * @LastEditTime: 2022-11-17 14:36:05
+ * @LastEditTime: 2022-11-17 14:49:50
  * @FilePath: \test2\src\js\apps\vue\test.vue
 -->
 
@@ -12,7 +12,7 @@
         <div @click="add">add</div>
         <div @click="jian">-</div>
 
-        <h2>props-test: {{tt}}</h2>
+        <h2>props: {{tt}}</h2>
     </div>
 </template>
 
