@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    <script>
+      window.theme = window.theme || {};
+      theme.settings = {
+        customer_id: "{{ customer.id}}",
+        customer_order_count: "{{customer.orders_count}}"
+      };
+    </script>
+    <script src="{{ 'ifvisible.js' | asset_url }}"></script>
+    <script src="{{ 'ja.js' | asset_url }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{{ 'theme-v2.js' | asset_url }}"></script>
+    <script src="{{ 'theme-cdp.js' | asset_url }}"></script>
+
+    {% render 'shogun-head' %}
+
+    <script>
+    var _affirm_config = {public_api_key: "CG00QHEOOXN9D9NI", script: "https://www.affirm.com/js/v2/affirm.js"};
+    (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+    </script>
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+            
+            {% comment %} <div class="section section--shipping-method" data-test="test function" style="display: none;">
+              <div class="section__header">
+                <h2 class="section__title" id="main-header" tabindex="-1">Auto warranty</h2>
+              </div>
+
+              <div class="section__content section__content__attentive">
+                <div class="checkbox-wrapper">
+                  <div class="checkbox__input">
+                    <input name="attributes[autoWarranty]" type="hidden" value="0">
+                    <input class="input-checkbox" data-backup="accepts_auto_warranty" type="checkbox" value="1" name="attributes[autoWarranty]" id="checkout_autoWarranty" aria-labelledby="headers" tabindex="0" focusable="true">
+                  </div>
+                  <div class="checkbox__label checkbox__label__attentive">
+                    <span id="headers" tabindex="0" focusable="true">
+                      <div class="checkbox__label__attentive__header">Product Auto Warranty</div>
+                    </span>
+                    <div class="section__footer__attentive"></div>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    <script>
+      function isPobox(v) {
+        var s = v.replace(/\s/g,"").replace(/[^a-zA-Z0-9]/g,"").toLowerCase();
+        return s.indexOf('pobox') >= 0
+      }
+      // address cannot fill in "pobox"
+      function check() {
+        var target = ["#checkout_shipping_address_address1", "#checkout_shipping_address_address2"], disabled = false;
+
+        for (var i in target) {
+          if (isPobox($(target[i]).val())) {
+            disabled = true;
+            $(target[i]).parents(".field").addClass('field--error');
+            if ($(target[i]).parents(".field").find(".field__message").length) {
+              $(target[i]).parents(".field").find(".field__message").html('We do not deliver to P.O. Boxes.')
+            } else {
+              $(target[i]).parents(".field").find(".field__input-wrapper").append('<p class="field__message field__message--error" id="error-for-address1">We do not deliver to P.O. Boxes.</p>')
+            }
+            break;
+          } else {
+            $(target[i]).parents(".field").removeClass('field--error')
+          }
+        }
+        $("#continue_button").prop('disabled', disabled)
+      }
+
+      $(".field__input").bind("blur", function() {
+        if (!$(this).val()) {
+          $(this).parents(".field").removeClass("field--show-floating-label")
+        }
+      })
+
+      switch (Shopify.Checkout.step) {
+        case "contact_information":
+          $("#checkout_shipping_address_address1,#checkout_shipping_address_address2").unbind().bind('keyup', check);
+          $("#checkout_shipping_address_address1,#checkout_shipping_address_address2").change(() => check())
+          check();
+          break;
+        case "shipping_method": case "payment_method":
+          console.log("address pobox", isPobox($("address").text()));
+          if (isPobox($("address").text())) {
+            $(".step__sections .section").length && $(".step__sections .section").eq(0).append('<p class="y__message--error">We do not deliver to P.O. Boxes.</p>');
+            $("#continue_button").prop('disabled', true)
+          }
+          break;
+        case "thank_you": break;
+      }
+    </script>
+    <style>
+      button[disabled] {background-color: #ccc; pointer-events: none;}
+      .y__message--error {color: #ff6d6d; line-height: 1.3em; padding: 1.1428571429em;}
+    	.copySuccess {
+        height:40px; font-size: 14px; font-family: 'Lato'; font-weight: normal; color: #fff; background: rgba(0,0,0,0.3);
+        display: flex; justify-content: center; align-items: center;
+        position: fixed; left:0; right:0; bottom:0; z-index: 9999999999999;
+      }
+    </style>
+
+    <script>
+      function warrantyYearHandle(vv) {
+        return cdpCommon.warrantyYearByTitle(vv.replace("AutoWarranty: ", ""))
+      }
+
+      function isCheckOutFresh() {
+        const f_ = cdpCommon.noFresh()
+        return f_
+      }
+
+      $(document).ready(function() {
+        const baseParams = {
+          checkout_id: Shopify?.Checkout?.token || '',
+          sku_species: {{checkout.line_items.size}},
+          commodity_quantity: {{checkout.item_count}},
+          commodity_total_price_original: {{checkout.line_items_subtotal_price | divided_by: 100.0}},
+          commodity_total_price_discount: {{checkout.line_items_subtotal_price | minus: checkout.discounts_amount | divided_by: 100.0}},
+        }
+        const discount_applications = {{checkout.discount_applications.size}} > 0 ? true : false
+        const coupon_params = {
+          is_coupon_used: discount_applications,
+        }
+
+        if(discount_applications) {
+          coupon_params.coupon_code = "{{checkout.discount_applications[0].title}}"
+        }
+        if(discount_applications && "{{checkout.discount_applications[0].value_type}}" === "percentage") {
+          coupon_params.coupon_discount = {{checkout.discount_applications[0].value | divided_by: 100.0}}
+        } else {
+          coupon_params.coupon_amount = {{checkout.discount_applications[0].value | divided_by: 100.0}}
+        }
+
+        if(Shopify.Checkout.step === "contact_information") {
+          (isCheckOutFresh() && Shopify.Checkout.cartToken) && CheckoutGA({...baseParams, is_first_time: cdpCommon.cacheEvent("Checkout")})
+          {% for item in checkout.line_items %}
+            CheckoutDetail({
+              ...baseParams,
+              is_first_time: cdpCommon.cacheEvent("CheckoutDetail"),
+              referer_page: cdpCommon.getRefererPage().url,
+              referer_page_title: cdpCommon.getRefererPage().title,
+              commodity_first_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_first_category || "",
+              commodity_second_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_second_category || "",
+              spu_name: {{item.product.has_only_default_variant}} ? "{{item.title}}" : "{{item.product.title}}",
+              spu_id: {{item.product.has_only_default_variant}} ? "{{item.sku}}" : "{{item.product.id}}",
+              sku_name: "{{item.title}}",
+              sku_id: "{{item.sku}}",
+              sku_unit_price: {{item.original_price | divided_by: 100.0}},
+              sku_sale_price: {{item.final_price | divided_by: 100.0}},
+              warranty_year: cdpCommon.warrantyYearByTitle("{{item.properties.AutoWarranty}}"),
+              commodity_tag: "{{item.product.tags | join: ','}}".split(","),
+              sku_quantity: {{item.quantity}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_discount: {{item.final_line_price | divided_by: 100.0}}
+            })
+          {% endfor %}
+        }
+
+
+        if(Shopify.Checkout.step === "shipping_method") {
+          FulfillDeliveryInfo({
+            ...baseParams,
+            is_first_time: cdpCommon.cacheEvent("FulfillDeliveryInfo"),
+            is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+            coupon_code: {{checkout.discount_applications.size}} > 0 ? "{{checkout.discount_applications[0].title}}" : "",
+            coupon_amount: {{checkout.discounts_amount | divided_by: 100.0}},
+            coupon_discount: {{checkout.discount_applications.size}} > 0 ? ("{{checkout.discount_applications[0].value_type}}" === "percentage" ? {{checkout.discount_applications[0].value | divided_by: 100.0}} : 0) : 0,
+            receiver_name: "{{checkout.shipping_address.name}}",
+            receiver_phone: "{{checkout.shipping_address.phone}}",
+            receiver_email: "{{checkout.email}}",
+            receiver_country: "{{checkout.shipping_address.country.name}}",
+            receiver_state: "{{checkout.shipping_address.province}}",
+            receiver_city: "{{checkout.shipping_address.city}}",
+            receiver_street: "{{checkout.shipping_address.street}}",
+            receiver_address: "{{checkout.shipping_address.address1}}",
+            receiver_apartment: "{{checkout.shipping_address.address2}}",
+            receiver_postcode: "{{checkout.shipping_address.zip}}",
+            tax_fee: {{checkout.tax_price | divided_by: 100.0}}
+          })
+
+          {% for item in checkout.line_items %}
+            FulfillDeliveryInfoDetail({
+              ...baseParams,
+              is_first_time: cdpCommon.cacheEvent("FulfillDeliveryInfoDetail"),
+              is_coupon_used: {{item.discount_allocations.size}} > 0 ? true : false,
+              coupon_code: {{item.discount_allocations.size}} > 0 ? "{{item.discount_allocations[0].discount_application.title}}" : "",
+              coupon_amount: {{checkout.discounts_amount | divided_by: 100.0}},
+              coupon_discount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "percentage" ? {{item.discount_allocations[0].discount_application.value | divided_by: 100.0}} : 0) : 0,
+              tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+              receiver_name: "{{checkout.shipping_address.name}}",
+              receiver_phone: "{{checkout.shipping_address.phone}}",
+              receiver_email: "{{checkout.email}}",
+              receiver_country: "{{checkout.shipping_address.country.name}}",
+              receiver_state: "{{checkout.shipping_address.province}}",
+              receiver_city: "{{checkout.shipping_address.city}}",
+              receiver_street: "{{checkout.shipping_address.street}}",
+              receiver_address: "{{checkout.shipping_address.address1}}",
+              receiver_apartment: "{{checkout.shipping_address.address2}}",
+              receiver_postcode: "{{checkout.shipping_address.zip}}",
+              commodity_first_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_first_category || "",
+              commodity_second_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_second_category || "",
+              spu_name: {{item.product.has_only_default_variant}} ? "{{item.title}}" : "{{item.product.title}}",
+              spu_id: {{item.product.has_only_default_variant}} ? "{{item.sku}}" : "{{item.product.id}}",
+              sku_name: "{{item.title}}",
+              sku_id: "{{item.sku}}",
+              sku_unit_price: {{item.original_price | divided_by: 100.0}},
+              sku_sale_price: {{item.final_price | divided_by: 100.0}},
+              warranty_year: cdpCommon.warrantyYearByTitle("{{item.properties.AutoWarranty}}"),
+              commodity_tag: "{{item.product.tags | join: ','}}".split(","),
+              sku_quantity: {{item.quantity}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_discount: {{item.final_line_price | divided_by: 100.0}}
+            })
+          {% endfor %}
+        }
+
+        if(Shopify.Checkout.step === "payment_method") {
+          SelectShippingMethod({
+            ...baseParams,
+            is_first_time: cdpCommon.cacheEvent("SelectShippingMethod"),
+            tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+            shipping_method: "{{checkout.shipping_method.title}}",
+            shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+            is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+            coupon_code: {{checkout.discount_applications.size}} > 0 ? "{{checkout.discount_applications[0].title}}" : "",
+            coupon_amount: {{checkout.discounts_amount | divided_by: 100.0}},
+            coupon_discount: {{checkout.discount_applications.size}} > 0 ? ("{{checkout.discount_applications[0].value_type}}" === "percentage" ? {{checkout.discount_applications[0].value | divided_by: 100.0}} : 0) : 0,
+            order_amount: {{checkout.total_price | divided_by: 100.0}},
+            receiver_name: "{{checkout.shipping_address.name}}",
+            receiver_phone: "{{checkout.shipping_address.phone}}",
+            receiver_email: "{{checkout.email}}",
+            receiver_country: "{{checkout.shipping_address.country.name}}",
+            receiver_state: "{{checkout.shipping_address.province}}",
+            receiver_city: "{{checkout.shipping_address.city}}",
+            receiver_street: "{{checkout.shipping_address.street}}",
+            receiver_address: "{{checkout.shipping_address.address1}}",
+            receiver_apartment: "{{checkout.shipping_address.address2}}",
+            receiver_postcode: "{{checkout.shipping_address.zip}}",
+          })
+
+          {% for item in checkout.line_items %}
+            SelectShippingMethodDetail({
+              ...baseParams,
+              is_first_time: cdpCommon.cacheEvent("SelectShippingMethodDetail"),
+              tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+              shipping_method: "{{checkout.shipping_method.title}}",
+              shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+              is_coupon_used: {{item.discount_allocations.size}} > 0 ? true : false,
+              coupon_code: {{item.discount_allocations.size}} > 0 ? "{{item.discount_allocations[0].discount_application.title}}" : "",
+              coupon_amount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "fixed_amount" ? {{item.discount_allocations[0].discount_application.value}} : 0) : 0,
+              coupon_discount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "percentage" ? {{item.discount_allocations[0].discount_application.value | divided_by: 100.0}} : 0) : 0,
+              is_giftcard_used: "{{item.gift_card}}" === "true",
+              giftcard_code: "{{checkout.applied_gift_cards[0].code}}",
+              giftcard_value: "{{checkout.applied_gift_cards[0].code}}"? Number({{"checkout.applied_gift_cards[0].initial_value" || 0}}):0,
+              order_amount: {{checkout.total_price | divided_by: 100.0}},
+              receiver_name: "{{checkout.shipping_address.name}}",
+              receiver_phone: "{{checkout.shipping_address.phone}}",
+              receiver_email: "{{checkout.email}}",
+              receiver_country: "{{checkout.shipping_address.country.name}}",
+              receiver_state: "{{checkout.shipping_address.province}}",
+              receiver_city: "{{checkout.shipping_address.city}}",
+              receiver_street: "{{checkout.shipping_address.street}}",
+              receiver_address: "{{checkout.shipping_address.address1}}",
+              receiver_apartment: "{{checkout.shipping_address.address2}}",
+              receiver_postcode: "{{checkout.shipping_address.zip}}",
+              referer_page: cdpCommon.getRefererPage().url,
+              referer_page_title: cdpCommon.getRefererPage().title,
+              commodity_first_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_first_category || "",
+              commodity_second_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_second_category || "",
+              spu_name: {{item.product.has_only_default_variant}} ? "{{item.title}}" : "{{item.product.title}}",
+              spu_id: {{item.product.has_only_default_variant}} ? "{{item.sku}}" : "{{item.product.id}}",
+              sku_name: "{{item.title}}",
+              sku_id: "{{item.sku}}",
+              sku_unit_price: {{item.original_price | divided_by: 100.0}},
+              sku_sale_price: {{item.final_price | divided_by: 100.0}},
+              warranty_year: cdpCommon.warrantyYearByTitle("{{item.properties.AutoWarranty}}"),
+              commodity_tag: "{{item.product.tags | join: ','}}".split(","),
+              sku_quantity: {{item.quantity}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_discount: {{item.final_line_price | divided_by: 100.0}}
+            })
+          {% endfor %}
+        }
+
+        if( Shopify.Checkout.step=== "thank_you") {
+          SubscriptionResult({
+            _latest_gclid: '',
+            email_used: "{{checkout.email}}",
+            agree_to_receive_promotion: checkout.buyer_accepts_marketing ? "同意" : "不同源",
+            subscription_source: '订单页'
+          })
+
+          SubmitOrder({
+            ...baseParams,
+            is_first_time: cdpCommon.cacheEvent("SubmitOrder"),
+            is_paypal_used: "{{checkout.transactions[0].transaction_payment_details.credit_card_company}}" !== "",
+            payment_method: "{{checkout.transactions[0].gateway_display_name}}",
+            tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+            shipping_method: "{{checkout.shipping_method.title}}",
+            shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+            is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+            coupon_code: {{checkout.discount_applications.size}} > 0 ? "{{checkout.discount_applications[0].title}}" : "",
+            coupon_amount: {{checkout.discounts_amount | divided_by: 100.0}},
+            coupon_discount: {{checkout.discount_applications.size}} > 0 ? ("{{checkout.discount_applications[0].value_type}}" === "percentage" ? {{checkout.discount_applications[0].value | divided_by: 100.0}} : 0) : 0,
+            is_giftcard_used: {{checkout.gift_cards_amount}} > 0 ? true: false,
+            giftcard_code: "{{checkout.applied_gift_cards[0].code}}",
+            giftcard_value: "{{checkout.applied_gift_cards[0].code}}"? Number({{"checkout.applied_gift_cards[0].initial_value" || 0}}):0,
+            order_amount: {{checkout.total_price | divided_by: 100.0}},
+            receiver_name: "{{checkout.shipping_address.name}}",
+            receiver_phone: "{{checkout.shipping_address.phone}}",
+            receiver_email: "{{checkout.email}}",
+            receiver_country: "{{checkout.shipping_address.country.name}}",
+            receiver_state: "{{checkout.shipping_address.province}}",
+            receiver_city: "{{checkout.shipping_address.city}}",
+            receiver_street: "{{checkout.shipping_address.street}}",
+            receiver_address: "{{checkout.shipping_address.address1}}",
+            receiver_apartment: "{{checkout.shipping_address.address2}}",
+            receiver_postcode: "{{checkout.shipping_address.zip}}",
+            billing_ads_same_as_shipping: "{{checkout.shipping_address.address1}}" === "{{checkout.billing_address.address1}}",
+            billing_name: "{{checkout.billing_address.name}}",
+            billing_phone: "{{checkout.billing_address.phone}}",
+            billing_country: "{{checkout.billing_address.country.name}}",
+            billing_state: "{{checkout.billing_address.province}}",
+            billing_city: "{{checkout.billing_address.city}}",
+            billing_street: "{{checkout.billing_address.street}}",
+            billing_address: "{{checkout.billing_address.address1}}",
+            billing_apartment: "{{checkout.billing_address.address2}}",
+            billing_postcode: "{{checkout.billing_address.zip}}"
+          })
+
+          PayOrder({
+            ...baseParams,
+            is_first_time: cdpCommon.cacheEvent("PayOrder"),
+            _latest_gclid: "",
+            order_id: "{{checkout.order_id}}",
+            is_paypal_used: "{{checkout.transactions[0].transaction_payment_details.credit_card_company}}" !== "",
+            payment_method: "{{checkout.transactions[0].gateway_display_name}}",
+            tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+            shipping_method: "{{checkout.shipping_method.title}}",
+            shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+            is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+            coupon_code: {{checkout.discount_applications.size}} > 0 ? "{{checkout.discount_applications[0].title}}" : "",
+            coupon_amount: {{checkout.discounts_amount | divided_by: 100.0}},
+            coupon_discount: {{checkout.discount_applications.size}} > 0 ? ("{{checkout.discount_applications[0].value_type}}" === "percentage" ? {{checkout.discount_applications[0].value | divided_by: 100.0}} : 0) : 0,
+            is_giftcard_used: {{checkout.gift_cards_amount}} > 0 ? true: false,
+            giftcard_code: "{{checkout.applied_gift_cards[0].code}}",
+            giftcard_value: "{{checkout.applied_gift_cards[0].code}}"? Number({{"checkout.applied_gift_cards[0].initial_value" || 0}}):0,
+            order_amount: {{checkout.total_price | divided_by: 100.0}},
+            receiver_name: "{{checkout.shipping_address.name}}",
+            receiver_phone: "{{checkout.shipping_address.phone}}",
+            receiver_email: "{{checkout.email}}",
+            receiver_country: "{{checkout.shipping_address.country.name}}",
+            receiver_state: "{{checkout.shipping_address.province}}",
+            receiver_city: "{{checkout.shipping_address.city}}",
+            receiver_street: "{{checkout.shipping_address.street}}",
+            receiver_address: "{{checkout.shipping_address.address1}}",
+            receiver_apartment: "{{checkout.shipping_address.address2}}",
+            receiver_postcode: "{{checkout.shipping_address.zip}}",
+            billing_ads_same_as_shipping: "{{checkout.shipping_address.address1}}" === "{{checkout.billing_address.address1}}",
+            billing_name: "{{checkout.billing_address.name}}",
+            billing_phone: "{{checkout.billing_address.phone}}",
+            billing_country: "{{checkout.billing_address.country.name}}",
+            billing_state: "{{checkout.billing_address.province}}",
+            billing_city: "{{checkout.billing_address.city}}",
+            billing_street: "{{checkout.billing_address.street}}",
+            billing_address: "{{checkout.billing_address.address1}}",
+            billing_apartment: "{{checkout.billing_address.address2}}",
+            billing_postcode: "{{checkout.billing_address.zip}}"
+          })
+
+          {% for item in checkout.line_items %}
+            SubmitOrderDetail({
+              ...baseParams,
+              is_first_time: cdpCommon.cacheEvent("SubmitOrderDetail"),
+              is_paypal_used: "{{checkout.transactions[0].transaction_payment_details.credit_card_company}}" !== "",
+              payment_method: "{{checkout.transactions[0].gateway_display_name}}",
+              tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+              shipping_method: "{{checkout.shipping_method.title}}",
+              shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+              is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+              coupon_code: {{item.discount_allocations.size}} > 0 ? "{{item.discount_allocations[0].discount_application.title}}" : "",
+              coupon_amount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "fixed_amount" ? {{item.discount_allocations[0].discount_application.value}} : 0) : 0,
+              coupon_discount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "percentage" ? {{item.discount_allocations[0].discount_application.value | divided_by: 100.0}} : 0) : 0,
+              is_giftcard_used: "{{item.gift_card}}" === "true",
+              order_amount: {{checkout.total_price | divided_by: 100.0}},
+              receiver_name: "{{checkout.shipping_address.name}}",
+              receiver_phone: "{{checkout.shipping_address.phone}}",
+              receiver_email: "{{checkout.email}}",
+              receiver_country: "{{checkout.shipping_address.country.name}}",
+              receiver_state: "{{checkout.shipping_address.province}}",
+              receiver_city: "{{checkout.shipping_address.city}}",
+              receiver_street: "{{checkout.shipping_address.street}}",
+              receiver_address: "{{checkout.shipping_address.address1}}",
+              receiver_apartment: "{{checkout.shipping_address.address2}}",
+              receiver_postcode: "{{checkout.shipping_address.zip}}",
+              referer_page: cdpCommon.getRefererPage().url,
+              referer_page_title: cdpCommon.getRefererPage().title,
+              billing_ads_same_as_shipping: "{{checkout.shipping_address.address1}}" === "{{checkout.billing_address.address1}}",
+              billing_name: "{{checkout.billing_address.name}}",
+              billing_phone: "{{checkout.billing_address.phone}}",
+              billing_country: "{{checkout.billing_address.country.name}}",
+              billing_state: "{{checkout.billing_address.province}}",
+              billing_city: "{{checkout.billing_address.city}}",
+              billing_street: "{{checkout.billing_address.street}}",
+              billing_address: "{{checkout.billing_address.address1}}",
+              billing_apartment: "{{checkout.billing_address.address2}}",
+              billing_postcode: "{{checkout.billing_address.zip}}",
+
+              commodity_first_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_first_category || "",
+              commodity_second_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_second_category || "",
+              spu_name: "{{item.product.title}}",
+              sku_name: "{{item.title}}",
+              sku_id: "{{item.sku}}",
+              sku_unit_price: {{item.product.compare_at_price_min | divided_by: 100.0}},
+              sku_sale_price: {{item.final_price | divided_by: 100.0 * item.quantity}},
+              sku_actual_price: {{item.final_price | divided_by: 100.0 * item.quantity}},
+              warranty_year: cdpCommon.warrantyYearByTitle("{{item.properties.AutoWarranty}}"),
+              commodity_tag: "{{item.product.tags | join: ','}}".split(","),
+              sku_quantity: {{item.quantity}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_discount: {{item.final_line_price | divided_by: 100.0}}
+            })
+
+            PayOrderDetail({
+              ...baseParams,
+              is_first_time: cdpCommon.cacheEvent("PayOrderDetail"),
+              _latest_gclid: "",
+              order_id: "{{checkout.order_id}}",
+              is_paypal_used: "{{checkout.transactions[0].transaction_payment_details.credit_card_company}}" !== "",
+              payment_method: "{{checkout.transactions[0].gateway_display_name}}",
+              tax_fee: {{checkout.tax_price | divided_by: 100.0}},
+              shipping_method: "{{checkout.shipping_method.title}}",
+              shipping_fee: {{checkout.shipping_price | divided_by: 100.0}},
+              is_coupon_used: {{checkout.discount_applications.size}} > 0 ? true : false,
+              coupon_code: {{item.discount_allocations.size}} > 0 ? "{{item.discount_allocations[0].discount_application.title}}" : "",
+              coupon_amount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "fixed_amount" ? {{item.discount_allocations[0].discount_application.value}} : 0) : 0,
+              coupon_discount: {{item.discount_allocations.size}} > 0 ? ("{{item.discount_allocations[0].discount_application.value_type}}" === "percentage" ? {{item.discount_allocations[0].discount_application.value | divided_by: 100.0}} : 0) : 0,
+              is_giftcard_used: "{{item.gift_card}}" === "true",
+              order_amount: {{checkout.total_price | divided_by: 100.0}},
+              receiver_name: "{{checkout.shipping_address.name}}",
+              receiver_phone: "{{checkout.shipping_address.phone}}",
+              receiver_email: "{{checkout.email}}",
+              receiver_country: "{{checkout.shipping_address.country.name}}",
+              receiver_state: "{{checkout.shipping_address.province}}",
+              receiver_city: "{{checkout.shipping_address.city}}",
+              receiver_street: "{{checkout.shipping_address.street}}",
+              receiver_address: "{{checkout.shipping_address.address1}}",
+              receiver_apartment: "{{checkout.shipping_address.address2}}",
+              receiver_postcode: "{{checkout.shipping_address.zip}}",
+              referer_page: cdpCommon.getRefererPage().url,
+              referer_page_title: cdpCommon.getRefererPage().title,
+              billing_ads_same_as_shipping: "{{checkout.shipping_address.address1}}" === "{{checkout.billing_address.address1}}",
+              billing_name: "{{checkout.billing_address.name}}",
+              billing_phone: "{{checkout.billing_address.phone}}",
+              billing_country: "{{checkout.billing_address.country.name}}",
+              billing_state: "{{checkout.billing_address.province}}",
+              billing_city: "{{checkout.billing_address.city}}",
+              billing_street: "{{checkout.billing_address.street}}",
+              billing_address: "{{checkout.billing_address.address1}}",
+              billing_apartment: "{{checkout.billing_address.address2}}",
+              billing_postcode: "{{checkout.billing_address.zip}}",
+              commodity_first_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_first_category || "",
+              commodity_second_category: cdpCommon?.categoryBySku("{{item.sku}}")?.commodity_second_category || "",
+              spu_name: "{{item.product.title}}",
+              sku_name: "{{item.title}}",
+              sku_id: "{{item.sku}}",
+              sku_unit_price: {{item.product.compare_at_price_min | divided_by: 100.0}},
+              sku_sale_price: {{item.final_price | divided_by: 100.0 * item.quantity}},
+              sku_actual_price: {{item.final_price | divided_by: 100.0 * item.quantity}},
+              warranty_year: cdpCommon.warrantyYearByTitle("{{item.properties.AutoWarranty}}"),
+              commodity_tag: "{{item.product.tags | join: ','}}".split(","),
+              sku_quantity: {{item.quantity}},
+              sku_total_price_original: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_discount: {{item.original_line_price | divided_by: 100.0}},
+              sku_total_price_actual: {{item.final_price | divided_by: 100.0}}
+            })
+          {% endfor %}
+        }
+      })
+      console.log(11111111111111111)
+    </script>
+  </body>
+
+  <script>
+    var paymentImage = document.getElementsByTagName("img");
+    for (i = 0; i < paymentImage.length; i++) {
+      if (paymentImage[i].alt == "Affirm") {
+        var paymentId = paymentImage[i].parentElement.parentElement.parentElement.getAttribute('data-select-gateway');
+        var targetNode = document.getElementById('payment-gateway-subfields-'+paymentId);
+        targetNode.innerHTML = "<div id='affirm-inline-checkout'></div>"
+      }
+    }
+    affirm.ui.ready(function() {
+      affirm.checkout.inline({
+        merchant: { inline_container: "affirm-inline-checkout" },
+        data: { total: {{ checkout.total_price }} }
+      })
+    })
+  </script>
+</html>

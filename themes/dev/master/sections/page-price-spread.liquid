@@ -1,0 +1,474 @@
+<script src="{{'oldnew.js' | asset_url}}"></script>
+<script src="{{'el-validate-form.js' | asset_url}}"></script>
+<div class="old-new-layer">
+	<div class="old-new-banner-container relative">
+		{%- if section.settings.banner_img != blank -%}
+			<img
+				class="object-cover object-center pc-block"
+				src="{{ section.settings.banner_img | img_url: '1920x' }}"
+				loading="lazy"
+				alt="{{ section.settings.banner_img.alt | escape }}"
+			>
+		{%- endif -%}
+
+		{%- if section.settings.m_banner_img != blank -%}
+			<img
+				class="object-cover object-center mobile-block"
+				src="{{ section.settings.m_banner_img | img_url: '750x' }}"
+				loading="lazy"
+				alt="{{ section.settings.m_banner_img.alt | escape }}"
+			>
+		{%- endif -%}
+
+		<div class="page-container-zzl font-bold absolute top-0 left-0 right-0 old-new-banner-text">
+      		<div class="text-right font-bold banner-title">
+				{{ section.settings.banner_title }}
+			</div>
+        </div>
+	</div>
+
+	<div class="old-new-page-container">
+		<div class="page-container-zzl">
+			<div class="old-new-form">
+				<div class="font-bold text-center form-title">
+                    {{ section.settings.form_title | escape }}
+                </div>
+				<div class="form-subtitle">{{ section.settings.form_subtitle | escape }}</div>
+
+				<div id="oldnewForm">
+					<form id="price-spread" name="price-spread">
+                        <div class="el-flex">
+                            <div class="el-form-item">
+                                <div class="el-form-item__content">
+                                    <label class="label" for="first_name">Enter Your First Name*</label>
+                                    <input class="el-form-item__inner" id="first_name" name="first_name" maxlength="100" value="" />
+                                </div>
+                            </div>
+                            <div class="el-form-item">
+                                <div class="el-form-item__content">
+                                    <label class="label" for="last_name">Enter Your Last Name*</label>
+                                    <input class="el-form-item__inner" id="last_name" name="last_name" maxlength="100" value="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="el-flex">
+                            <div class="el-form-item">
+                                <div class="el-form-item__content">
+                                    <label class="label" for="email">Enter Your Email*</label>
+                                    <input class="el-form-item__inner" id="email" name="email" maxlength="100" value="" />
+                                </div>
+                            </div>
+
+                            <div class="el-form-item">
+                                <div class="el-form-item__content">
+                                    <label class="label" for="phone">Enter Your Phone Number</label>
+                                    <input class="el-form-item__inner" id="phone" name="phone" maxlength="100" value="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="el-flex">
+                            <div class="el-form-item">
+                                <div class="el-form-item__content">
+                                    <label 
+                                        class="label" 
+                                        for="purchase_channel"
+                                    >
+                                        Please Select*
+                                    </label>
+                                    <select 
+                                        class="el-form-item__inner el-select__inner" 
+                                        id="purchase_channel" 
+                                        name="purchase_channel"
+                                    >
+                                        <option style='display: none'></option>
+                                        <option value ="Official website">Official website</option>
+                                        <option value ="Amazon">Amazon</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="el-form-item">
+                                <div class="el-form-item__content" style="display: none;">
+                                    <label class="label" for="order_id">Enter Your Order ID*</label>
+                                    <input class="el-form-item__inner" id="order_id" name="order_id" maxlength="100" value="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="el-form-item">
+                            <div class="el-form-item__content">
+                                <label class="label" for="desc">Enter Your descdescdesc</label>
+                                <textarea class="el-form-item__inner" id="desc" name="desc" maxlength="210" value=""></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center el-form-item-center">
+                            <div class="el-form-item inline-center">
+                            <span class="el-form-item__content el-checkbox__content">
+                                <input class="el-checkbox__inner" type="checkbox" id="is_subscribe" checked name="is_subscribe" />
+                                <label class="el-checkbox__label" for="is_subscribe">By accepting this offer you agree to the Subscription and <a style="text-decoration: underline;" href="https://www.jackery.com/pages/privacy-policy">Privacy Policy</a></label>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="oldnew-form-submit">
+                            <button class="el-form-submit">
+                                <span>GET NOW</span>
+                            </button>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="price-spread-modal" class="modal-container">
+	<div class="modal-dialog modal-dms" style="top: 100px;">
+		<div class="modal-header">
+            <h1>确认提交信息</h1>
+			<button type="button" class="close" data-close="modal">&times;</button>
+		</div>
+
+        <div class="price-spread-confirm">
+            <h3 class="text-center">请注意，错误的信息可能会导致申请失败</h3>
+            <ul class="confirm-info">
+                <li class="info-item flex">
+                    <div class="info-item-title">First Name</div>
+                    <div class="info-item-content">Leo</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">Last Name</div>
+                    <div class="info-item-content">Zzl</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">Email Address</div>
+                    <div class="info-item-content">sunwenqaq@163.com</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">Phone</div>
+                    <div class="info-item-content">123123123123</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">购买渠道</div>
+                    <div class="info-item-content">Official website</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">Order ID</div>
+                    <div class="info-item-content">US1233223</div>
+                </li>
+
+                <li class="info-item flex">
+                    <div class="info-item-title">描述</div>
+                    <div class="info-item-content">我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述</div>
+                </li>
+            </ul>
+        </div>
+		<div class="modal-content"></div>
+		<div class="modal-foot text-center">
+			<button class="btn-modal btn-primary" data-close="modal">Edit</button>
+			<button class="btn-modal btn-default form-submit">Confirm</button>
+		</div>
+	</div>
+</div>
+
+<style>
+    #price-spread-modal .modal-dialog {
+        padding-top: 20px;
+    }
+    .price-spread-confirm {
+        margin: 0 1.5625vw;
+        font-size: .833333vw;
+        line-height: 1.25vw;
+    }
+    #price-spread-modal .modal-header>.close {
+        top: -20px;
+    }
+    .price-spread-confirm h3 {
+        font-size: 20px;
+    }
+
+    .price-spread-confirm .confirm-info {
+        margin-top: 15px;
+        border-top: solid 1px #e1e1e1;
+        padding: 10px 40px;
+    }
+    .price-spread-confirm .info-item {
+        font-size: 18px;
+        padding: 3px 0;
+    }
+    .price-spread-confirm .info-item .info-item-title {
+        font-weight: bold;
+        flex: 1;
+    }
+
+    .price-spread-confirm .info-item .info-item-content {
+        flex: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+
+    #price-spread-modal .btn-modal {
+        width: 150px;
+        padding: 14px 0;
+        text-align: center;
+    }
+
+    .price-spread-success {
+        margin-top: 50px;
+    }
+    .price-spread-success-title {
+        margin: 30px auto 10px;
+        font-size: 38px!important;
+    }
+
+    @media (max-width: 768px) {
+        #price-spread-modal .modal-dialog {
+            padding-top: 0;
+        }
+        #price-spread-modal .modal-header>.close {
+            top: 0;
+        }
+        .price-spread-confirm h3 {
+            font-size: 3.7vw;
+        }
+        .price-spread-confirm {
+            margin: 0 1.5625vw;
+            font-size: 2.4vw;
+            line-height: 1;
+        }
+        .price-spread-confirm .confirm-info {
+            margin-top: 12px;
+            padding: 10px 4vw;
+        }
+        .price-spread-confirm .info-item {
+            font-size: 3.7vw;
+            padding: 2px 0;
+        }
+    }
+</style>
+<script>
+    const purchase_places = {
+        'Official website': {
+            label: 'Order ID*(such as:#14xxx)',
+            reg: /^(#|CA|DE|UK)\d{3,}$/
+        },
+        'Amazon': {
+            label: 'Order ID*(such as:3桁-7桁-7桁)',
+            reg: /^\d{3}-{1}\d{7}-{1}\d{7}$/
+        }
+    }
+
+    function HandlePurchase() { // 购买渠道
+        const target = document.forms['price-spread'].querySelector("#purchase_channel")
+        const orderDom = document.forms['price-spread'].querySelector("#order_id")
+        target.addEventListener("change", () => {
+            orderDom.value = ''
+            const target_val = target ? target.value.trim() : ""
+            if(target_val && purchase_places[target_val].reg) {
+                const order_id_label = document.forms['price-spread'].querySelector("[for=order_id]")
+                console.log(order_id_label.parentNode)
+                priceSpreadForm.options.map(item => {
+                    if(item.name === 'order_id') {
+                        item.rules.length = 2
+                        item.message.length = 2
+                        item.rules[1] = purchase_places[target_val].reg
+                        item.message[1] = '请输入正确的订单号'
+                        return item
+                    }
+                })
+
+                if(order_id_label) {
+                    order_id_label.innerText = purchase_places[target_val].label
+                    order_id_label.parentNode.style.display = 'block';
+                }
+            }
+        })
+    }
+
+    $(document).ready(function() {
+        let priceSpreadForm = new Mvalidate('price-spread')
+        priceSpreadForm.add({
+            name: 'first_name',
+            rules: ['required', 'maxLength(10)'],
+            message: ['Please enter first name', '字符数限制10'],
+            callback: function (el, errorEl) {}
+        }).add({
+            name: 'last_name',
+            rules: ['required', 'maxLength(10)'],
+            message: ['Please enter last name', '字符数限制10'],
+            callback: function (el, errorEl) {}
+        }).add({
+            name: 'email',
+            rules:['required', /@/],
+            message: ['Please enter your email address', 'Please enter a valid email address'],
+            callback: function (el, errorEl) {}
+        }).add({
+            name: 'purchase_channel',
+            rules:['required'],
+            message: ['購入場所をお選びください。']
+        }).add({
+            name: 'order_id',
+            rules:['required'],
+            message: ['Please enter order id']
+        }).add({
+            name: 'desc',
+            rules:['maxLength(200)'],
+            message: ['最大长度不超过200']
+        }).init()
+        document.forms['price-spread'].querySelector('.el-form-submit').addEventListener('click', function (e) {
+            e.preventDefault()
+            if (priceSpreadForm.valid()) {
+                const form = document.forms['price-spread']
+                let param = {};
+                for (let i = 0; i < form.length; i++) {
+                    if(form[i].type !== 'submit') {
+                        if(form[i].type === 'checkbox') {
+                            param[form[i].name] = form[i].checked
+                        } else {
+                        param[form[i].name] = form[i].value.trim() 
+                        }
+                    }
+                }
+
+                const form_btn_e = form.querySelector('.el-form-submit')
+                form_btn_e.classList.add('btn--loading')
+
+                let errorTips = ''
+                modal.init({
+                    el: '#price-spread-modal',
+                    open: 'show',
+                    animation: 'soak',
+                    backClose: true,
+                    content: ''
+                });
+                // $http.p(`${$http.host()}/v1/invite-new/new`, {
+                //     shopify_shop_id: window.shopId,
+                //     ...param,
+                //     invite_code: decodeURIComponent(invite_code)
+                // }).then(res => {
+                //     form_btn_e.classList.remove('btn--loading')
+                //     if(res.data && res.data.discount_code) {
+                //         alert("123")
+                //     } else {
+                        switch (res.code) {
+                            case 50002:
+                                errorTips = `Your email already exists. Share us with your friends and you'll receive a discount off your next purchase. (Applies to users who registered before this activity goes online.)`
+                                break;
+                            case 50004:
+                                errorTips = `Your email already exists. The discount code has been sent to you by email. Redeem your dicsount  before it expires. (Applies to users who have claimed the coupon after this activity goes online.)`
+                                break
+                            case 50001:
+                                errorTips = `By accepting this offer you agree to the Subscription and Privacy Policy`
+                                break
+                            case 50003:
+                                errorTips = `You have entered an invalid/expired link, please try again.`
+                                break
+                            case 2005:
+                                errorTips = `Please enter a valid email`
+                                break
+                            case 0:
+                                errorTips = `Oops, something went wrong, please try it again.`
+                                break
+                            default:
+                            break;
+                        }
+                        errorTips && modal.init({
+                            el: '#old-new-modal',
+                            open: 'show',
+                            animation: 'soak',
+                            backClose: true,
+                            content: errorTips
+                        });
+                //     }
+                // }).catch(() => {
+                //     form_btn_e.classList.remove('btn--loading')
+                //     modal.init({
+                //         el: '#old-new-modal',
+                //         open: 'show',
+                //         animation: 'soak',
+                //         backClose: true,
+                //         content: 'Server Error, please try it again.'
+                //     });
+                // })
+            }
+        })
+        HandlePurchase()
+
+        var c_dialog = new window.modal()
+        c_dialog.init({
+            el: '#price-spread-modal',
+            open: 'show',
+            animation: 'soak',
+            backClose: true,
+            content: ''
+        });
+
+        $(".form-submit").click(() => {
+            $(".form-submit").addClass("btn--loading")
+
+            setTimeout(() => {
+                $("#oldnewForm").remove()
+                c_dialog._getInKeyframes("#price-spread-modal", "hide")
+                $(".form-submit").removeClass("btn--loading")
+                var $successDOM = $(`<div class="price-spread-success flex tems-center justify-center flex-col">
+                    <img
+                        class="object-cover object-center pc-block"
+                        src="https://p3-passport.byteimg.com/img/user-avatar/625f43662bc6cc134e78941504ed401c~100x100.awebp"
+                        loading="lazy"
+                        alt=""
+                    >
+                    <h1 class="price-spread-success-title">提交成功！</h1>
+                    <h3>you will receive a confirmation email shortly.</h3>
+                </div>`)
+                $('.old-new-form').append($successDOM)
+            }, 2000)
+        })
+    })
+</script>
+{% schema %}
+{
+  "name": "price spread",
+  "tag": "section",
+  "class": "price-spread",
+  "settings": [
+    {
+			"type": "image_picker",
+			"id": "banner_img",
+			"label": "Background Img"
+    },
+	{
+			"type": "image_picker",
+			"id": "m_banner_img",
+			"label": "Mobile Background Img"
+    },
+	{
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title"
+    },
+	{
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title"
+    },
+	{
+      "type": "textarea",
+      "id": "form_subtitle",
+      "label": "Form sub Title"
+    },
+	{
+      "type": "textarea",
+      "id": "modal_text",
+      "label": "Modal text"
+    }
+  ]
+}
+{% endschema %}

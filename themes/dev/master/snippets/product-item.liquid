@@ -1,0 +1,113 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {%- assign on_sale = true -%}
+{% endif %}
+
+{%- assign sold_out = true -%}
+{% if product.available %}
+  {%- assign sold_out = false -%}
+{% endif %}
+
+{%- assign product_tags = product.tags | join: ',' -%}
+{%- assign has_custom_label = false -%}
+{% if product_tags contains '_label_' %}
+  {% for tag in product.tags %}
+    {% if tag contains '_label_' %}
+      {%- assign tag_starts_with = tag | slice: 0 -%}
+      {% if tag_starts_with == '_' %}
+        {%- assign has_custom_label = true -%}
+        {%- assign custom_label = tag | replace: '_label_', '' -%}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<li 
+  class="{% if sold_out %}soldOut{% endif %}" 
+  data-price="{{ product.price }}" 
+  data-variant="{{ product.variants[0].id }}"
+  dom-type="mkt"
+  mkt-area="精选商品位-{{index}}"
+  mkt-page="首页"
+  mkt-materialID="{{product.featured_image | img_url}}"
+  mkt-materialname="{{product.variants[0].sku}}"
+  mkt-skuprice="{{ product.price }}"
+  mkt-commodity_tag="{{product_tags}}"
+>
+  <a href="{{ product.url | within: collection }}" {%- if product.tags contains 'NEW' -%}class="new-product"{% endif %}>
+    {% if has_custom_label %}
+      <i class="__tag __tag--custom">{{ custom_label }}</i>
+    {% else %}
+      {% if sold_out %}
+        <i class="__tag">{{ 'products.product.sold_out' | t }}</i>
+      {% endif %}
+      {% if on_sale and sold_out == false %}
+        {% if settings.product_save_amount %}
+          <i class="__tag __tag--sale">
+            {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money }}{% endcapture %}
+            {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+          </i>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  
+    {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    {%- assign img_url2 = product.images | last | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <img class="grid-product__image lazyload" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+    <img class="grid-product__image lazyload" data-src="{{ img_url2 }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+    <noscript>
+      <img class="grid-product__image lazyloaded" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.featured_image.alt | escape }}">
+    </noscript>
+
+    <p class="info">
+      <span>{{ product.title }}</span>
+      <em class="price">
+        {% if product.price_varies %}
+          {% assign price = product.price_min | money %}
+          {{ 'products.general.from_text_html' | t: price: price }}
+        {% else %}
+          {{ product.price | money }}
+        {% endif %}
+        <br class="hidden-desktop">
+        <i>{{ product.compare_at_price | money }}</i>
+      </em>
+      <button class="theme-v2-button">{{ button_text }}</button>
+    </p>
+
+    {% if settings.vendor_enable %}
+    <p class="vendor">{{ product.vendor }}</p>
+    {% endif %}
+
+    {% if settings.enable_product_reviews %}
+      <p class="shopify-product-reviews-badge" data-id="{{ product.id }}"></p>
+    {% endif %}
+
+    {% if settings.collection_color_swatches %}
+      {%- assign swatch_file_extension = 'png' -%}
+
+      {% for option in product.options_with_values %}
+        {%- assign option_name = option.name | downcase -%}
+        {% if option_name contains 'color' or option_name contains 'colour' %}
+          {%- assign option_index = forloop.index0 -%}
+          {%- assign values = '' -%}
+          <div class="grid-product__colors">
+            {% for variant in product.variants %}
+              {%- assign value = variant.options[option_index] %}
+              {% unless values contains value %}
+                {%- assign values = values | join: ',' %}
+                {%- assign values = values | append: ',' | append: value %}
+                {%- assign values = values | split: ',' %}
+
+                {%- assign color_image = value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+
+                <a href="{{ variant.url | within: collection }}" class="color-swatch" style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};"></a>
+              {% endunless %}
+             {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+  </a>
+</li>

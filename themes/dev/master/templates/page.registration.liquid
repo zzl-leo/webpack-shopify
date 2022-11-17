@@ -1,0 +1,265 @@
+{% comment %}
+get url param '\u0026' = &
+{% endcomment %}
+{%- assign id = '' -%}
+
+{%- assign current_url = content_for_header | split: '"pageurl":"' | last | split: '"' | first | split: '?' -%}
+{%- assign params = current_url[1] | split: '\u0026' -%}
+{%- for param in params -%}
+	{%- if param contains "id" -%}
+    {%- assign id = param | split: '=' | last -%}
+	{%- endif -%}
+{%- endfor -%}
+
+<style>
+[class*='p-r'] {
+  --center-width: 1200px; --font-sub-title: 22px; --font-normal: 14px; --weak-color: #ccc; --weak-border: 1px #ddd solid;
+}
+[class*='p-r-form'] button {width: 100%; color: var(--normal-color); font-size: var(--font-normal); background: var(--brand-color); margin-top: var(--distance-top);}
+[class*='p-r-form'] button[disabled] {background: var(--weak-color); pointer-events: none;}
+@media screen and (max-width: 540px) {
+  [class*='p-r'] {
+    --font-sub-title: 20px;
+  }
+}
+
+.p-r-banner {
+	height: 450px; background: url('https://cdn.shopify.com/s/files/1/0970/9262/files/p-r-20220217.jpg?v=1645090237') no-repeat center; background-size: cover; margin-top: 0;
+	display: flex; align-items: center; justify-content: center;
+}
+.p-r-banner h1, .p-r-banner p {color: var(--normal-color);}
+@media screen and (max-width: 540px) {
+	.p-r-banner {height: 200px; background-position: center right -200px;}
+}
+
+.p-r-info {margin-top: var(--distance-content); text-align: center;}
+.p-r-info b {font-size: var(--font-sub-title);}
+.p-r-text-left {text-align: left;}
+.p-r-text-left .sub_title {padding: 0;}
+
+.p-r-content label input, [class*='p-r-form'] button, .p-r-content label .p {height: 50px; line-height: 50px; border-radius: var(--radius);}
+
+.p-r-formdata .sub_title {margin-top: 0;}
+.p-r-form {display: block; margin-top: var(--distance-top); margin-bottom: var(--distance-content);}
+.p-r-form .must-field::after, .p-r-form .input-tips::after {font-size: var(--font-small); color: var(--brand-color);}
+.p-r-form .must-field::after {content: "*";}
+.p-r-form .input-tips::after {content: "Please enter a valid input";}
+.p-r-form .tips-first.input-tips::after {content: "Please enter first name";}
+.p-r-form .tips-last.input-tips::after {content: "Please enter lastname";}
+.p-r-form .tips-email.input-tips::after {content: "Please enter a valid email address";}
+.p-r-form .tips-category.input-tips::after {content: "Please select category";}
+.p-r-form .tips-product.input-tips::after {content: "Please select product";}
+.p-r-form .tips-order.input-tips::after {content: "Please enter order id";}
+.p-r-form .tips-date.input-tips::after {content: "Please select purchase date";}
+.p-r-form .tips-order.order-check.input-tips::after {content: "You've entered a wrong Order ID, please try again";}
+
+.p-r-content {
+	width: 100%; margin: var(--gap) 0; padding: var(--gap) 0; border-top: 1px var(--weak-bg) solid; border-bottom: 1px var(--weak-bg) solid;
+	display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: var(--gap);
+}
+.p-r-content .full {grid-column: 1 / span 2;}
+.p-r-content hr {width: 100%; height: 1px; border-color: var(--weak-bg);}
+.p-r-content label {width: 100%; text-align: left;}
+.p-r-content label span, .p-r-content label input {width: 100%; display: block;}
+.p-r-content label span {font-size: var(--font-normal); line-height: 24px; font-weight: bold; margin-bottom: var(--gap-mini);}
+.p-r-content label .p {width: 100%; pointer-events: none; position: absolute; left: 0; top: 28px; z-index: 9;}
+.p-r-content label input, .p-r-content label .p {text-indent: var(--gap-mini); color: var(--main-text-color); background-color: var(--normal-color); border: var(--weak-border);}
+.p-r-content label.input-tips input, .p-r-content label.input-tips .p {border: 1px var(--brand-color) solid;}
+.p-r-content label.date input {position: relative;}
+
+.p-r-content label span.tips-popup {display: flex; display: -webkit-flex; align-items: center; position: relative;}
+.tips-popup .popup, .tips-popup svg, .tips-popup .tips-info {position: absolute;}
+.tips-popup .popup {width: 20%; height: 100%; opacity: 0; left: 0; top: 0; z-index: 9;}
+.tips-popup svg {width: 24px; height: 24px; left: 60px;}
+.tips-popup .tips-info {
+  width: 100%; font-size: var(--font-normal); color: var(--normal-color); font-weight: normal; background: var(--bg-mask);
+  padding: var(--gap-mini); box-shadow: var(--shadow2); display: none;
+  top: 100%; left: 0; z-index: 2;
+}
+.tips-popup .popup:checked {width: 100vw; height: 100vh; position: fixed;}
+.tips-popup .popup:checked ~ .tips-info {display: block;}
+.tips-popup .tips-text { position:absolute; left: 90px; }
+
+@media screen and (max-width: 540px) {
+  .p-r-content label {grid-column: 1 / span 2;}
+}
+
+@media screen and (min-width: 541px) {
+  .p-r-formdata {background-color: #ececec; padding: 50px; margin-top: var(--distance-top); margin-bottom: var(--distance-content);}
+  .p-r-formdata.edit {background-image: url("https://cdn.shopify.com/s/files/1/0970/9262/files/pr-bg.png?v=1644977377"); background-position: top center; background-repeat: no-repeat;}
+  .p-r-formdata .p-r-info {margin-top: 0;}
+  .p-r-formdata .p-r-form {margin-bottom: 0; background-color: var(--normal-color); padding: 40px var(--gap);}
+  .p-r-formdata .p-r-content {margin-top: 0; padding: 0; border-top: none; border-bottom: none;}
+}
+@media screen and (max-width: 540px) {
+  .p-r-formdata .p-r-info-tips {text-align: left;}
+  .p-r-formdata .p-r-info-tips .sub_title {padding: 0;}
+}
+
+.y-select {position: relative;}
+.y-select .p i {font-size: var(--font-small); color: var(--weak-color);}
+.y-select input {opacity: 0;}
+.y-select svg {width: 12px; height: 12px; position: absolute; top: 48px; right: 10px; z-index: 10; pointer-events: none; transition: all 0.3s;}
+.y-select-option {
+	width: 100%; max-height: 0; background-color: var(--normal-color);
+	overflow-y: auto; overflow-x: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.2); transition: max-height 0.3s ease-in-out;
+	position: absolute; left: 0; z-index: 99;
+}
+.y-select ul {width: inherit;}
+.y-select li {width: inherit; height: 30px; line-height: 30px; padding: 0 10px; cursor: pointer;}
+.y-select li:hover {background-color: var(--weak-bg);}
+.y-select input:focus ~ svg {transform: rotate(180deg);}
+.y-select input:focus ~ .y-select-option {max-height: 900px;}
+
+.p-r-form-confirm {max-width: 1200px; background-color: var(--weak-bg); margin: var(--gap) auto; padding: var(--distance-content);}
+.p-r-form-confirm figcaption {border-bottom: 1px var(--weak-color) solid;}
+.p-r-form-confirm figcaption.p-r-info {margin-top: 0; padding-bottom: var(--distance-content);}
+.p-r-form-confirm .sub_title {color: var(--brand-color);}
+.p-r-form-confirm ul {padding: 0 var(--distance-content);}
+.p-r-form-confirm ul li {text-align: left; line-height: 50px; display: grid; grid-template-columns: 1fr 2fr; grid-gap: var(--gap);}
+.p-r-form-confirm ul strong {text-indent: var(--distance-content); font-weight: bold;}
+.p-r-form-confirm .operate {margin-top: var(--distance-content);}
+.p-r-form-confirm button {width: 195px; margin: 0 var(--gap);}
+.p-r-form-confirm button.edit {background: var(--normal-color); color: var(--text-sub-color); border: 1px var(--weak-color) solid;}
+@media screen and (max-width: 540px) {
+  .p-r-form-confirm {padding: var(--gap);}
+	.p-r-form-confirm ul {padding: 0}
+  .p-r-form-confirm ul strong {text-indent: 0;}
+  .p-r-form-confirm ul li {font-size: var(--font-small); line-height: 24px; margin: 20px 0; grid-template-columns: 1fr 1fr;}
+  .p-r-form-confirm button {width: calc(50% - 20px);}
+}
+
+.p-r-success {margin: var(--gap) auto; padding: var(--distance-content);}
+.p-r-success b {width: 100%; display: block; margin-top: var(--distance-top);}
+</style>
+
+
+<section class="layer p-r-banner">
+  <div class="layer-container">
+    <h1>Extend Your Warranty</h1>
+    <p class="sub_title">Resigter to extend your product warranty.</p>
+  </div>
+</section>
+
+<section class="layer-container p-r-info p-r-text-left">
+  <h2>Thanks for choosing Jackery.</h2>
+  <p class="sub_title">
+    We're here to provide you with an extended warranty service. The warranty is valid from the day you purchased the product. 
+    <br>
+    Orders from our third-party supplier (including our <a target="_blank" style="text-decoration: underline;" href="https://www.amazon.com/s?me=AZF6YB7UVA7OU&marketplaceID=ATVPDKIKX0DER">Amazon Shops</a>) can also receive an extended warranty by filling out the following application form.
+  </p>
+</section>
+
+<section class="layer-container p-r-formdata">
+  <div class="p-r-info p-r-info-tips">
+    <b>Product Registration Form</b>
+    {% comment %} <p class="sub_title">Register your Jackery product with the following information to get our instant technical and warranty support.</p> {% endcomment %}
+  </div>
+  <form name="productRegister" class="p-r-form p-r-text-left">
+    <input name="channel" type="hidden" value="shopify" />
+    <input name="cr" type="hidden" value="US" />
+    {%- if id -%}<input name="id" type="hidden" value="{{ id }}" />{%- endif -%}
+    <div class="p-r-content">
+      <label class="tips-first">
+        <span class="must-field">First Name</span><input name="first_name" type="text" maxlength="32" />
+      </label>
+      <label class="tips-last">
+        <span class="must-field">Last Name</span><input name="last_name" type="text" maxlength="32" />
+      </label>
+      
+      <label class="tips-email">
+        <span class="must-field">Email Address</span><input name="email" type="text" maxlength="50" />
+      </label>
+      <label>
+        <span>Phone</span><input name="phone" type="text" maxlength="20" />
+      </label>
+      
+      {% comment %}
+      <label class="full">
+        <span>Address<br><br>Street Address</span><input name="street" type="text" />
+      </label>
+      <label class="full">
+        <span>Address Line2</span><input name="address_bak" type="text" />
+      </label>
+      
+      <label>
+        <span>City</span><input name="city" type="text" />
+      </label>
+      <label>
+        <span>State</span><input name="state" type="text" />
+      </label>
+      
+      <label>
+        <span>Postal/Zip Code</span><input name="postal_code" type="text" />
+      </label>
+      <label class="y-select y-select-country">
+        <span>Country</span><input name="country" type="text" readonly />
+      </label>
+      {% endcomment %}
+      
+      <hr class="full">
+      
+      <label class="full y-select y-select-product_category tips-category">
+        <span class="must-field">Jackery Product Category</span><input name="product_category" type="text" readonly />
+      </label>
+      <label class="full y-select y-select-product_name hide tips-product">
+        <span class="must-field"></span><input name="product_name" type="text" readonly />
+      </label>
+      
+      <label class="y-select y-select-purchase_channel">
+        <span class="must-field">Place of Purchase</span><input name="purchase_channel" type="text" readonly />
+      </label>
+      <label>
+        <span>Product Serial Number</span><input name="serial_number" type="text" maxlength="20" />
+      </label>
+      
+      <label class="tips-order">
+        <span class="must-field tips-popup">
+          <input type="checkbox" class="popup" />
+          Order ID
+          <svg viewBox="0 0 1024 1024">
+            <path d="M509.92 795.84c157.904 0 285.92-128.016 285.92-285.92C795.84 352 667.808 224 509.92 224 352 224 224 352 224 509.92c0 157.904 128 285.92 285.92 285.92z m0 48C325.504 843.84 176 694.32 176 509.92 176 325.504 325.504 176 509.92 176c184.416 0 333.92 149.504 333.92 333.92 0 184.416-149.504 333.92-333.92 333.92z m-2.448-400.704h16a16 16 0 0 1 16 16v201.728a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16V459.136a16 16 0 0 1 16-16z m0-100.176h16a16 16 0 0 1 16 16v23.648a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16v-23.648a16 16 0 0 1 16-16z"></path>
+          </svg>
+          <p class="tips-info">
+            For orders placed from our website or Amazon, you can retrieve your order ID by signing up your Jackery account.<br>
+            For orders placed from authorised dealers, you can use PO number/customer number/ticket number as registered order ID.
+          </p>
+          <div class="tips-text J-tips-text"></div>
+        </span>
+        <input name="out_order_sn" type="text" maxlength="40" />
+      </label>
+      <label class="date tips-date">
+        <span class="must-field">Date of Purchase</span><input name="buy_at" type="date" />
+      </label>
+    </div>
+    
+    <p class="sub_title">By registering the product warranty, you will auto-subscribe to Jackery's latest offers.</p>
+    <button type="submit" name="emit" disabled>Warranty Submit</button>
+  </form>
+</section>
+
+<figure class="layer-container p-r-form-confirm hide">
+  <figcaption class="p-r-info">
+    <b>Confirm registration information</b>
+    <p class="sub_title">Please note that any wrong information may result in a failure of obtaining your extended one year warranty.</p>
+  </figcaption>
+  <ul class="p-r-info"></ul>
+  <div class="operate flexCenter">
+    <button type="button" class="edit">Edit</button>
+    <button type="button" class="confirm">Confirm</button>
+  </div>
+</figure>
+
+<section class="p-r-info flexCenter p-r-success hide">
+  <svg width="78px" height="78px" viewBox="0 0 78 78">
+    <path fill="#52C41A" d="M39,0 C17.4593023,0 0,17.4683721 0,39 C0,60.5316279 17.4683721,78 39,78 C60.5316279,78 78,60.5406977 78,39 C78,17.4593023 60.5406977,0 39,0 Z M57.7290698,29.5583721 L37.3674419,49.92 L36.7144186,50.5730233 C34.9004651,52.3869767 31.9618605,52.3869767 30.147907,50.5730233 L21.6132558,42.0383721 C20.5248837,40.95 20.5248837,39.1904651 21.6132558,38.102093 C22.7016279,37.0137209 24.4611628,37.0137209 25.5495349,38.102093 L31.7895349,44.342093 C32.6965116,45.2490698 34.165814,45.2490698 35.0727907,44.342093 L53.7837209,25.622093 C54.872093,24.5337209 56.6316279,24.5337209 57.72,25.622093 C58.8083721,26.7104651 58.8083721,28.47 57.7290698,29.5583721 Z"></path>
+  </svg>
+  <b>Thank you for registering!</b>
+  <p class="sub_title">you will receive a confirmation email shortly.</p>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.forms.productRegister && shopCommon.productRegister()
+})
+</script>

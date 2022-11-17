@@ -1,0 +1,54 @@
+{% for block in section.blocks %}
+<div class="distance part1" style="background-image: url({{ block.settings.background | img_url: 'master' }});">
+  <h2>{{ block.settings.title }}</h2>
+  <p class="sub_title">{{ block.settings.subtitle }}</p>
+  <a 
+    class="theme-v2-button" 
+    href="{{ block.settings.button_link }}"
+    dom-type="mkt"
+    mkt-area="新品展示位-{{forloop.index | plus:1 }}"
+    mkt-page="首页"
+    mkt-materialID="{{block.settings.product | img_url}}"
+  >{{ block.settings.button_label }}</a>
+  <i class="clearfix"></i>
+  <img src="{{ block.settings.product | img_url: 'master' }}" alt="{{ block.settings.title }}" />
+</div>
+{% endfor %}
+
+<style>
+#shopify-section-{{ section.id }} {background-image: url("{{ section.settings.background | img_url: 'master' }}")}
+</style>
+
+{% schema %}
+  {
+    "name": "Text columns V2", "class": "layer layer-grid", "max_blocks": 2,
+    "settings": [],
+    "blocks": [
+      {
+        "type": "text_block", "name": "Column",
+        "settings": [
+          {"type": "image_picker", "id": "background", "label": "background image"},
+          {"type": "image_picker", "id": "product", "label": "product"},
+          {
+            "type": "text", "id": "title", "label": "title",
+            "default": "Jackery Solar Generator"
+          },
+          {
+            "type": "text", "id": "subtitle", "label": "Subheading",
+            "default": "A portable solar solution combining solar panels and a power station"
+          },
+          {"type": "text", "id": "button_label", "label": "Button label", "default": "Learn more"},
+          {"type": "url", "id": "button_link", "label": "Button link"}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text columns V2", "category": "Image",
+        "blocks": [
+          {"type": "text_block"}, {"type": "text_block"}
+        ]
+      }
+    ]
+  }
+{% endschema %}

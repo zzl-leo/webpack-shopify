@@ -1,0 +1,72 @@
+  {{ 'newbee.css' | asset_url | stylesheet_tag }}
+<div>
+    {% for block in section.blocks %}
+        <div class="newproduct-outdoor-container-item flex justify-between tems-cente">
+            <img
+                class="object-cover object-center relative newproduct-outdoor-item-img"
+                src="{{ block.settings.out_img | img_url: '919x' }}"
+                loading="lazy"
+                alt="{{ block.settings.out_img.alt | escape }}"
+            >
+
+            <div class="newproduct-outdoor-textimg flex flex-col">
+                <div class="newproduct-outdoor-textimg-conatiner">
+                    <div class="newproduct-outdoor-textimg-title font-bold">
+                        {{ block.settings.out_title | escape }}
+                    </div>
+
+                    <img
+                        class="object-cover object-center relative newproduct-outdoor-textimg-img pc-block"
+                        src="{{ block.settings.use_img | img_url: '919x' }}"
+                        loading="lazy"
+                        alt="{{ block.settings.use_img.alt | escape }}"
+                    >
+
+                    <img
+                        class="object-cover object-center relative newproduct-outdoor-textimg-img mobile-block"
+                        src="{{ block.settings.m_use_img | img_url: '750x' }}"
+                        loading="lazy"
+                        alt="{{ block.settings.m_use_img.alt | escape }}"
+                    >
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "newproduct outdoor",
+  "tag": "section",
+  "class": "spaced-section--full-width newproduct-outdoor",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "outdoor",
+      "name": "outdoor Item",
+      "limit": 2,
+      "settings": [
+        {
+			"type": "image_picker",
+			"id": "out_img",
+			"label": "Image"
+        },
+        {
+			"type": "text",
+			"id": "out_title",
+			"label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "use_img",
+          "label": "Title Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "m_use_img",
+          "label": "Mobile Title Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

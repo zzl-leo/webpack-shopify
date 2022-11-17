@@ -1,0 +1,141 @@
+<script src="{{'oldnew.js' | asset_url}}"></script>
+<script src="{{'el-validate-form.js' | asset_url}}"></script>
+<div class="old-new-layer">
+	<div class="old-new-banner-container relative">
+		{%- if section.settings.banner_img != blank -%}
+			<img
+				class="object-cover object-center pc-block"
+				src="{{ section.settings.banner_img | img_url: '1920x' }}"
+				loading="lazy"
+				alt="{{ section.settings.banner_img.alt | escape }}"
+			>
+		{%- endif -%}
+
+		{%- if section.settings.m_banner_img != blank -%}
+			<img
+				class="object-cover object-center mobile-block"
+				src="{{ section.settings.m_banner_img | img_url: '750x' }}"
+				loading="lazy"
+				alt="{{ section.settings.m_banner_img.alt | escape }}"
+			>
+		{%- endif -%}
+
+		<div class="page-container-zzl font-bold absolute top-0 left-0 right-0 old-new-banner-text">
+      		<div class="text-right font-bold banner-title">
+				{{ section.settings.banner_title }}
+			</div>
+
+      		<div class="text-right goods-gifts font-bold">
+	  			<span class="currency">{{ section.settings.gifts_num_currency }}</span>
+				<span class="goods-gifts-num">{{ section.settings.banner_gifts_num | escape }}</span>
+			</div>
+    </div>
+	</div>
+
+	<div class="old-new-page-container">
+		<div class="page-container-zzl">
+			<div class="old-new-form">
+				<div class="font-bold text-center form-title" winnercode="Give 15% OFF , Get 15% OFF">{{ section.settings.form_title | escape }}</div>
+				<div class="form-subtitle" winnercode="Share your personalized link with your friends, who will get 15% off their first order. Once they’ve made a purchase, you will get 15% off your next order. You have a chance to save more than $500!">{{ section.settings.form_subtitle | escape }}</div>
+
+				<div class="winner-code-show">
+					<div class="flex tems-center winner-code-content">
+						<div class="winner-code text-center font-bold" id="winner-code-value" dom-type="coupon"></div>
+
+						<div class="winner-copy font-bold text-center">COPY & SHOPPING  NOW</div>
+					</div>
+				</div>
+
+				<div id="oldnewForm">
+					{% include 'newfriend-form' %}
+				</div>
+			</div>
+
+			<div class="old-new-noticeList">
+				<div class="notice-title font-bold text-center">Notice</div>
+
+				<div class="notice-list">
+					{% include 'el-collapse', blocks: section.blocks %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include 'old-new-modal', text: section.settings.modal_text, title: '', btn_text: 'CONFIRM' %}
+{% schema %}
+{
+  "name": "oldnew page",
+  "tag": "section",
+  "class": "old-new",
+  "settings": [
+    {
+			"type": "image_picker",
+			"id": "banner_img",
+			"label": "Background Img"
+    },
+	{
+			"type": "image_picker",
+			"id": "m_banner_img",
+			"label": "Mobile Background Img"
+    },
+		{
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title"
+    },
+		{
+      "type": "text",
+      "id": "banner_gifts_num",
+      "label": "Good gifts"
+    },
+		{
+      "type": "select",
+      "id": "gifts_num_currency",
+      "label": "Banner currency",
+			"default": "$",
+			"options": [
+        {
+          "value": "$",
+          "label": "$"
+        }
+      ]
+    },
+		{
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title"
+    },
+		{
+      "type": "textarea",
+      "id": "form_subtitle",
+      "label": "Form sub Title"
+    },
+		{
+      "type": "textarea",
+      "id": "modal_text",
+      "label": "Modal text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "notice",
+      "name": "Notice Item",
+      "limit": 15,
+      "settings": [
+        {
+			"type": "text",
+			"id": "notice_title",
+			"label": "Notice title"
+        },
+        {
+			"type": "textarea",
+			"id": "notice_content",
+			"label": "Notice content"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,104 @@
+.youtube-live-products .swiper-button-next,
+.youtube-live-products .swiper-button-prev {
+	display: block;
+	width: 1.40625vw;
+	height: 2.291667vw;
+	background-size: 1.40625vw 2.291667vw;
+}
+
+.youtube-live-products .swiper-button-next {
+	right: 7vw;
+}
+
+.youtube-live-products .swiper-button-prev {
+	left: 7vw;
+}
+
+.youtube-live-products .swiper-pagination {
+	display: none;
+}
+
+.youtube-live-products {
+    background: #F6F6F6;
+}
+
+.youtube-live-products .main-container {
+	padding: 5.208333vw 0;
+}
+
+.youtube-live-products .text-content {
+	padding-left: 0;
+}
+
+.youtube-live-products .h1-title {
+    margin-top: 0;
+    margin-bottom: 2.083333vw;
+}
+.youtube-live-products .p-des {
+    margin-bottom: 5.729167vw;
+}
+
+.youtube-live-products .h1-title,
+.youtube-live-products .p-des {
+	color: #4C4C4C;
+}
+
+.youtube-live-products .right_img {
+	width: 63.229167vw;
+	height: auto;
+}
+
+.youtube-live-products .p-button {
+    display: inline-block;
+    font-size: 1.979167vw;
+    line-height: 1.979167vw;
+    color: #fff;
+    padding: 1.302083vw 3.020833vw;
+    margin-top: 3.333333vw;
+    text-decoration: none;
+    background-color: rgba(255, 80, 0, 1);
+    border-radius: 0.520833vw;
+}
+
+@media screen and (max-width: 750px) {
+	.youtube-live-products .swiper-button-next,
+	.youtube-live-products .swiper-button-prev {
+		display: none;
+	}
+
+	.youtube-live-products .swiper-pagination {
+		display: block;
+	}
+
+	.youtube-live-products .swiper-pagination-bullet-active {
+		background: #666;
+	}
+
+	.youtube-live-products .main-container {
+		position: relative;
+		flex-direction: column;
+		padding: 10.13333vw 0 9.2vw 0;
+	}
+
+	.youtube-live-products .text-content .h1-title {
+		margin-top: 0;
+		margin-bottom: 2.66667vw;
+	}
+ 
+	.youtube-live-products .text-content .p-des {
+		margin-bottom: 3vw;
+	}
+
+	.youtube-live-products .right_img {
+		width: 100%;
+		height: auto;
+	}
+
+	.youtube-live-products .p-button {
+		font-size: 4.53333vw;
+		line-height: 4.53333vw;
+		padding: 2.53333vw 5.6vw;
+		margin-top: 6.4vw;
+		border-radius: 1.33333vw;
+	}
+}

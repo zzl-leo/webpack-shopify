@@ -1,0 +1,69 @@
+{%- assign collection = collections[section.settings.home_featured_products] -%}
+{%- assign params = blank -%}
+
+<h2>{{ section.settings.title }}</h2>
+
+{% comment %}
+Splicing parameters for request coupon, 20220616, garfield
+{% endcomment %}
+{%- if collection != blank -%}
+{%- assign params = params | append: '{"products": [' -%}
+
+<ul class="layer-container">
+  {% for product in collections[section.settings.home_featured_products].products limit: 4 %}
+    {% assign price = product.variants[0].price | divided_by: 100 | round: 2 %}
+    {%- assign params = params | append: '{ "sku_id": "' | append: product.variants[0].id | append: '", "price": "' | append: price | append: '"},' -%}
+    {% include 'product-item', button_text: section.settings.button_text, index: forloop.index %}
+  {% endfor %}
+</ul>
+
+{%- assign params = params | append: "]}" | replace: ",]", "]" -%}
+{% endif %}
+
+{% if section.settings.view_all %}
+  <a href="{{ collections[section.settings.home_featured_products].url }}" class="grid-product__see-all">
+    {{ 'collections.general.view_all_products_html' | t: count: collection.products_count }}
+  </a>
+{% endif %}
+
+{%- if params != blank -%}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  $api.batchCouponInfo({{ params }}, function(res) {
+    $(".best-sellers li").each(function() {
+      var me = this, r = res[$(me).data("variant")];
+      if (!r.discount) { return }
+
+      var svg = '<svg viewBox="0 0 80 88">' +
+      '<defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"><stop stop-color="#FF8E1B" offset="0%"></stop><stop stop-color="#FF0059" offset="100%"></stop></linearGradient></defs>' +
+      '<path fill="url(#linearGradient-1)" d="M0,55.5956597 L40.0780803,88 L80,55.790708 L71.6828487,55.790708 L71.6828487,30.8214452 C71.6828487,30.8214452 71.578898,19.2147512 65.4450243,16.093685 C65.4450243,16.093685 65.2024206,25.6846355 60.2468634,24.481642 C54.863467,23.1748184 58.6488361,17.059834 59.7271098,13.0698496 C61.5985353,6.14490154 58.5833394,0.195048305 58.5833394,0.195048305 L49.8505415,0.0975241527 C49.8505415,0.0975241527 51.8951661,9.2334108 42.6771607,9.55868684 C32.5950358,9.91432003 33.7361489,0 33.7361489,0 L32.1767318,0 C32.1767318,0 28.600671,5.42879562 29.7855528,11.0216958 C30.8946209,16.2561764 34.6817096,18.3871891 34.1519517,21.6531483 C33.6669005,24.6441334 30.1743128,25.7396303 27.3596714,25.6196682 C24.3102421,25.4895872 20.4287381,24.9044422 21.2606564,15.2156743 C22.020669,6.36077455 15.4386349,3.51145611 15.4386349,3.51145611 C15.4386349,3.51145611 18.7655267,11.2167441 16.2703969,15.2156743 C13.7751108,19.2147512 9.27021519,21.3280189 9.30476122,28.0904756 C9.33227298,33.458557 9.30476122,55.4981356 9.30476122,55.4981356 L0,55.5956597 Z"></path>';
+      if (r.type === 2) {
+        svg += '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">' + r.discount + '% OFF</text>' +
+        '<text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-size="11">Discount</text>';
+      } else {
+        svg += '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">$' + r.discount + '</text>' +
+        '<text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle">OFF</text>';
+      }
+      svg += '</svg>';
+      $(me).append(svg)
+    })
+  })
+}, false)
+</script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Featured collection", "class": "layer distance best-sellers",
+    "settings": [
+      {"type": "text", "id": "title", "label": "Heading", "default": "Featured collection"},
+      {"type": "collection", "id": "home_featured_products", "label": "Collection"},
+      {"type": "checkbox", "id": "view_all", "label": "Show 'View all' link", "default": true},
+      {"type": "text", "id": "button_text", "label": "Button text", "default": "SHOP NOW"}
+    ],
+    "blocks" : [],
+    "presets": [{
+      "name": "Featured collection", "category": "Collection"
+    }]
+  }
+{% endschema %}

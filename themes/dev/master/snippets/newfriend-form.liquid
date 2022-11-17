@@ -1,0 +1,176 @@
+<form id="oldnewForm" name="oldnewForm">
+    <div class="el-flex">
+        <div class="el-form-item">
+            <div class="el-form-item__content">
+                <input class="el-form-item__inner" id="first_name" name="first_name" maxlength="100" value="" placeholder="Enter Your First Name*" />
+            </div>
+        </div>
+        <div class="el-form-item">
+            <div class="el-form-item__content">
+                <input class="el-form-item__inner" id="last_name" name="last_name" maxlength="100" value="" placeholder="Enter Your Last Name*" />
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item">
+        <div class="el-form-item__content">
+            <input class="el-form-item__inner" id="email" name="email" maxlength="100" value="" placeholder="Enter Your Email*" />
+        </div>
+    </div>
+    <div class="text-center el-form-item-center">
+        <div class="el-form-item inline-center">
+        <span class="el-form-item__content el-checkbox__content">
+            <input class="el-checkbox__inner" type="checkbox" id="is_subscribe" name="is_subscribe" />
+            <label class="el-checkbox__label" for="is_subscribe">By accepting this offer you agree to the Subscription and <a style="text-decoration: underline;" href="https://www.jackery.com/pages/privacy-policy">Privacy Policy</a></label>
+        </span>
+    </div>
+    </div>
+    <div class="oldnew-form-submit">
+        <button class="el-form-submit">
+            <span>GET NOW</span>
+        </button>
+    </div>
+</form>
+
+
+<script>
+    const invite_code = window.location.pathname.replace('/pages/refer-new-friend/', '')
+
+    var ooo = new Mvalidate('oldnewForm')
+    ooo.add({
+        name: 'first_name',
+        rules: ['required'],
+        message: ['Please enter your username'],
+        callback: function (el, errorEl) {}
+    }).add({
+        name: 'last_name',
+        rules: ['required'],
+        message: ['Please enter your username'],
+        callback: function (el, errorEl) {}
+    }).add({
+        name: 'email',
+        rules:['required'],
+        message: ['Please enter your email address'],
+        callback: function (el, errorEl) {}
+    }).add({
+        name:'is_subscribe',
+        rules:['required'],
+        message:['By accepting this offer you agree to the Subscription and Privacy Policy']
+    }).init()
+    document.forms.oldnewForm.querySelector('.el-form-submit').addEventListener('click', function (e) {
+        e.preventDefault()
+        if (ooo.valid()) {
+            const form = document.forms.oldnewForm
+            let param = {};
+            for (let i = 0; i < form.length; i++) {
+                if(form[i].type !== 'submit') {
+                    if(form[i].type === 'checkbox') {
+                        param[form[i].name] = form[i].checked
+                    } else {
+                       param[form[i].name] = form[i].value.trim() 
+                    }
+                }
+            }
+
+            const form_btn_e = document.forms.oldnewForm.querySelector('.el-form-submit')
+            form_btn_e.classList.add('btn--loading')
+
+            let errorTips = ''
+            $http.p(`${$http.host()}/v1/invite-new/new`, {
+                shopify_shop_id: window.shopId,
+                ...param,
+                invite_code: decodeURIComponent(invite_code)
+            }).then(res => {
+                form_btn_e.classList.remove('btn--loading')
+                if(res.data && res.data.discount_code) {
+                    const form_e = document.querySelector('#oldnewForm')
+                    const winnercode_e = document.querySelector('.winner-code-show')
+                    form_e.remove()
+                    document.querySelector('#winner-code-value').innerText = encodeURIComponent(res.data.discount_code)
+                    document.querySelector(".winner-copy").setAttribute("data-code", res.data.discount_code)
+                    document.querySelector(".winner-copy").setAttribute("data-discount", "")
+                    document.querySelector(".winner-copy").setAttribute("dom-type", "coupon")
+                    winnercode_e.style.display = 'block'
+                    
+                    /**********cdp-老带新活动提交信息结果**********/ 
+                    ReferSharingSubmitResult({
+                        name: `${param.first_name} ${param.last_name}`,
+                        email_address: param.email,
+                        share_link: location.href,
+                        is_successful: true,
+                        fail_reason: '',
+                        user_identity: '被分享者',
+                        sharer_id_2: urlQueryToObject().share_id || ''
+                    })
+
+                    CouponExposure({
+                        coupon_code: res.data.discount_code
+                    })
+                    /**********cdp-老带新活动提交信息结果**********/ 
+                } else {
+                    switch (res.code) {
+                        case 50002:
+                            errorTips = `Your email already exists. Share us with your friends and you'll receive a discount off your next purchase. (Applies to users who registered before this activity goes online.)`
+                            break;
+                        case 50004:
+                            errorTips = `Your email already exists. The discount code has been sent to you by email. Redeem your dicsount  before it expires. (Applies to users who have claimed the coupon after this activity goes online.)`
+                            break
+                        case 50001:
+                            errorTips = `By accepting this offer you agree to the Subscription and Privacy Policy`
+                            break
+                        case 50003:
+                            errorTips = `You have entered an invalid/expired link, please try again.`
+                            break
+                        case 2005:
+                            errorTips = `Please enter a valid email`
+                            break
+                        case 0:
+                            errorTips = `Oops, something went wrong, please try it again.`
+                            break
+                        default:
+                        break;
+                    }
+                    errorTips && new window.modal().init({
+                        el: '#old-new-modal',
+                        open: 'show',
+                        animation: 'soak',
+                        backClose: true,
+                        content: errorTips
+                    });
+
+                    /**********cdp-老带新活动提交信息结果**********/
+                    ReferSharingSubmitResult({
+                        name: `${param.first_name} ${param.last_name}`,
+                        email_address: param.email,
+                        share_link: location.href,
+                        is_successful: false,
+                        fail_reason: errorTips,
+                        user_identity: '被分享者',
+                        sharer_id_2: urlQueryToObject().share_id || ''
+                    })
+                    /**********cdp-老带新活动提交信息结果**********/ 
+                }
+            }).catch(() => {
+                form_btn_e.classList.remove('btn--loading')
+                new window.modal().init({
+                    el: '#old-new-modal',
+                    open: 'show',
+                    animation: 'soak',
+                    backClose: true,
+                    content: 'Server Error, please try it again.'
+                });
+            })
+        }
+    })
+
+    document.querySelector('.winner-copy').addEventListener('click', () => {
+        shopCommon.clickCopy(document.querySelector('#winner-code-value').innerText, () => {
+            document.querySelector('.winner-copy').innerText = 'Copied Successfully'
+            setTimeout(() => {
+                document.querySelector('.winner-copy').innerText = 'COPY LINK'
+            }, 3000)
+        })
+        ReceiveCoupon({
+            coupon_code: document.querySelector('#winner-code-value').innerText
+        })
+    })
+</script>

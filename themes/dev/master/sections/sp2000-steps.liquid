@@ -1,0 +1,96 @@
+<style>
+    .sp2000-steps-container {
+        width: 100%;
+        padding: 4.6875vw 2.864583vw 0 2.864583vw;
+    }
+
+    .sp2000-steps-title {
+        color: #1D1D1D;
+        font-size: 2.395833vw;
+        line-height: 2.395833vw;
+        height: 2.395833vw;
+        margin-bottom: 2.5vw;
+    }
+
+    .sp2000-steps-img {
+        flex: 1;
+        height: 22.447917vw;
+        margin-right: 1.25vw;
+        display: block;
+    }
+
+    .sp2000-steps-img:last-child {
+            margin-right: 0;
+        }
+
+    @media screen and (max-width: 750px) {
+        .sp2000-steps-container {
+            padding: 8vw 3.33333vw 0 3.33333vw;
+        }
+
+        .sp2000-steps-title {
+            color: #333;
+            font-size: 5.86667vw;
+            line-height: 5.86667vw;
+            height: 5.86667vw;
+            margin-bottom: 3.73333vw;
+        }
+
+        .sp2000-steps-list {
+            flex-direction: column;
+        }
+
+        .sp2000-steps-img {
+            width: 93.33333vw;
+            height: 45.73333vw;
+            margin-right: 0;
+            margin-bottom: 2.66667vw;
+        }
+        .sp2000-steps-img:last-child {
+            margin-bottom: 0;
+        }
+    }
+     
+</style>
+
+<div class="sp2000-steps-container">
+    <div class="sp2000-steps-title font-bold">{{ section.settings.title | escape }}</div>
+    <div class="sp2000-steps-list flex justify-between">
+        {%- for block in section.blocks -%}
+			<img
+                class="sp2000-steps-img object-cover object-center"
+                src="{{ block.settings.step_img | img_url: '883x' }}"
+                loading="lazy"
+                alt="{{ block.settings.step_img.alt | escape }}"
+            > 
+		{%- endfor -%}
+    </div>
+</div>
+{% schema %}
+{
+  "name": "sp2000 steps",
+  "tag": "section",
+  "class": "sp2000-steps",
+  "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "step Item",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "step_img",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

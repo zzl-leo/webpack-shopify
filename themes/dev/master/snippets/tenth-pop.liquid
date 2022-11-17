@@ -1,0 +1,945 @@
+<div class="tenth-button J-tenth-button J-tenth-button-hover">
+  <img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/11_4.svg?v=1665366252" alt="">
+</div>
+
+<div id="tenth-pop" class="tenth-pop-wrap">
+  <div class="tenth-box">
+    <div class="close-btn J-tenth-close" tenth-current-step="one">
+      <img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/X.png?v=1663318075" alt="">
+    </div>
+    <div class="tenth-one-step J-tenth-one">
+      <div class="title">{{ 'tenth.title' | t }}</div>
+      <div class="tenth-icon J-tenth-icon">
+        <div class="tag"><span>100%</span> {{ 'tenth.tag_one' | t }}</div>
+        <div class="tag">{{ 'tenth.tag_two' | t }} <span>$2099</span></div>
+      </div>
+      <div class="gift-box">
+        <img class="pulsate-fwd J-tenth-submit" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/Open_2.png?v=1663898157" alt="">
+      </div>
+      <div class="form-wrap J-tenth-form">
+        <input type="email" id="tenthEmail" class="input-full J-tenth-email" name="tenthEmail" autocorrect="off" autocapitalize="off" placeholder="{{ 'tenth.placeholder' | t }}">
+        <div class="submit J-tenth-submit">{{ 'tenth.submit' | t }}</div>
+      </div>
+      <div class="error-tip J-tenth-tip" data-email-tip="{{ 'tenth.email_tip' | t }}" data-emailerror-tip="{{ 'tenth.email_error_tip' | t }}"></div>
+      <div class="declaration">
+        <input type="checkbox" class="checkbox J-tenth-checkbox" />
+        <span>
+          {{ 'tenth.declaration' | t }}
+          <a href="https://www.jackery.com/policies/terms-of-service">{{ 'subscribe.terms_of_ues' | t }}</a> {{ 'subscribe.and' | t }} <a href="https://www.jackery.com/policies/privacy-policy">{{ 'subscribe.privacy_policy' | t }}</a>
+        </span>
+      </div>
+    </div>
+    <div class="tenth-has-join J-tenth-joined display-none">
+      <div class="title">{{ 'tenth.joined_title' | t }}</div>
+      <div class="awards-show">
+        <img class="J-tenth-product-url" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/banner_1.png?v=1660892591" alt="">
+      </div>
+      <div class="coupon-text J-tenth-coupon-text display-none">
+        <div class="coupon-title"><span class="item-icon"></span>{{ 'tenth.order_over' | t }} <span class="J-tenth-limit">$2000</span></div>
+        <div class="coupon-item"><span class="item-icon"></span><span>{{ 'tenth.valid_time' | t }}: </span><span class="J-tenth-time"></span></div>
+        <div class="coupon-item"><span class="item-icon"></span>{{ 'tenth.coupons_tip' | t }}</div>
+      </div>
+      <!-- <div class="subtitle">{{ 'tenth.joined_subtitle' | t }}</div> -->
+      <div class="code-tip J-code-tip">
+        <div>
+          <span>{{ 'tenth.joined_subtitle' | t }}</span>
+          <span class="has-join-code">
+            {{ 'tenth.joined_coupons_code' | t }}
+            <span class="tenth-code">
+              <span class="J-tenth-code" dom-type="coupon"></span>
+              <span class="copy-tip J-tenth-code-tip">copy success!</span>
+            </span>
+            <br/>
+            <span class="J-tenth-joinedText" data-joined-product="{{ 'tenth.joined_send_email_product' | t }}" data-joined-coupon="{{ 'tenth.joined_send_email_coupon' | t }}">{{ 'tenth.joined_send_email_product' | t }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="tenth-two-step J-tenth-two display-none">
+      <!-- <div class="title">{{ 'tenth.title' | t }}</div> -->
+      <div class="tenth-gift J-tenth-gift">
+        <img class="lid" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/ff56b8ad38e29ce40038bc757cb9aaae.png?v=1663834923" alt="">
+        <img class="box" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/1_96a8b3a6-1978-4bc6-9df1-dbd1b670f14b.png?v=1663839445" alt="">
+        <img class="gift-shadow" src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/d55cafef11cd47810614c6b2b120893c.png?v=1663834930" alt="">
+      </div>
+      <div class="text-loading">
+        {{ 'tenth.text_loading' | t }}
+        <div class="loading">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tenth-three-step J-tenth-three display-none">
+      <div class="title">{{ 'tenth.success_title' | t }}</div>
+      <div class="subtitle" data-success-text="{{ 'tenth.success_subtitle' | t }}" data-register-text="{{ 'tenth.register_subtitle' | t }}">{{ 'tenth.success_subtitle' | t }}</div>
+      <div class="tenth-prizes-img J-tenth-prizes-img">
+        <img src="" alt="">
+      </div>
+      <div class="coupon-text J-tenth-coupon-text display-none">
+        <div class="coupon-title"><span class="item-icon"></span>{{ 'tenth.order_over' | t }} <span class="J-tenth-limit">$2000</span></div>
+        <div class="coupon-item"><span class="item-icon"></span><span>{{ 'tenth.valid_time' | t }}: </span><span class="J-tenth-time"></span></div>
+        <div class="coupon-item"><span class="item-icon"></span>{{ 'tenth.coupons_tip' | t }}</div>
+      </div>
+      <div class="coupon-text J-tenth-500-text display-none">
+        <div class="coupon-item"><span class="item-icon"></span><span>{{ 'tenth.coupon_500' | t }}</span></div>
+      </div>
+      <div class="option-button">
+        <div class="J-tenth-stroll" data-success-text="{{ 'tenth.another_stroll' | t }}" data-register-text="{{ 'tenth.register_later' | t }}">{{ 'tenth.another_stroll' | t }}</div>
+        <div class="J-tenth-prizes J-prize-text" data-success-text="{{ 'tenth.redeem_prizes' | t }}" data-register-text="{{ 'tenth.register_now' | t }}">{{ 'tenth.redeem_prizes' | t }}</div>
+      </div>
+      <div class="code-tip J-code-tip">
+        <div>
+          {{ 'tenth.coupons_code' | t }}
+          <span class="tenth-code">
+            <span class="J-tenth-code" dom-type="coupon"></span>
+            <span class="copy-tip J-tenth-code-tip">copy success!</span>
+          </span>
+        </div>
+        <div>{{ 'tenth.checkout_page' | t }}</div>
+        <div>{{ 'tenth.send_email' | t }}</div>
+      </div>
+      <div class="register-tip J-register-tip display-none">
+        <div>{{ 'tenth.register_tip1' | t }}</div>
+        <div>{{ 'tenth.register_tip2' | t }}</div>
+        <div>{{ 'tenth.register_tip3' | t }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .tenth-button {
+    position: fixed;
+    bottom: 100px;
+    left: 20px;
+    z-index: 2147483647;
+    cursor: pointer;
+  }
+  .tenth-pop-wrap {
+    width: 100%;
+    height: 100vh;
+    background: rgba(13, 13, 13, .7);
+    position: fixed;
+    z-index: 2147483647;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0s;
+    display: none;
+  }
+  .tenth-pop-wrap .mob-image {
+    display: none;
+  }
+  .tenth-pop-wrap .tenth-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 880px;
+    height: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    min-height: 540px;
+  }
+  .tenth-pop-wrap .tenth-box .close-btn {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    cursor: pointer;
+  }
+  .tenth-pop-wrap .tenth-box .display-none {
+    display: none;
+  }
+  .tenth-pop-wrap .tenth-box .title {
+    font-size: 38px;
+    /* font-family: 'HelveticaNeueLTCom-BdCn', 'HelveticaNeueLTCom'; */
+    font-weight: 700;
+    color: #222222;
+    line-height: 48px;
+    text-align: center;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-icon {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-icon .tag {
+    /* width: 180px; */
+    height: 30px;
+    border-radius: 14px;
+    border: 1px solid #C8C8C8;
+    font-size: 18px;
+    color: #222222;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 13px;
+    padding: 0 30px;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-icon .tag span {
+    font-weight: 700;
+    font-size: 20px;
+    color: #FF5000;
+  }
+  .tenth-pop-wrap .tenth-box .title span {
+    color: #FF5000;
+  }
+  .tenth-pop-wrap .tenth-box .gift-box {
+    width: 560px;
+    height: 385px;
+    margin: 28px auto 0;
+    background-image: url('https://cdn.shopify.com/s/files/1/0550/0524/9633/files/1_a8d6aa35-8385-4172-9e5f-1b68973b0201.png?v=1665643237');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    position: relative;
+  }
+  .tenth-pop-wrap .tenth-box .gift-box img {
+    position: absolute;
+    top: 143px;
+    left: 255px;
+    cursor: pointer;
+  }
+  .tenth-pop-wrap .tenth-box .form-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .tenth-pop-wrap .tenth-box .error-tip {
+    font-size: 12px;
+    color: red;
+    margin-top: 10px;
+    display: none;
+    width: 500px;
+    margin: 5px auto 0;
+  }
+  .tenth-pop-wrap .tenth-box .red::after {
+    border-color: red;
+  }
+  .tenth-pop-wrap .tenth-box .form-wrap .input-full {
+    width: 370px;
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #999999;
+    padding: 9px 11px;
+  }
+  .tenth-pop-wrap .tenth-box .form-wrap .submit {
+    width: 130px;
+    height: 40px;
+    background: #FF5000;
+    border-radius: 0px 4px 4px 0px;
+    font-size: 18px;
+    /* font-family: HelveticaNeueLTCom-BdCn, HelveticaNeueLTCom; */
+    color: #FFFFFF;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .tenth-pop-wrap .tenth-box .declaration {
+    width: 500px;
+    margin: 16px auto 0;
+  }
+  .tenth-pop-wrap .tenth-box .declaration .checkbox {
+    transform: none;
+    margin-right: 6px;
+  }
+  .tenth-pop-wrap .tenth-box .declaration span {
+    font-size: 16px;
+    color: #666666;
+    line-height: 14px;
+  }
+  .tenth-pop-wrap .tenth-box .declaration a {
+    color: #666666;
+    text-decoration: underline;
+  }
+  .tenth-pop-wrap .tenth-box .subtitle {
+    font-size: 20px;
+    /* font-family: SourceHanSansCN-Regular, SourceHanSansCN; */
+    color: #ff5000;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+  .tenth-pop-wrap .tenth-box .awards-show {
+    margin: 60px auto 55px;
+    text-align: center;
+  }
+  .tenth-pop-wrap .tenth-box .awards-show img {
+    width: 520px;
+  }
+  .tenth-pop-wrap .tenth-box .awards-coupons-show {
+    margin: 60px auto 15px;
+  }
+  .tenth-pop-wrap .tenth-box .subtitle-coupons-show {
+    margin-top: 50px;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-gift {
+    width: 340px;
+    height: 380px;
+    margin: 50px auto 0;
+    position: relative;
+  }
+  .tenth-pop-wrap .tenth-box .lid{
+    position: absolute;
+    top: 49px;
+    left: 29px;
+  }
+  .tenth-pop-wrap .tenth-box .box{
+    position: absolute;
+    bottom: 25px;
+    left: 38px;
+    z-index: -1;
+  }
+  .tenth-pop-wrap .tenth-box .gift-shadow {
+    position: absolute;
+    bottom: -56px;
+    left: 45px;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-prizes-img {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .tenth-pop-wrap .tenth-box .tenth-prizes-img img {
+    width: 520px;
+  }
+  .tenth-pop-wrap .tenth-box .coupon-text {
+    max-width: 400px;
+    margin: 16px auto 0;
+  }
+  .tenth-pop-wrap .tenth-box .coupon-text .coupon-title {
+    font-size: 16px;
+    color: #666666;
+    line-height: 19px;
+  }
+  .tenth-pop-wrap .tenth-box .coupon-text .coupon-title .item-icon {
+    width: 6px;
+    height: 6px;
+    background: #666666;
+    border-radius: 50%;
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .tenth-pop-wrap .tenth-box .coupon-text .coupon-item {
+    font-size: 16px;
+    color: #666666;
+    line-height: 19px;
+    margin-top: 8px;
+  }
+  .tenth-pop-wrap .tenth-box .coupon-text .coupon-item .item-icon {
+    width: 6px;
+    height: 6px;
+    background: #666666;
+    border-radius: 50%;
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .tenth-pop-wrap .tenth-box .option-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .tenth-pop-wrap .tenth-box .option-button div {
+    margin-right: 20px;
+    width: 250px;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #FF5000;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    /* font-family: HelveticaNeueLTCom-Cn, HelveticaNeueLTCom; */
+    color: #FF5000;
+    cursor: pointer;
+  }
+  .tenth-pop-wrap .tenth-box .option-button div:last-of-type {
+    background: #ff5000;
+    color: #fff;
+    margin-right: 0;
+  }
+  .tenth-pop-wrap .tenth-box .option-button div:hover {
+    color: #fff;
+    border-color: #FF5000;
+    background-color: #FF5000;
+    transition-duration: 0.5s;
+  }
+  .tenth-pop-wrap .tenth-box .code-tip {
+    text-align: center;
+    font-size: 18px;
+    font-family: SourceHanSansCN-Regular, SourceHanSansCN;
+    font-weight: 400;
+    color: #222222;
+    line-height: 35px;
+    margin-top: 26px;
+  }
+  .tenth-pop-wrap .tenth-box .code-tip .tenth-code {
+    color: #FF5000;
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 1px solid #FF5000;
+    position: relative;
+  }
+  .tenth-pop-wrap .tenth-box .code-tip .copy-tip {
+    font-size: 14px;
+    position: absolute;
+    left: 14px;
+    bottom: -25px;
+    color: #52c41a;
+    white-space: nowrap;
+    display: none;
+  }
+  .tenth-pop-wrap .tenth-box .register-tip {
+    text-align: center;
+    font-size: 18px;
+    font-family: SourceHanSansCN-Regular, SourceHanSansCN;
+    font-weight: 400;
+    color: #222222;
+    line-height: 27px;
+    margin-top: 26px;
+  }
+  .tenth-pop-wrap .tenth-box .text-loading {
+    font-size: 20px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 700;
+    color: #222222;
+    line-height: 28px;
+    /* margin-top: 30px; */
+    text-align: center;
+    width: 480px;
+    border-right: 1px solid transparent;
+    animation: typing 1s steps(42, end), blink-caret .75s step-end infinite;
+    overflow: hidden;
+    margin: 70px auto 58px;
+    white-space: nowrap;
+  }
+  /* 打印效果 */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 480px;
+    }
+  }
+  /* 光标 */
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: transparent;
+    }
+  }
+  /* loading - start */
+  .tenth-pop-wrap .tenth-box .loading,
+  .tenth-pop-wrap .tenth-box .loading > div {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading {
+    display: inline-block;
+    font-size: 0;
+    color: #FF5000;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading::after, .tenth-pop-wrap .tenth-box .loading::before {
+    display: none;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-dark {
+    color: #333;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading {
+    width: 60px;
+    height: 18px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading > div:nth-child(1) {
+    animation-delay: -200ms;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading > div:nth-child(2) {
+    animation-delay: -100ms;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading > div:nth-child(3) {
+    animation-delay: 0ms;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading > div {
+    width: 10px;
+    height: 10px;
+    margin: 2px 4px;
+    border-radius: 100%;
+    animation: ball-pulse 1s ease infinite;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-sm {
+    width: 26px;
+    height: 8px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-sm > div {
+    width: 4px;
+    height: 4px;
+    margin: 2px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-2x {
+    width: 108px;
+    height: 36px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-2x > div {
+    width: 20px;
+    height: 20px;
+    margin: 8px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-3x {
+    width: 162px;
+    height: 54px;
+  }
+
+  .tenth-pop-wrap .tenth-box .loading.la-3x > div {
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+  }
+
+  @keyframes ball-pulse {
+    0%,
+    60%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    30% {
+      opacity: 0.1;
+      transform: scale(0.01);
+    }
+  }
+  /* loading - end */
+
+
+  /* 动画 */
+  .vibrate-1 {
+    -webkit-animation: vibrate-1 0.6s linear infinite both;
+            animation: vibrate-1 0.6s linear infinite both;
+  }
+  @-webkit-keyframes vibrate-1 {
+    0% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+              transform: translate(-2px, 2px);
+    }
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+              transform: translate(-2px, -2px);
+    }
+    60% {
+      -webkit-transform: translate(2px, 2px);
+              transform: translate(2px, 2px);
+    }
+    80% {
+      -webkit-transform: translate(2px, -2px);
+              transform: translate(2px, -2px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+  }
+  @keyframes vibrate-1 {
+    0% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+              transform: translate(-2px, 2px);
+    }
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+              transform: translate(-2px, -2px);
+    }
+    60% {
+      -webkit-transform: translate(2px, 2px);
+              transform: translate(2px, 2px);
+    }
+    80% {
+      -webkit-transform: translate(2px, -2px);
+              transform: translate(2px, -2px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+  }
+  .shake-bottom {
+    -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+  @-webkit-keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  @keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  .rotate-15-right-cw {
+    -webkit-animation: rotate-15-right-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: rotate-15-right-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  @-webkit-keyframes rotate-15-right-cw {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+    100% {
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+  }
+  @keyframes rotate-15-right-cw {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+    100% {
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+  }
+  .pulsate-fwd {
+    -webkit-animation: pulsate-fwd 0.6s ease-in-out infinite both;
+            animation: pulsate-fwd 0.6s ease-in-out infinite both;
+  }
+  @-webkit-keyframes pulsate-fwd {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes pulsate-fwd {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  .gift-icon-shake {
+    -webkit-animation: shake-bottom 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            animation: shake-bottom 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .tenth-button {
+      bottom: 50px;
+    }
+    .tenth-button img {
+      width: 86px;
+    }
+    .tenth-pop-wrap .tenth-box {
+      bottom: 0;
+      left: 0;
+      top: auto;
+      transform: translate(0, 0);
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 600px;
+      max-height: 100%;
+      border-radius: 15px 15px 0px 0px;
+      padding: 45px 20px 20px;
+    }
+    .tenth-pop-wrap .tenth-box .close-btn {
+      top: 16px;
+      right: 20px;
+    }
+    .tenth-pop-wrap .tenth-box .close-btn {
+      width: 14px;
+      height: 14px;
+    }
+    .tenth-pop-wrap .tenth-box .title {
+      font-size: 25px;
+      line-height: 30px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-icon {
+      margin-top: 9px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-icon .tag {
+      /* width: 138px; */
+      height: 25px;
+      border-radius: 13px;
+      font-size: 14px;
+      line-height: 25px;
+      margin-right: 10px;
+      padding: 0 15px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-icon .tag span {
+      font-size: 15px;
+    }
+    .tenth-pop-wrap .tenth-box .gift-box {
+      width: 344px;
+      height: 250px;
+      margin: 30px auto 30px;
+      background-size: contain;
+      background-image: url('https://cdn.shopify.com/s/files/1/0550/0524/9633/files/1_ce124c1e-e854-4c27-a068-2cbb6560417a.png?v=1665643237');
+    }
+    .tenth-pop-wrap .tenth-box .gift-box img {
+      top: 91px;
+      left: 159px;
+      width: 61px;
+      height: 61px;
+    }
+    .tenth-pop-wrap .tenth-box .form-wrap {
+      flex-direction: column;
+      align-items: center;
+    }
+    .tenth-pop-wrap .tenth-box .error-tip {
+      width: 335px;
+    }
+    .tenth-pop-wrap .tenth-box .form-wrap .input-full {
+      width: 335px;
+      height: 40px;
+      border-radius: 3px;
+      border: 1px solid #B4B4B4;
+      text-align: center;
+    }
+    .tenth-pop-wrap .tenth-box .form-wrap .submit {
+      width: 335px;
+      height: 40px;
+      border-radius: 3px;
+      font-size: 17px;
+      line-height: 40px;
+      margin-top: 12px;
+    }
+    .tenth-pop-wrap .tenth-box .declaration {
+      width: 335px;
+      margin: 12px auto 0;
+    }
+    .tenth-pop-wrap .tenth-box .declaration .checkbox {
+      margin-right: 5px;
+    }
+    .tenth-pop-wrap .tenth-box .declaration span {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .tenth-pop-wrap .tenth-box .subtitle {
+      font-size: 15px;
+      margin-top: 12px;
+      line-height: 23px;
+    }
+    .tenth-pop-wrap .tenth-box .awards-show {
+      margin: 75px auto 70px;
+    }
+    .tenth-pop-wrap .tenth-box .awards-show img {
+      width: 100%;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-has-join .has-join-code {
+      line-height: 32px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-gift {
+      margin: 70px auto 0;
+      width: 235px;
+      height: 263px;
+    }
+    .tenth-pop-wrap .tenth-box .lid{
+      top: 34px;
+      left: 20px;
+      width: 171px;
+      height: 116px;
+    }
+    .tenth-pop-wrap .tenth-box .box{
+      bottom: 18px;
+      left: 26px;
+      width: 186px;
+      height: 172px;
+    }
+    .tenth-pop-wrap .tenth-box .gift-shadow {
+      bottom: -56px;
+      left: 4px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-prizes-img {
+      margin-top: 45px;
+    }
+    .tenth-pop-wrap .tenth-box .tenth-prizes-img img {
+      width: 100%;
+      max-width: 670px;
+    }
+    .tenth-pop-wrap .tenth-box .coupon-text {
+      max-width: 100%;
+      margin-left: 10px;
+    }
+    .tenth-pop-wrap .tenth-box .coupon-text .coupon-title {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .tenth-pop-wrap .tenth-box .coupon-text .coupon-item {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    .tenth-pop-wrap .tenth-box .coupon-text .coupon-item .item-icon {
+      width: 5px;
+      height: 5px;
+      margin-right: 9px;
+    }
+    .tenth-pop-wrap .tenth-box .option-button {
+      margin-top: 34px;
+    }
+    .tenth-pop-wrap .tenth-box .option-button div {
+      margin-right: 15px;
+      width: 150px;
+      height: 44px;
+      border-radius: 3px;
+      line-height: 44px;
+      font-size: 15px;
+    }
+    .tenth-pop-wrap .tenth-box .code-tip {
+      font-size: 15px;
+      line-height: 24px;
+      margin-top: 30px;
+    }
+    .tenth-pop-wrap .tenth-box .code-tip div {
+      margin-bottom: 20px;
+    }
+    .tenth-pop-wrap .tenth-box .code-tip .copy-tip {
+      left: 5px;
+    }
+    .tenth-pop-wrap .tenth-box .register-tip {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 30px;
+    }
+    .tenth-pop-wrap .tenth-box .text-loading {
+      font-size: 15px;
+      color: #333333;
+      line-height: 22px;
+      width: 100%;
+      margin: 53px 0 72px;
+      text-align: left;
+      padding: 0 20px;
+    }
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  }
+  @media screen and (width: 768px) {
+    .tenth-pop-wrap .tenth-box .coupon-text {
+      margin-left: 35%;
+    }
+    .tenth-pop-wrap .tenth-box .text-loading {
+      width: auto;
+      margin: 53px auto 72px;
+      text-align: center;
+    }
+  }
+</style>

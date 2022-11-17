@@ -1,0 +1,240 @@
+{% if template contains 'article' and blog.metafields.blogfeeder.use_canonical == 'yes' %}{% assign canonical_url = article.metafields.blogfeeder.canonical %}{% endif %}
+<!doctype html>
+{%- assign header_font = settings.type_header_font_family -%}
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11003965993"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11003965993');
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-7RN0SN92S7""></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7RN0SN92S7');
+</script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucky-canvas@1.7.25"></script>
+
+  <script src="{{ 'ifvisible.js' | asset_url }}"></script>
+  <script src="{{ 'ja.js' | asset_url }}"></script>
+
+  {% include 'geolizr-init' %}
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}" />
+  <meta name="format-detection" content="telephone=no">
+
+  {% if settings.use_jackery_id %}
+    {% assign ref = '{"u":"' | append: shop.url | append: '","id":"' | append: shop.id | append: '","back":"/account/overview", "original": "' | append: canonical_url | append: '"}' | base64_encode %}
+    
+    {%- if template contains 'customers/login' -%}
+      {%- assign current_url = content_for_header | split:'"pageurl":"' | last | split:'"' | first | split:'?' -%}
+      {%- assign params = current_url[1] | split:'\u0026' -%}
+      {%- for param in params -%}
+        {%- if param contains "checkout_url" -%}
+          {%- assign checkout_url = param | split:'=' | last -%}
+        {%- endif -%}
+      {%- endfor -%}
+      <meta http-equiv="refresh" content="0;URL=https://id.jackery.com/login?jackeryRef={{ ref }}{% if checkout_url %}&checkout_url={{ checkout_url }}{% endif %}">
+    {%- endif -%}
+
+    {%- if template contains 'customers/register' -%}
+      <meta http-equiv="refresh" content="0;URL=https://id.jackery.com/register?jackeryRef={{ ref }}">
+    {%- endif -%}
+
+    {%- if template contains 'customers/account' or template contains 'customers/order' or template contains 'customers/addresses' -%}
+      <meta http-equiv="refresh" content="0;URL=https://id.jackery.com/login?jackeryRef={{ ref }}">
+    {%- endif -%}
+  {%- endif -%}
+
+  {% comment %} 20220621, page status 200 to 404 {% endcomment %}
+  {%- if canonical_url contains 'collections/all/explorer-power-stations' -%}
+    <meta http-equiv="refresh" content="0;URL=/404">
+  {%- endif -%}
+  
+  <!-- Bing Meta (noscript) -->
+  <meta name="msvalidate.01" content="3209453D3B640A7277FA9EEE41333F49" />
+  <!-- Bing Meta End(noscript) -->
+  
+  {%- if settings.favicon -%}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />{%- endif -%}
+
+  {%- include 'seo-title' -%}
+  <title>{{ seo_title }}</title>
+
+  {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+
+  {%- include 'social-meta-tags' -%}
+
+  {%- include 'font-face' -%}
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'theme-v2.css' | asset_url | stylesheet_tag }}
+  {{ 'common.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = window.theme || {};
+    theme.strings = {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+      cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
+      cartEmpty: {{ 'cart.general.empty' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+    };
+
+    theme.settings = {
+      cartType: {{ settings.cart_type | json }},
+      moneyFormat: {{ shop.money_format | json }},
+      quickView: {{ settings.quick_shop_enable }},
+      themeVersion: "3.5.1",
+      customer_id: "{{ customer.id}}",
+      customer_order_count: "{{customer.orders_count}}",
+      template: "{{template | split: '.' | first}}"
+    };
+
+    {% if template | split: '.' | first === "product" %}
+      theme.settings.product_tags = '{{product.tags | json}}'
+      theme.settings.product_id = '{{product.id}}'
+      theme.settings.variants_num ='{{product.variants.size}}'
+      theme.settings.product_name = '{{product.title}}'
+      theme.settings.product_compare_at_price_min = '{{product.compare_at_price_min}}'
+      theme.settings.product_price_min = '{{product.price_min}}'
+      theme.settings.product_sku = '{{product.variants[0].sku}}'
+      theme.settings.product_sku_title = '{{product.variants[0].name}}'
+    {% endif %}
+
+    window.shopId = '{{ shop.id }}'
+  </script>
+
+  {% comment %} deal with seo question for noindex, 20220621 {% endcomment %}
+  {% capture contentHeader %}{{ content_for_header }}{% endcapture %}
+  {{ contentHeader | replace: '<meta name="robots" content="noindex,nofollow">', "" }}
+  
+  {%- include 'oldIE-js' -%}
+
+  {% include 'defer-script' with 'vendor.js' %}
+
+  {% if settings.enable_currencies %}
+    <script src="/services/javascripts/currencies.js" defer="defer"></script>
+    {% include 'defer-script' with 'jquery.currencies.min.js' %}
+  {% endif %}
+
+  <!-- HC - Install ddslick - 24 Apr '19 -->
+  {% include 'defer-script' with 'ddslick.js' %}
+  {% include 'defer-script' with 'theme.js' %}
+  {% include 'defer-script' with 'theme-v2.js' %}
+  {% include 'defer-script' with 'theme-cdp.js' %}
+
+  {%- if template contains 'customers' -%}
+    {% include 'defer-shopify-script' with 'shopify_common.js' %}
+  {%- endif -%}
+
+  {% render 'shogun-head' %}
+
+  <!-- RYVIU APP :: Settings global -->	
+  <script>var ryviu_global_settings = {{shop.metafields.ryviu.user_settings }};</script>
+  <!-- RYVIU APP -->
+
+  <script src="https://cdn.younet.network/main.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Asap&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  {% comment %} {% render 'qikify-apps' %} {% endcomment %}
+
+  <!-- Upsell & Cross Sell Kit by Logbase - Starts -->
+    <script src='https://upsell-app.logbase.io/lb-upsell.js?shop=jackery.myshopify.com' defer></script>
+  <!-- Upsell & Cross Sell Kit by Logbase - Ends -->
+ 
+  {% if content_for_header contains "hga.helloshopowner.com" %} 
+    {% render 'hso-hello-google-analytics' %} 
+  {% endif %} 
+ 
+  {% include 'bss-store-locator-popup' %}
+  {% include 'bss-store-locator-header' %}
+  {% include 'bss-store-locator-setting-header' %}
+</head>
+
+<body class="theme-v2 template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %}" data-transitions="{{ settings.animate_page_transitions }}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBFX9JT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- shopid -->
+  <input type="text" class="J-shop-id" shop_id="{{ shop.id }}" />
+
+  {% comment %}
+  <link href="https://popup.hijackery.cn/static/css/popup-plugins.min.css" rel="stylesheet">
+  <script src="https://popup.hijackery.cn/static/js/popup-plugins.min.js"></script>
+  <script src="https://popup.hijackery.cn/static/js/0.popup-plugins.min.js"></script>
+  {% endcomment %}
+
+
+  {% if settings.animate_page_transitions %}
+    <script type="text/javascript">window.setTimeout(function() { document.body.className += " loaded" }, 25)</script>
+  {% endif %}
+
+  <div id="PageContainer" class="page-container {% unless template contains 'index' %}page-on-index{% endunless %}">
+    <div class="transition-body">
+      {% section 'header' %}
+
+      {% if template contains 'index' %}{% section 'slideshow' %}{% endif %}
+
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+      </main>
+
+      {% section 'footer' %}
+    </div>
+  </div>
+
+  {% section 'newsletter-popup' %}
+
+  {% if settings.cart_type == 'drawer' %}
+    {% include 'ajax-cart-template' %}
+  {% endif %}
+
+  {% if settings.enable_currencies %}
+    <span id="CurrencyData" class="hide"
+      data-shop-currency="{{ shop.currency }}" data-default-currency="{{ settings.default_currency | default: shop.currency }}"
+      data-format="{{ settings.currency_format | default: 'money_with_currency_format' }}"
+      data-money-format="{{ shop.money_format | strip_html }}"
+      data-money-currency-format="{{ shop.money_with_currency_format | strip_html }}">
+    </span>
+  {% endif %}
+
+  {% include 'qty-selector-template' %}
+  {% include 'video-modal' %}
+  {% include 'photoswipe-template' %}
+  {% include 'geolizr-redirect' %}
+	{% include 'ht-track-code' %}
+  {% include 'ht-float-layer' %}
+  {% include 'subscribe-modal' %}
+  {% include 'tenth-pop' %}
+ {% if content_for_header contains "hga.helloshopowner.com" %}{% render 'hso-hello-google-analytics-event' %}{% endif %} 
+ {% if content_for_header contains 'store-locator-api.bsscommerce.com' %}{% include 'bss-store-locator-js-liquid' %}{% endif %}</body>
+
+{% if theme.role == "unpublished" %}
+<script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
+{% endif %}
+</html>

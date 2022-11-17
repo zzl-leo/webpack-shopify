@@ -1,0 +1,258 @@
+.old-new {
+    overflow-x: hidden;
+}
+
+.old-new-banner-text {
+    top: 7.96875vw;
+    padding-right: 12.5vw;
+}
+
+.old-new-banner-text .banner-title {
+    font-size: 1.5625vw;
+    color: #FFFFFF;
+    line-height: 1.5625vw;
+}
+
+.old-new-banner-text .goods-gifts {
+    color: #FFFFFF;
+}
+
+.old-new-banner-text .currency {
+    font-size: 3.958333vw;
+    display: none;
+}
+
+.old-new-banner-text .goods-gifts-num {
+    font-size: 216px;
+    line-height: 216px;
+}
+
+.old-new-page-container {
+    width: 100vw;
+    background: #F5F5F5;
+    padding: 20px 0 50px 0;
+}
+
+.old-new-page-container .page-container-zzl {
+    background-color: #fff;
+    padding: 70px 70px 114px 70px;
+}
+
+.old-new-form .form-title {
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 40px;
+    color: #222222;
+}
+
+.old-new-form .form-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    line-height: 26px;
+}
+
+#oldnewForm {
+    margin-top: 40px;
+}
+
+.inline-center {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.inline-center .el-form-item__content {
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.oldnew-form-submit {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.old-new-noticeList {
+    margin-top: 128px;
+}
+
+.notice-title {
+    font-size: 22px;
+    color: #333;
+    line-height: 22px;
+    margin-bottom: 24px;
+}
+
+
+.winner-code-show {
+    width: 33.333333vw;
+    margin: 0 auto;
+    line-height: 2.604167vw;
+    margin-top: 3.125vw;
+    position: relative;
+    display: none;
+}
+
+.winner-code-show .winner-code {
+    flex: 1;
+    box-sizing: border-box;
+    border: 1px solid #979797;
+    border-right: none;
+    font-size: 0.833333vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 0.520833vw;
+}
+
+.winner-code-show .winner-copy {
+    background: #FF5000;
+    border: solid 1px #FF5000;
+    color: #fff;
+    width: 12vw;
+    font-size: 0.833333vw;
+    cursor: pointer;
+    position: relative;
+}
+
+.winner-code-show .social-list {
+    flex-wrap: wrap;
+    margin-top: 5.208333vw;
+}
+
+.winner-code-show .social-item {
+    line-height: 2.604167vw;
+    height: 2.604167vw;
+    width: 15.625vw;
+    border-radius: 4px;
+    color: #fff;
+    padding-left: 0.364583vw;
+    margin-right: 2.083333vw;
+    margin-bottom: 1.25vw;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.winner-code-show .social-item span {
+    padding-left: 0.364583vw;
+}
+
+.winner-code-show .social-item:nth-child(even) {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .old-new-banner-container img {
+        width: 100%;
+    }
+
+    .old-new-banner-container .page-container-zzl {
+        width: 100%;
+    }
+
+    .old-new-banner-text {
+        top: 17.06667vw;
+        padding-right: 0;
+    }
+
+    .old-new-banner-text .banner-title {
+        font-size: 4vw;
+        line-height: 4vw;
+        height: 4vw;
+        text-align: center!important;
+    }
+
+    .old-new-banner-text .goods-gifts {
+        text-align: center!important;
+    }
+
+    .old-new-banner-text .currency {
+        font-size: 10.13333vw;
+    }
+
+    .old-new-banner-text .goods-gifts-num {
+        font-size: 28.8vw;
+        line-height: 28.8vw;
+    }
+
+
+
+    .old-new-page-container {
+        background: #fff;
+        padding: 0;
+    }
+
+    .old-new-page-container .page-container-zzl {
+        background-color: #fff;
+        margin: 0;
+        width: 100%;
+        padding: 6.4vw 5.33333vw 14.66667vw 5.33333vw;
+    }
+
+    .old-new-form .form-title {
+        font-size: 6vw;
+        line-height: 6vw;
+        height: 6vw;
+        margin-bottom: 3.46667vw;
+        text-align: left;
+    }
+
+    .old-new-form .form-subtitle {
+        font-size: 3.73333vw;
+        line-height: 5.33333vw;
+        text-align: left;
+    }
+
+
+
+    #oldnewForm .el-form-item-center {
+        text-align: left;
+    }
+
+    #oldnewForm {
+        margin-top: 8vw;
+    }
+
+    .inline-center {
+        padding-top: 2vw;
+    }
+
+    .oldnew-form-submit {
+        margin-top: 7vw;
+    }
+
+    .old-new-noticeList {
+        margin-top: 13.33333vw;
+    }
+
+
+    
+
+    .winner-code-show {
+        width: 100%;
+        margin: 0 auto;
+        line-height: 11.73333vw;
+        margin-top: 7.73333vw;
+    }
+
+    .winner-code-content {
+        flex-direction: column;
+    }
+    
+    .winner-code-show .winner-code {
+        width: 100%;
+        border: 1px solid #c8c8c8;
+        border-right: 1px solid #c8c8c8;
+        font-size: 3.73333vw;
+        padding: 0 2.66667vw;
+        margin-bottom: 4.53333vw;
+    }
+    
+    .winner-code-show .winner-copy {
+        width: 100%;
+        font-size: 4vw;
+        border-radius: 6px;
+    }
+}

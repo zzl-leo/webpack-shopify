@@ -1,0 +1,324 @@
+<style>
+.add-to-cart, .shopify-payment-button button {text-transform: uppercase;}
+.product_warranty {width: 100%; text-align: left; margin-bottom: var(--gap);}
+.product_warranty .popup {
+  width: 100%; height: var(--normal-line-height); opacity: 0;
+  position: absolute; left: 0; top: 0; z-index: 2;
+}
+.product_warranty figcaption, .product_warranty .label {display: flex; align-items: center; position: relative;}
+.product_warranty figcaption {font-size: 18px; color: var(--main-text-color); padding-left: var(--gap-mini); margin-top: var(--gap-mini); flex-wrap: wrap;}
+.product_warranty svg {width: 18px; height: 18px; fill: var(--weak-color); cursor: pointer;}
+
+.product_warranty figcaption input {flex: 14px 0;}
+.product_warranty figcaption img {flex: 100px 0;}
+.product_warranty figcaption .info {line-height: var(--normal-line-height); font-size: var(--font-normal); text-align: left; flex: 1;}
+.product_warranty figcaption b {width: 100%; font-size: var(--font-sub-title); display: block; padding: var(--gap-mini) 0;}
+.product_warranty figcaption i {font-size: var(--font-small); color: var(--brand-color);}
+
+.product_warranty .popup_box {display: none; z-index: 9;}
+.product_warranty .popup_box svg {position: absolute; right: 5px; top: 5px;}
+.product_warranty .popup_box p {font-size: var(--font-small); text-align: left; color: var(--weak-line-color); font-weight: 400; line-height: 20px;}
+.product_warranty .popup:checked ~ .popup_box {display: block;}
+@media screen and (min-width: 541px) {
+  .product_warranty .popup_box {
+    width: 96vw; max-width: 395px; padding: var(--gap) var(--gap-mini); background: var(--normal-color); box-shadow: var(--shadow2);
+    position: absolute; right: 0; 
+  }
+}
+@media screen and (max-width: 540px) {
+  .product_warranty figcaption {align-items: flex-start;}
+  .product_warranty figcaption input {margin-top: 20px;}
+  .product_warranty figcaption img {width: 70px; flex: 70px 0;}
+
+  .product_warranty .popup_box {
+    width: 100%; height: 100%; background: var(--bg-mask); padding: 0 var(--distance-content); overflow: hidden;
+    align-items: center; justify-content: center;
+    position: fixed; top: 0; left: 0;
+  }
+  .product_warranty .popup:checked ~ .popup_box {display: flex;}
+  .product_warranty .popup_box .popup_frame {background: var(--normal-color); border-radius: var(--radius); position: relative;}
+  .product_warranty .popup_box p {padding: 0 var(--gap);}
+  .product_warranty .popup_box h3, .product_warranty .popup_box span {font-size: var(--font-sub-title); font-weight: bold; line-height: 50px; text-align: center;}
+  .product_warranty .popup_box span {color: var(--brand-color); border-top: var(--border-color-link); margin-top: var(--gap);}
+}
+</style>
+{% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+{% form 'product', product, id: form_id, class: 'product-single__form' %}
+  {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+    {% for option in product.options_with_values %}
+      {% if settings.variant_type == 'button' %}
+        {% include 'variant-button', section_id: section_id, option_drop: option %}
+      {% else %}
+        {% include 'variant-dropdown', section_id: section_id %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+
+  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js">
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option {% if variant == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  {% comment %} 17/03/2022 enable auto warranty function {% endcomment %}
+  {% if product.metafields.my_fields.product_warranty %}
+
+    {% if product.metafields.my_fields.extended_warranty %}
+      {% for item in product.metafields.my_fields.extended_warranty.value limit:1 %}
+        {% assign extended_warranty = item %}
+      {% endfor %}
+    {% else %}
+      {% assign extended_warranty = 1 %}
+    {% endif %}
+
+    {% if product.metafields.my_fields.default_warranty %}
+      {% for item in product.metafields.my_fields.default_warranty.value limit:1 %}
+        {% assign default_warranty = item %}
+      {% endfor %}
+    {% else %}
+      {% assign default_warranty = 2 %}
+    {% endif %}
+
+    {% capture product_warranty_title %}Free Automatic {{ extended_warranty }} Year{% if extended_warranty > 1 %}s{% endif %} Warranty Extension Offer{% endcapture %}
+    {% capture properties_warranty %}A {{ default_warranty | plus: extended_warranty }}-year total warranty (includes a {{ extended_warranty }}-year extension){% endcapture %}
+    <figure class="product_warranty">
+      <div class="label">
+        <input type="checkbox" class="w_checkbox" checked />
+        <img src="https://cdn.shopify.com/s/files/1/0970/9262/files/extended-warranty-tag.svg?v=1665393059" alt="extended warranty" >
+        <figcaption>
+          <input type="checkbox" class="popup" />
+          <p class="info" warranty_year="{{ default_warranty | plus: extended_warranty }}">
+            {{ product_warranty_title }}
+            <svg viewBox="0 0 1024 1024">
+              <path d="M509.92 795.84c157.904 0 285.92-128.016 285.92-285.92C795.84 352 667.808 224 509.92 224 352 224 224 352 224 509.92c0 157.904 128 285.92 285.92 285.92z m0 48C325.504 843.84 176 694.32 176 509.92 176 325.504 325.504 176 509.92 176c184.416 0 333.92 149.504 333.92 333.92 0 184.416-149.504 333.92-333.92 333.92z m-2.448-400.704h16a16 16 0 0 1 16 16v201.728a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16V459.136a16 16 0 0 1 16-16z m0-100.176h16a16 16 0 0 1 16 16v23.648a16 16 0 0 1-16 16h-16a16 16 0 0 1-16-16v-23.648a16 16 0 0 1 16-16z"></path>
+            </svg>
+          </p>
+          <div class="popup_box">
+            <div class="popup_frame">
+              {% include 'icon-close' %}
+              <h3 class="hidden-desktop">{{ extended_warranty }} Year{% if extended_warranty > 1 %}s{% endif %} Warranty Extension</h3>
+              <p>The product originally incorporates a {{ default_warranty }}-year warranty, however this option lets you extend your warranty, automatically for an extra {{ extended_warranty }} year{% if extended_warranty > 1 %}s{% endif %}. This is the equivalent of a {{ default_warranty | plus: extended_warranty }}-year warranty package.</p>
+              <span class="hidden-desktop">I got it</span>
+            </div>
+          </div>
+          <b>$ 0.00</b>
+          <i>All purchases made from authorized resellers come with an extended warranty. Purchases directly from our Official Website will receive an auto-extension.</i>
+        </figcaption>
+      </div>
+    </figure>
+    <script defer="defer">
+      document.addEventListener('DOMContentLoaded', function() {
+        shopCommon.warranty("{{ properties_warranty }}")
+      })
+    </script>
+  {% endif %}
+
+  {% if settings.quantity_enable %}
+    <div class="product__quantity product__quantity--{{ settings.variant_type }} js-qty">
+      <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label>
+      <input type="number" hidden="hidden" id="Quantity-{{ section_id }}" name="quantity" value="1" min="1" class="js-qty__fallback">
+    </div>
+  {% endif %}
+
+  {%- assign enable_dynamic_buttons = false -%}
+  {% if settings.enable_payment_button and template != 'product.preorder' %}
+    {%- assign enable_dynamic_buttons = true -%}
+  {% endif %}
+
+
+  {%- liquid
+    assign preorder_flag = false
+    assign preorderCart_flag = false
+
+    if settings.enable_shortage_reminds == true and current_variant.inventory_quantity <= 0
+      assign preorder_flag = true
+    endif
+
+    if current_variant.available == true and current_variant.inventory_quantity <= 0
+      assign preorderCart_flag = true
+    endif
+  -%}
+
+
+    <script>
+      window.variantStock = {};
+      {% for variant in product.variants %}
+        window.variantStock[{{variant.id}}] = {{ variant.inventory_quantity }};
+      {% endfor %}
+    </script>
+    {% if enable_dynamic_buttons %}
+    <div class="payment-buttons">
+    {% endif %}
+    {% comment %} 购物按钮 {% endcomment %}
+    <button 
+      reminds="{{settings.enable_shortage_reminds}}"
+      preorderText="{{settings.pre_order_btn_text}}"
+      {% if product.empty? %}type="button"{% else %}type="submit"{% endif %} 
+      name="add" 
+      id="AddToCart-{{ section_id }}"
+      class="{% if enable_dynamic_buttons %}noAnimate btn--tertiary{% endif %} btn add-to-cart"
+      {% unless current_variant.available %} disabled="disabled"{% endunless %}
+    >
+      <span id="AddToCartText-{{ section_id }}" >
+        {% if current_variant.available %}
+          {% comment %} {% if current_variant.inventory_quantity <= 0 %}
+            {{ settings.pre_order_btn_text }}
+          {% else %}
+            {% if template == 'product.preorder' %}
+              {{ 'products.product.preorder' | t }}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          {% endif %} {% endcomment %}
+
+          {% if template == 'product.preorder' %}
+            {{ 'products.product.preorder' | t }}
+          {% else %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% endif %}
+          
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+    </button>
+
+    &nbsp; &nbsp; &nbsp;
+    <div class="buy_now_button_app" id="buy-it-now" enable_dynamic_buttons={{ enable_dynamic_buttons }}></div>
+    {% if enable_dynamic_buttons %}
+      {{ form | payment_button }}
+
+      </div>
+      <script>
+        function initPaymentDom() {
+          const paymentDom = $("[data-shopify=payment-button]") 
+          const payBrand = $(".shopify-payment-button__button--branded:not('.shopify-payment-button__button--hidden')") // logo
+          const payUnBrand = $(".shopify-payment-button__button--unbranded:not('.shopify-payment-button__button--hidden')") // buy it now
+          const payMoreOptions = $(".shopify-payment-button__more-options:not('.shopify-payment-button__button--hidden')") // buy it now 备用
+     
+          if((payBrand.length >= 1 && payMoreOptions.length >= 1) || payUnBrand.length >= 1) {
+            console.log('end---------')
+            console.log(payBrand[0])
+            console.log(payUnBrand[0])
+            console.log(payMoreOptions[0])
+            console.log('end---------')
+
+              payMoreOptions[0] && payMoreOptions[0].classList.remove("none");
+
+              let buynowClass = 'buynow-it-now'
+              if(!{{current_variant.available}}) {
+                buynowClass = 'buynow-it-soldout'
+              }
+      
+              if({{preorderCart_flag}} && {{current_variant.inventory_quantity}} <= 0) {
+                buynowClass = 'buynow-pre'
+              }
+              window._buynowclass = buynowClass
+
+            if(payUnBrand[0]) {
+              payUnBrand[0] && payUnBrand[0].classList.add(buynowClass);
+              payUnBrand[0] && payUnBrand[0].classList.add('_buynow-dom');
+              payMoreOptions[0] && payMoreOptions[0].classList.add("none");
+
+              window._buynowdom = '.shopify-payment-button__button--unbranded'
+              return;
+            }
+
+            if(payBrand[0]) {
+              payBrand[0].classList.add("none");
+              payMoreOptions[0] && payMoreOptions[0].classList.add(buynowClass);
+              payMoreOptions[0] && payMoreOptions[0].classList.add('_buynow-dom');
+              window._buynowdom = '.shopify-payment-button__more-options'
+            }
+          } else {
+            setTimeout(() => {
+              initPaymentDom()
+            }, 50)
+          }
+        }
+      
+        $(document).ready(function() {
+          initPaymentDom()
+          // setTimeout(() => {
+      
+          //   if({{preorderCart_flag}} && {{current_variant.inventory_quantity}} <= 0) {
+          //     const paymentDom = $("[data-shopify=payment-button]")
+          //     console.log(paymentDom)
+      
+          //     const buyItNowDom = $("[data-testid=Checkout-button]")[0];
+          //     buyItNowDom.classList.add("buynow-pre");
+          //   }
+          // }, 1500)
+        });
+      </script>
+    {% endif %}
+
+    {% comment %} 到货提醒按钮（库存 = 0/不可售状态-显示） {% endcomment %}
+    <div>
+      <button 
+        type="button" 
+        class="shortage {% if preorder_flag == false %}none{% endif %}"
+        id="preorder-notice"
+        {% if settings.enable_shortage_reminds == false  %}disabled="disabled"{% endif %}
+      >{{ settings.shortage_title }}</button>
+    </div>
+    <aside class="shortage_popup flexCenter hide">
+      <div class="shortage_frame">
+        {% include 'icon-close' %}
+        <h3>{{ settings.shortage_title }}</h3>
+        <p class="content">{{ settings.shortage_content }}</p>
+        <label class="info">
+          <input type="text" placeholder="{{ settings.shortage_input_tips }}" />
+          <button disabled type="button">{{ settings.shortage_submit }}</button>
+        </label>
+        <label class="agree">
+          <input type="checkbox" />
+          {{ settings.shortage_policy }}
+        </label>
+      </div>
+    </aside>
+    <script defer="defer">
+      document.addEventListener('DOMContentLoaded', function() {
+        shopCommon.shortage({
+          collection: `{{ product.collections[0].title }}`, variants: {{ product.variants | json }},
+          success: `{{ settings.shortage_reminds_success }}`, error: `{{ settings.shortage_reminds_error }}`
+        })
+      })
+    </script>
+
+  <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+    {{ product.variants | json }}
+  </div>
+
+  {% comment %} 延保字段 {% endcomment %}
+  {% if product.metafields.my_fields.product_warranty %}
+    <input 
+      type="hidden" 
+      name="properties[AutoWarranty]" 
+      value="{{ properties_warranty }}" 
+      id="warranty_input"
+    >
+  {% endif %}
+
+  {% comment %} 预售字段 {% endcomment %}
+  {% if product %}
+    <input
+      type="hidden"
+      name="{% if preorderCart_flag %}properties[Note]{% endif %}" 
+      value="{% if preorderCart_flag %}Pre Order Item{% endif %}" 
+      id="preorderCart_input"
+      propertiesName="properties[Note]"
+      propertiesValue="Pre Order Item"
+    >
+  {% endif %}
+{% endform %}

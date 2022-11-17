@@ -1,0 +1,98 @@
+<style>
+    .winner-code-show .social-list-r {
+        flex-wrap: wrap;
+        margin-top: 5.208333vw;
+    }
+
+    .winner-code-show .social-item {
+        line-height: 2.604167vw;
+        height: 2.604167vw;
+        width: 15.625vw;
+        border-radius: 4px;
+        color: #fff;
+        padding-left: 0.364583vw;
+        margin-right: 2.083333vw;
+        margin-bottom: 1.25vw;
+        cursor: pointer;
+    }
+
+    .winner-code-show .social-item:nth-child(even) {
+        margin-right: 0;
+    }
+
+    @media screen and (max-width: 750px) {
+        .winner-code-show .social-list-r {
+            margin-top: 16vw;
+        }
+
+        .winner-code-show .social-item {
+            line-height: 11.73333vw;
+            height: 11.73333vw;
+            width: 42.66667vw;
+            border-radius: 0.93333vw;
+            margin-right: 4vw;
+            margin-bottom: 6.13333vw;
+        }
+
+        .winner-code-show .social-item img {
+            width: 7.2vw;
+        }
+        
+        .winner-code-show .social-item span {
+            padding-left: 2.66667vw;
+            font-size: 4vw;
+            
+        }
+    }
+</style>
+<div class="social-list-r flex">
+	<div href="" target="_blank" class="social-item flex justify-center tems-center" style="background: #2373E0;" onclick="shareto(event, 'facebook')">
+		<img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/F.png?v=1651829905">
+		<span class="font-bold">facebook</span>
+	</div>
+
+	<div href="" target="_blank" class="social-item flex justify-center tems-center" style="background: #00ACED;" onclick="shareto(event, 'twitter')">
+		<img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/T.png?v=1651829905">
+		<span class="font-bold">Twitter</span>
+	</div>
+
+	<div href="" target="_blank" class="social-item flex justify-center tems-center" style="background: #25D366;" onclick="shareto(event, 'whatsapp')">
+		<img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/W.png?v=1651829905">
+		<span class="font-bold">Whatsapp</span>
+	</div>
+
+	<div href="" target="_blank" class="social-item flex justify-center tems-center" style="background: #FB8F5D;" onclick="shareto(event, 'email')">
+		<img src="https://cdn.shopify.com/s/files/1/0550/0524/9633/files/E.png?v=1651829905">
+		<span class="font-bold">Email</span>
+	</div>
+</div>
+
+<script>
+    function shareto(e, type) {
+        // cdp-老带新分享
+        const target = encodeURI(document.querySelector('#winner-code-value').innerText + `?share_id=${jackerySensors.quick('getAnonymousID')}`)
+        let url = ''
+        const title = encodeURI('Hello! A 15% discount is sending to you from Jackery.com. You have a chance to save more than 500$. Jackery is the leading brand in outdoor solar generators. Limited coupons are available on a first-come, first-served basis. Act now!')
+        switch(type) {
+            case "facebook":
+                url = `https://www.facebook.com/sharer/sharer.php?u=${target}`
+                break
+            case "twitter":
+                url = `https://twitter.com/intent/tweet?url=${target}`
+                break
+            case "whatsapp":
+                url = `https://api.whatsapp.com/send?text=${title}&url=${target}`
+                break
+            case "email":
+                url = `mailto:?subject=${encodeURIComponent('A 15% discount from Jackery.com is sending to you ! You have a chance to save more than 500$.')}&body=` + encodeURIComponent(`Hi 
+
+Jackery, the leading brand in outdoor solar generators , is sending you an exclusive 15% OFF coupon for any available products (except for Explorer 240 & Solar Generator 240 items) . Place your first order NOW and you have a chance to save more than 500$.
+
+Founded in California in 2012, Jackery is a global and best-selling brand of outdoor power solutions that inspire campers and adventurers to explore the great outdoor lives– to go further without anything holding them back!
+
+Jackery's expertly manufactured solar panels and portable power stations are bundled into a single, portable solar energy solution – a Solar Generator. Its solar panels capture the sun's rays, convert the energy into electrical power, and store it in a portable power station for when you need it. This innovative series not only encourages outdoor adventures but also empowers and equips us to go green. It is the ultimate tool to enjoy freedom – anywhere and without limits.`)
+        }
+        window.open(url)
+    }
+
+</script>
