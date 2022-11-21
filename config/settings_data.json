@@ -1,0 +1,25 @@
+{
+  "current": {
+    "sections": {
+      "site-header": {
+        "type": "site-header",
+        "settings": {
+          "announcement": true,
+          "announcement_only_home": false,
+          "announcement_text": "Announce something here-custom",
+          "announcement_link": "",
+          "accouncement_color_bg": "#333333",
+          "accouncement_color_text": "#fff"
+        }
+      },
+      "site-footer": {
+        "type": "site-footer",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}
