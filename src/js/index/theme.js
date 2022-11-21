@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-09-15 18:51:29
  * @LastEditors: Leo
- * @LastEditTime: 2022-11-17 13:47:06
+ * @LastEditTime: 2022-11-21 15:32:50
  * @FilePath: \test2\src\js\index\theme.js
  */
 import '../../css/theme.css';
@@ -33,6 +33,7 @@ if (cartLinks) {
 }
 
 setTimeout(() => {
+  console.log("test")
   testComp({
     parentNodes: document.querySelector(".site-header"),
     text: "z-test"
