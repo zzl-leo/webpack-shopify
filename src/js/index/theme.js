@@ -1,42 +1,10 @@
 /*
- * @Date: 2022-09-15 18:51:29
+ * @Date: 2022-11-26 17:10:31
  * @LastEditors: Leo
- * @LastEditTime: 2022-11-21 15:32:50
- * @FilePath: \test2\src\js\index\theme.js
+ * @LastEditTime: 2022-12-08 13:01:03
+ * @FilePath: \shopify3.0\src\js\index\theme.js
  */
-import '../../css/theme.css';
-import '../utility/public-path';
-import '../utility/newsletter-subscribe';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import 'lazysizes';
-import openCart from '../utility/open-cart';
-
-import vueTest from '../apps/vue-test';
-import {testComp} from '../apps/vue-t2'
-
-document.querySelector('html').classList.add('js');
-
-// Handle cart-slider
-const cartLinks = document.querySelectorAll('.open-cart');
-if (cartLinks) {
-  cartLinks.forEach((cartLink) => {
-    cartLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      const cartHref = e.currentTarget.getAttribute('href');
-      openCart().then((res) => {
-        if (res === false) {
-          window.location.href = cartHref;
-        }
-      });
-    });
-  });
-}
-
-setTimeout(() => {
-  console.log("test")
-  testComp({
-    parentNodes: document.querySelector(".site-header"),
-    text: "z-test"
-  })
-
-}, 200);
+import $ from 'jquery'
+import '../../css/theme.css'
+window.jQuery = window.$ = $
+__webpack_public_path__ = window.__webpack_public_path__;

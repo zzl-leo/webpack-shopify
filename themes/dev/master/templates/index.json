@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "slide_swiper": {
+      "type": "slide-swiper"
+    },
+    "collection_swiper": {
+      "type": "collection-swiper"
+    },
+    "video_swiper": {
+      "type": "video-swiper"
+    },
+    "scene_swiper": {
+      "type": "scene-swiper"
+    },
+    "product_swiper": {
+      "type": "product-swiper"
+    },
+    "voice_swiper": {
+      "type": "voice-swiper"
+    },
+    "support_section": {
+      "type": "index-support"
+    }
+  },
+  "order": [
+    "slide_swiper",
+    "collection_swiper",
+    "video_swiper",
+    "scene_swiper",
+    "product_swiper",
+    "voice_swiper",
+    "support_section"
+  ]
+}
